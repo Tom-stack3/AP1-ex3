@@ -1,7 +1,7 @@
 #ifndef FLOWER_H
 #define FLOWER_H
-#include<string>
-#include<array>
+#include <string>
+#include <array>
 
 class Flower
 {
@@ -16,12 +16,12 @@ public:
     /**
      * Return a const reference to the properties of the flower.
      */
-    const std::array<int,4>& getProperties() { return m_properties; };
+    const std::array<int,4>& getProperties() const { return m_properties; };
 
     /**
      * Return a const reference to the label of the flower.
      */
-    const std::string& getLabel() { return m_label; };
+    const std::string& getLabel() const { return m_label; };
 
     /**
      * Set a new label.
