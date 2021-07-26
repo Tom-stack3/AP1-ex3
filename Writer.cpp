@@ -1,5 +1,4 @@
 #include "Writer.h"
-#include <iostream>
 
 Writer::Writer(std::string outputPath){
     m_outputPath = std::move(outputPath);
