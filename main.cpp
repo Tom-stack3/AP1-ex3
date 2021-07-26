@@ -1,10 +1,11 @@
 #include <iostream>
-#include<string>
-#include<array>
+#include <string>
+#include <array>
 #include "Flower.h"
 #include "Writer.h"
 
-int main(){
+int main()
+{
     // creating and working with a new instance of flower.
     std::array<int, 4> n = {1, 2, 3, 4};
     Flower f = Flower(n, "Flower_");

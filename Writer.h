@@ -1,13 +1,14 @@
 #ifndef WRITER_H
 #define WRITER_H
-#include <string>
 #include <vector>
 #include <fstream>
 #include "Flower.h"
 
-class Writer{
+class Writer
+{
 private:
     std::string m_outputPath;
+
 public:
     Writer(std::string outputPath);
 
