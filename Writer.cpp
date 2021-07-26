@@ -9,7 +9,7 @@ void Writer::setOutputPath(std::string outputPath) {
     m_outputPath = std::move(outputPath);
 }
 
-void Writer::write(std::vector<Flower> flowers){
+void Writer::write(const std::vector<Flower> flowers){
     std::ofstream outFile(m_outputPath);
     for(Flower const& flower: flowers) {
         const std::array<int,4>& prop = flower.getProperties();

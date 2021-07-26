@@ -16,7 +16,7 @@ public:
      */
     void setOutputPath(std::string outputPath);
 
-    void write(std::vector<Flower> flowers);
+    void write(const std::vector<Flower> flowers);
 };
 
 #endif
