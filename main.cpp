@@ -1,7 +1,5 @@
 #include  <iostream>
-using namespace std;
-
 int main(){
-    cout << "Hello World!" << endl;
-    cout << "Test" << endl;
+    std::cout << "Hello World!" << std::endl;
+    std::cout << "Test" << std::endl;
 }
