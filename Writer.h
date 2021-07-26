@@ -16,6 +16,9 @@ public:
      */
     void setOutputPath(std::string outputPath);
 
+    /**
+     * Write the vector of Flowers to the output file.
+     */
     void write(const std::vector<Flower> flowers);
 };
 
