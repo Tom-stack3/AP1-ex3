@@ -19,7 +19,7 @@ public:
     /**
      * Write the vector of Flowers to the output file.
      */
-    void write(const std::vector<Flower> flowers);
+    void write(const std::vector<Flower> flowers) const;
 };
 
 #endif
