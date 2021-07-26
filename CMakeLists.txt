@@ -4,7 +4,7 @@ project(ass1 VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_executable(ass1 main.cpp Flower.cpp Writer.cpp)
+add_executable(ass1 main.cpp Flower.cpp Writer.cpp Reader.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
