@@ -46,11 +46,12 @@ std::vector<Flower> Reader::read()
     std::string line;
     // open the input file.
     std::ifstream fileRead(m_inputPath);
-    const std::string comma = ",";
     while (getline(fileRead, line))
     {
+        // add a flower to the vector.
         v.push_back(parseLine(line));
     }
     fileRead.close();
+    // return the vector of Flowers.
     return v;
 }
