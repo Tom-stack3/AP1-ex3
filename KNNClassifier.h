@@ -1,3 +1,5 @@
+#ifndef KNNCLASSIFIER_H
+#define KNNCLASSIFIER_H
 #include "Flower.h"
 #include <vector>
 #include <map>
@@ -19,3 +21,5 @@ public:
      */
     std::string predict(const Flower &f);
 };
+
+#endif
