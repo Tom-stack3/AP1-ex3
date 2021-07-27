@@ -11,7 +11,8 @@ Flower::Flower(std::array<double, 4> properties, std::string label)
     m_properties = properties;
 }
 
-double Flower::getDistance(Flower & f){
+double Flower::getDistance(const Flower &f) const
+{
     double x11 = m_label[0];
     double x12 = m_label[1];
     double y11 = m_label[2];
@@ -22,5 +23,5 @@ double Flower::getDistance(Flower & f){
     double y21 = f.m_label[2];
     double y22 = f.m_label[3];
 
-    return sqrt(pow(x11-x21, 2) + pow(x12-x22, 2) + pow(y11-y21, 2) + pow(y12-y22, 2));
+    return sqrt(pow(x11 - x21, 2) + pow(x12 - x22, 2) + pow(y11 - y21, 2) + pow(y12 - y22, 2));
 }
