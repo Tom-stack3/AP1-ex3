@@ -28,6 +28,11 @@ public:
      * Set a new label.
      */
     void setLabel(std::string newLabel);
+
+    //comparing between 2 flowers
+    int compare(Flower & f);
+
+    double getDistance(Flower & f);
 };
 
 #endif
