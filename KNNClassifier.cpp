@@ -1,7 +1,4 @@
-#include <iostream>
 #include "KNNClassifier.h"
-#include <math.h>
-#include <algorithm>
 
 KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray)
 {
