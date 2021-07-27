@@ -10,7 +10,7 @@ int main()
     // creating and working with a new instance of flower.
     std::array<double, 4> n = {1.5, 2.6, 3.9, 69};
     std::array<double, 4> n2 = {1, 2, 3, 4};
-    std::array<double, 4> n3 = {5.6,2.5,3.9,1.1};
+    std::array<double, 4> n3 = {5.6, 2.5, 3.9, 1.1};
     Flower f = Flower(n, "setosa");
     //std::cout << f.getLabel() << f.getProperties()[2] << std::endl;
     // setting a new label for the flower.
@@ -40,13 +40,12 @@ int main()
     std::vector<Flower> uvf = ur.read();
     std::vector<Flower> output;
     KNNClassifier knn(vf);
-  
+
     for (Flower const &flower : uvf)
-    {    
+    {
         Flower f(flower.getProperties(), knn.predict(flower));
         output.push_back(f);
     }
-    
-    w.write(output);
 
+    w.write(output);
 }
