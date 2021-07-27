@@ -16,7 +16,7 @@ void Writer::write(const std::vector<Flower> flowers) const
     for (Flower const &flower : flowers)
     {
         const std::array<double, 4> &prop = flower.getProperties();
-        outFile << prop[0] << ',' << prop[1] << ',' << prop[2] << ',' << prop[3] << ',' << flower.getLabel() << '\n';
+        outFile << flower.getLabel() << std::endl;
     }
     outFile.close();
 }
