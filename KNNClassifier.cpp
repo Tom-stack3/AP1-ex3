@@ -31,7 +31,7 @@ std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
 }
 
 std::string KNNClassifier::predict(const Flower & flower){
-    int k = 4;
+    int k = 5;
      std::vector<Flower> knnFlowers = findKNN(k, flower);
      std::map<std::string, int> result; 
     for(int i = 0; i < k; i++) {
