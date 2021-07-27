@@ -2,6 +2,7 @@
 #define FLOWER_H
 #include <string>
 #include <array>
+#include <math.h>
 
 class Flower
 {

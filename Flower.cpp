@@ -1,5 +1,5 @@
 #include "Flower.h"
-#include "math.h"
+
 void Flower::setLabel(std::string newLabel)
 {
     m_label = std::move(newLabel);
