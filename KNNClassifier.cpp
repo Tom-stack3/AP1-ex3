@@ -1,5 +1,7 @@
 #include <iostream>
 #include "KNNClassifier.h"
+#include <math.h>
+#include <algorithm>
 
 KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray)
 {
@@ -34,14 +36,20 @@ std::string KNNClassifier::predict(const Flower &flower)
 {
     int k = 5;
     std::vector<Flower> knnFlowers = findKNN(k, flower);
-    std::map<std::string, int> result;
+    int result [] {0,0,0};
     for (int i = 0; i < k; i++)
     {
-        result[knnFlowers[i].getLabel()]++;
+        if(knnFlowers[i].getLabel().compare("setosa") == 0){result [0]++;}
+        if(knnFlowers[i].getLabel().compare("virginica") == 0){result [1]++;}
+        if(knnFlowers[i].getLabel().compare("versicolor") == 0){result [2]++;}        
     }
-    for (auto item : result)
-    {
-        std::cout << item.first + " : " << item.second << std::endl;
-    }
-    return "Shalom";
+
+    int max = result[0] > ( result[1] > result[2] ? result[1] : result[2]) ? result[0] : ( result[1] > result[2] ? result[1] : result[2]);
+
+    if(result[0] == max)
+        return "setosa";
+    if(result[1] == max)
+        return "virginica";
+    return "versicolor";
+
 }

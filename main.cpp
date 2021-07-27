@@ -11,13 +11,13 @@ int main()
     std::array<double, 4> n = {1.5, 2.6, 3.9, 69};
     std::array<double, 4> n2 = {1, 2, 3, 4};
     std::array<double, 4> n3 = {1.1, 20, 6.123, 4.12};
-    Flower f = Flower(n, "Flower_");
+    Flower f = Flower(n, "setosa");
     //std::cout << f.getLabel() << f.getProperties()[2] << std::endl;
     // setting a new label for the flower.
-    f.setLabel(std::string("Flower_1"));
+    f.setLabel(std::string("setosa"));
     //std::cout << f.getLabel() << f.getProperties()[2] << std::endl;
 
-    Flower f2 = Flower(n2, "Flower_2");
+    Flower f2 = Flower(n2, "virginica");
     std::vector<Flower> v{f, f2, f, f2, f, f, f, f2};
 
     // write the flowers
@@ -31,12 +31,11 @@ int main()
     for (Flower const &flower : vf)
     {
         const std::array<double, 4> &prop = flower.getProperties();
-        // print the flower
-        //std::cout << prop[0] << "," << prop[1] << "," << prop[2] << "," << prop[3] << "," << flower.getLabel() << std::endl;
+        //print the flower
+        std::cout << prop[0] << "," << prop[1] << "," << prop[2] << "," << prop[3] << "," << flower.getLabel() << std::endl;
     }
-
     // test for the classifier
-    KNNClassifier knn = KNNClassifier(v);
-    knn.predict(Flower(n3, "-1"));
+    KNNClassifier knn(v);
+    std::cout << knn.predict(Flower(n3, "-1")) << std::endl;
 
 }
