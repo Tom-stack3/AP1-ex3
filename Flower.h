@@ -3,7 +3,6 @@
 #include <string>
 #include <array>
 #include <math.h>
-#include <iostream>
 class Flower
 {
 private:
