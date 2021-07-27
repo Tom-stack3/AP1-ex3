@@ -15,11 +15,7 @@ private:
 public:
     // constructors
     Flower(){};
-    Flower(const Flower &f)
-    {
-        m_properties = f.getProperties();
-        m_label = f.getLabel();
-    };
+    Flower(const Flower &f);
     Flower(std::array<double, 4> properties, std::string label = "");
 
     Flower &operator=(const Flower &flower);
@@ -27,12 +23,12 @@ public:
     /**
      * Return a const reference to the properties of the flower.
      */
-    const std::array<double, 4> &getProperties() const { return m_properties; };
+    const std::array<double, 4> &getProperties() const;
 
     /**
      * Return a const reference to the label of the flower.
      */
-    const std::string &getLabel() const { return m_label; };
+    const std::string &getLabel() const;
 
     /**
      * Set a new label.

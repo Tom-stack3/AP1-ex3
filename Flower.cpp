@@ -18,6 +18,16 @@ Flower::Flower(std::array<double, 4> properties, std::string label)
     m_properties = properties;
 }
 
+Flower::Flower(const Flower &f)
+{
+    m_properties = f.getProperties();
+    m_label = f.getLabel();
+};
+
+const std::array<double, 4> &Flower::getProperties() const { return m_properties; };
+
+const std::string &Flower::getLabel() const { return m_label; };
+
 double Flower::getDistance(const Flower &f) const
 {
     double x11 = m_properties[0];
