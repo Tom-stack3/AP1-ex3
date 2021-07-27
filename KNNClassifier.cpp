@@ -1,6 +1,9 @@
 #include <iostream>
 #include "KNNClassifier.h"
 #include <string.h>
+#include <vector>
+#include <map>
+
 KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray){
    data = flowerArray;
 }
@@ -32,9 +35,12 @@ std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
 std::string KNNClassifier::predict(const Flower & flower){
     int k = 4;
      std::vector<Flower> knnFlowers = findKNN(k, flower);
-    for(int i = 0; i < k; i++){
-       std::cout << knnFlowers[i].getLabel() << std::endl;
+     std::map<std::string, int> result; 
+    for(int i = 0; i < k; i++) {
+       result[knnFlowers[i].getLabel()]++;
+    }
+    for(auto item : result){
+        std::cout << item.first + " : " << item.second << "\n";
     }
     return "Shalom";
-    // free knnFlowers
 }
