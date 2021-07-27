@@ -37,3 +37,5 @@ build
 # VSCode stuff
 .vscode
 *.dSYM
+cmake-build-debug
+.idea

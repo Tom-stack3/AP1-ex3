@@ -1,3 +1,4 @@
+#include "iostream"
 #include "Flower.h"
 #include "math.h"
 void Flower::setLabel(std::string newLabel)
@@ -11,16 +12,16 @@ Flower::Flower(std::array<double, 4> properties, std::string label)
     m_properties = properties;
 }
 
-double Flower::getDistance(Flower & f){
-    double x11 = m_label[0];
-    double x12 = m_label[1];
-    double y11 = m_label[2];
-    double y12 = m_label[3];
+double Flower::getDistance(const Flower & f){
+    double x11 = m_properties[0];
+    double x12 = m_properties[1];
+    double y11 = m_properties[2];
+    double y12 = m_properties[3];
 
-    double x21 = f.m_label[0];
-    double x22 = f.m_label[1];
-    double y21 = f.m_label[2];
-    double y22 = f.m_label[3];
+    double x21 = f.m_properties[0];
+    double x22 = f.m_properties[1];
+    double y21 = f.m_properties[2];
+    double y22 = f.m_properties[3];
 
     return sqrt(pow(x11-x21, 2) + pow(x12-x22, 2) + pow(y11-y21, 2) + pow(y12-y22, 2));
 }

@@ -1,10 +1,35 @@
+#include "iostream"
 #include "KNNClassifier.h"
-
-
-Flower & KNNClassifier::findKNN(const int k , const Flower & flower){
-    for(int i = 0; i < data.)
+#include "string.h"
+KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray){
+   data = flowerArray;
 }
 
-string KNNClassifier::predict(const Flower & flower){
+std::vector<Flower> KNNClassifier::findKNN(const int k , const Flower & flower){
+    // Sotring the array
+    for(int i = 0; i < data.size(); i++){
+        std::cout << data[i].getProperties()[0] << std::endl;
+        for(int j = 0; j < data.size()-1; j++){
+            if(data[j].getDistance(flower) > data[j+1].getDistance(flower)){
+                Flower & temp = data[j];
+                data[j] = data[j+1];
+                data[j+1] = temp;
+            }
+        }
+    }
+    std::vector<Flower> flowers;
+    for(int i = 0; i < k; i++){
+        flowers.push_back(data[i]);
+    }
+    return flowers;
+}
 
+std::string KNNClassifier::predict(const Flower & flower){
+    int k = 3;
+     std::vector<Flower> knnFlowers = findKNN(k, flower);
+    for(int i = 0; i < k; i++){
+       std::cout << knnFlowers[i].getLabel() << std::endl;
+    }
+    return "Shalom";
+    // free knnFlowers
 }

@@ -12,6 +12,7 @@ private:
     std::string m_label;
 
 public:
+    Flower(){};
     Flower(std::array<double, 4> properties, std::string label = "");
 
     /**
@@ -32,7 +33,7 @@ public:
     //comparing between 2 flowers
     int compare(Flower & f);
 
-    double getDistance(Flower & f);
+    double getDistance(const Flower & f);
 };
 
 #endif

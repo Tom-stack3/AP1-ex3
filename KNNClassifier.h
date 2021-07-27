@@ -1,13 +1,12 @@
 #include "Flower.h"
-using namespace std;
+#include "vector"
 class KNNClassifier{
     private:
-    Flower data [];
-    int dataSize;
-    Flower (Flower [] data, int dataSize);
-    Flower& findKNN(const int k,const Flower & f);
+    std::vector<Flower> data;
+     std::vector<Flower> findKNN(const int k,const Flower & f);
 
     public:
     // Overiding the interface function.
-    string predict(const Flower & f);
+    KNNClassifier(std::vector<Flower> data);
+    std::string predict(const Flower & f);
 };
