@@ -38,7 +38,7 @@ std::string KNNClassifier::predict(const Flower & flower){
        result[knnFlowers[i].getLabel()]++;
     }
     for(auto item : result){
-        std::cout << item.first + " : " << item.second << "\n";
+        std::cout << item.first + " : " << item.second << std::endl;
     }
     return "Shalom";
 }
