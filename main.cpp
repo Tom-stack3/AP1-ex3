@@ -32,7 +32,7 @@ int main()
     {
         const std::array<double, 4> &prop = flower.getProperties();
         // print the flower
-        std::cout << prop[0] << "," << prop[1] << "," << prop[2] << "," << prop[3] << "," << flower.getLabel() << std::endl;
+        //std::cout << prop[0] << "," << prop[1] << "," << prop[2] << "," << prop[3] << "," << flower.getLabel() << std::endl;
     }
 
 
