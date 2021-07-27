@@ -30,14 +30,17 @@ std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
     return flowers;
 }
 
-std::string KNNClassifier::predict(const Flower & flower){
+std::string KNNClassifier::predict(const Flower &flower)
+{
     int k = 5;
-     std::vector<Flower> knnFlowers = findKNN(k, flower);
-     std::map<std::string, int> result; 
-    for(int i = 0; i < k; i++) {
-       result[knnFlowers[i].getLabel()]++;
+    std::vector<Flower> knnFlowers = findKNN(k, flower);
+    std::map<std::string, int> result;
+    for (int i = 0; i < k; i++)
+    {
+        result[knnFlowers[i].getLabel()]++;
     }
-    for(auto item : result){
+    for (auto item : result)
+    {
         std::cout << item.first + " : " << item.second << std::endl;
     }
     return "Shalom";
