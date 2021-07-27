@@ -10,7 +10,7 @@ void Reader::setInputPath(std::string inputPath)
     m_inputPath = std::move(inputPath);
 }
 
-Flower Reader::parseLine(std::string &line)
+Flower Reader::parseLine(std::string &line) const
 {
     const std::string comma = ",";
     std::vector<std::string> strSplitted;
@@ -40,7 +40,7 @@ Flower Reader::parseLine(std::string &line)
     return Flower(properties, strSplitted.at(4));
 }
 
-std::vector<Flower> Reader::read()
+std::vector<Flower> Reader::read() const
 {
     std::vector<Flower> v;
     std::string line;

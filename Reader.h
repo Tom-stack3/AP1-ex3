@@ -11,7 +11,7 @@ private:
     /**
      * Parse a line into a Flower.
      */
-    Flower parseLine(std::string &line);
+    Flower parseLine(std::string &line) const;
 
 public:
     Reader(std::string inputPath);
@@ -24,7 +24,7 @@ public:
     /**
      * Write the vector of Flowers to the output file.
      */
-    std::vector<Flower> read();
+    std::vector<Flower> read() const;
 };
 
 #endif
