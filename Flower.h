@@ -3,7 +3,7 @@
 #include <string>
 #include <array>
 #include <math.h>
-
+#include <iostream>
 class Flower
 {
 private:
@@ -14,11 +14,22 @@ private:
 
 public:
     Flower(){};
+    Flower(const Flower & f){
+        m_properties = f.getProperties();
+        m_label = f.getLabel();
+        
+    };
     Flower(std::array<double, 4> properties, std::string label = "");
-
     /**
      * Return a const reference to the properties of the flower.
      */
+
+    Flower& operator=(const Flower &flower){
+        m_properties = flower.getProperties();
+        m_label = flower.getLabel();
+        return *this;
+    }
+
     const std::array<double, 4> &getProperties() const { return m_properties; };
 
     /**

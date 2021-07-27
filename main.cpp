@@ -35,7 +35,6 @@ int main()
         //std::cout << prop[0] << "," << prop[1] << "," << prop[2] << "," << prop[3] << "," << flower.getLabel() << std::endl;
     }
 
-
     KNNClassifier knn = KNNClassifier(v);
     knn.predict(Flower(n3, "-1"));
 

@@ -24,4 +24,5 @@ double Flower::getDistance(const Flower & f) const{
     double y22 = f.m_properties[3];
 
     return sqrt(pow(x11 - x21, 2) + pow(x12 - x22, 2) + pow(y11 - y21, 2) + pow(y12 - y22, 2));
+
 }
