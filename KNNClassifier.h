@@ -1,9 +1,10 @@
 #ifndef KNNCLASSIFIER_H
 #define KNNCLASSIFIER_H
 #include "Flower.h"
+#include "Classifier.h"
 #include <vector>
-#include <map>
-class KNNClassifier
+
+class KNNClassifier : public Classifier
 {
 private:
     std::vector<Flower> data;
@@ -16,7 +17,7 @@ public:
     KNNClassifier(std::vector<Flower> data);
 
     /**
-     * Return a label predicted for the Flower.
+     * Return a label predicted for a Flower.
      * (Overiding the interface function)
      */
     std::string predict(const Flower &f);
