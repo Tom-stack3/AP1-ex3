@@ -2,6 +2,7 @@
 #define KNNCLASSIFIER_H
 #include "Flower.h"
 #include "Classifier.h"
+#include "Algorithm.h"
 #include <vector>
 
 class KNNClassifier : public Classifier

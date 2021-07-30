@@ -7,7 +7,7 @@ KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray)
 
 std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
 {
-    // Sotring the array
+  // Sotring the array
     for (int i = 0; i < data.size(); i++)
     {
         for (int j = 0; j < data.size() - 1; j++)
@@ -33,7 +33,9 @@ std::string KNNClassifier::predict(const Flower &flower)
 {
     // the K we want the prediction to work with.
     const int k = 5;
-    std::vector<Flower> knnFlowers = findKNN(k, flower);
+    Algorithm<Flower> algo{};
+    std::vector<Flower> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(data, flower), k);
+    //std::vector<Flower> knnFlowers = findKNN(k, flower);
     int result[]{0, 0, 0};
     for (int i = 0; i < k; i++)
     {

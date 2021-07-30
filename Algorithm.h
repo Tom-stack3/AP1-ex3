@@ -1,16 +1,38 @@
 #ifndef ALGORITHM_H
 #define ALGORITHM_H
 #include <vector>
+#include <iterator>
+#include <map>
+
 template <class T>
 
 class Algorithm
 {
 public:
     // return k smallest elements.
-    std::vector<T> select(int k, std::vector<T> arr, int l = 0, int r = -1);
+    std::vector<T> sortByDiffrence(std::vector<T> v, T x)
+    {
+        std::multimap<int, T> m;
+        typename std::multimap<int, T>::iterator it;
+        // Store values in a map with the difference
+        // with X as key
+        for (int i = 0; i < v.size(); i++)
+            m.insert(std::make_pair(abs(v[i].getDistance(x)), v[i]));
 
-    // sort the array based on the comparation with x. (smaller then x will be on the left of x, and the rest on the right of x)
-    void partition(std::vector<T> arr, T x, int l = 0, int r = -1);
+        // Update the values of array
+        int i = 0;
+        for (auto const &x : m)
+        {
+            v[i++] = x.second;
+        }
+        return v;
+    }
+
+    std::vector<T> getKSmallest(std::vector<T> sorted, int k)
+    {
+        std::vector<T> kSmallest(sorted.begin(), sorted.begin() + k);
+        return kSmallest;
+    }
 };
 
 #endif

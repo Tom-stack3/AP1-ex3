@@ -22,7 +22,7 @@ int main()
     }
 
     // Create a new Writer
-    Writer w = Writer(std::string("../output.csv"));
+    Writer w = Writer(std::string("../output_test.csv"));
     // Write the newly classified Flowers to the output file.
     // The flowers in "unclassifiedFlowers" vector are now classified.
     w.write(unclassifiedFlowers);
