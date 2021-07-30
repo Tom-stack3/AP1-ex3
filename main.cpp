@@ -13,6 +13,7 @@ int main()
     std::vector<Flower> unclassifiedFlowers = r.read();
 
     const int k = 5;
+    // Create a new KNNClassifier
     KNNClassifier knn(classifiedFlowers, k);
     Classifier& classifier = knn;
 
