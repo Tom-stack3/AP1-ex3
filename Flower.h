@@ -34,9 +34,6 @@ public:
      */
     void setLabel(std::string newLabel);
 
-    //comparing between 2 flowers
-    int compare(Flower &f) const;
-
     /**
      * Get distance between this flower and other flower.
      */
