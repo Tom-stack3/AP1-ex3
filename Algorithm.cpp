@@ -1,5 +1,4 @@
 #include "Algorithm.h"
-#include "Flower.h"
 
 template <class T>
 std::vector<T> Algorithm<T>::sortByDiffrence(std::vector<T> v, T x)
@@ -26,8 +25,4 @@ std::vector<T> Algorithm<T>::getKSmallest(std::vector<T> sorted, int k)
     return kSmallest;
 }
 
-//trying method 1
-void TemporaryFunction ()
-{
-    Algorithm<Flower> TempObj;
-}
+template class Algorithm<Flower>;
