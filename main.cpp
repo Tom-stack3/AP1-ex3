@@ -12,7 +12,8 @@ int main()
     // Read and load the Unclassified Flowers
     std::vector<Flower> unclassifiedFlowers = r.read();
 
-    KNNClassifier knn(classifiedFlowers);
+    const int k = 5;
+    KNNClassifier knn(classifiedFlowers, k);
     Classifier& classifier = knn;
 
     for (Flower &flower : unclassifiedFlowers)
@@ -22,7 +23,7 @@ int main()
     }
 
     // Create a new Writer
-    Writer w = Writer(std::string("../output_test.csv"));
+    Writer w = Writer(std::string("../output.csv"));
     // Write the newly classified Flowers to the output file.
     // The flowers in "unclassifiedFlowers" vector are now classified.
     w.write(unclassifiedFlowers);

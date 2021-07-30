@@ -1,22 +1,27 @@
 #include "KNNClassifier.h"
 
-KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray)
+KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray, int k)
 {
-    data = flowerArray;
+    m_data = flowerArray;
+    m_k = k;
+}
+
+void KNNClassifier::setK(const int k){
+    m_k = k;
 }
 
 std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
 {
   // Sotring the array
-    for (int i = 0; i < data.size(); i++)
+    for (int i = 0; i < m_data.size(); i++)
     {
-        for (int j = 0; j < data.size() - 1; j++)
+        for (int j = 0; j < m_data.size() - 1; j++)
         {
-            if (data[j].getDistance(flower) > data[j + 1].getDistance(flower))
+            if (m_data[j].getDistance(flower) > m_data[j + 1].getDistance(flower))
             {
-                Flower temp(data[j]);
-                data[j] = data[j + 1];
-                data[j + 1] = temp;
+                Flower temp(m_data[j]);
+                m_data[j] = m_data[j + 1];
+                m_data[j + 1] = temp;
             }
         }
     }
@@ -24,20 +29,18 @@ std::vector<Flower> KNNClassifier::findKNN(const int k, const Flower &flower)
     std::vector<Flower> flowers;
     for (int i = 0; i < k; i++)
     {
-        flowers.push_back(data[i]);
+        flowers.push_back(m_data[i]);
     }
     return flowers;
 }
 
 std::string KNNClassifier::predict(const Flower &flower)
 {
-    // the K we want the prediction to work with.
-    const int k = 5;
     Algorithm<Flower> algo{};
-    std::vector<Flower> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(data, flower), k);
+    std::vector<Flower> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(m_data, flower), m_k);
     //std::vector<Flower> knnFlowers = findKNN(k, flower);
     int result[]{0, 0, 0};
-    for (int i = 0; i < k; i++)
+    for (int i = 0; i < m_k; i++)
     {
         if (knnFlowers[i].getLabel().compare("Iris-setosa") == 0)
         {
