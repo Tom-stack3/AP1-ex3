@@ -9,7 +9,9 @@ template <class T>
 class Algorithm
 {
 public:
-    // return k smallest elements.
+    /**
+     * Return the K smallest elements.
+     */
     std::vector<T> sortByDiffrence(std::vector<T> v, T x)
     {
         std::multimap<int, T> m;
