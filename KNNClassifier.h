@@ -11,10 +11,6 @@ private:
     std::vector<Flower> m_data;
     // the K we want the prediction to work with.
     int m_k;
-    /**
-     * Find and return the closest K flowers.
-     */
-    std::vector<Flower> findKNN(const int k, const Flower &f);
 
 public:
     KNNClassifier(std::vector<Flower> data, const int k = 5);
