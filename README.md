@@ -1,6 +1,6 @@
 # AP1 - ass1
 ## First assignment in Advanced Programming 1
 
-<img width="713" alt="Screen Shot 2021-08-01 at 10 25 05" src="https://user-images.githubusercontent.com/60852129/127762907-89e9fba3-7d23-4713-91e8-4fa7de58ecec.png">
+![uml](https://user-images.githubusercontent.com/60852129/127763096-774055f8-1d05-4116-8427-4ddc2abf749f.png)
 
 Working on this branch and than pushing the code to master
