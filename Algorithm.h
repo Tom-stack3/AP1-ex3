@@ -11,7 +11,7 @@ public:
     /**
      * Sort the vector.
      */
-    std::vector<T> sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x);
+    void sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x);
 
     /**
      * Return the K smallest elements.

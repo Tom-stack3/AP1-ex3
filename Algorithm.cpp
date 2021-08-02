@@ -1,7 +1,7 @@
 #include "Algorithm.h"
 
 template <class T>
-std::vector<T> Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x)
+void Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x)
 {
     std::multimap<double, T&> m;
     // Store values in a multimap with the difference
@@ -15,7 +15,7 @@ std::vector<T> Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v,
     {
         v[i++].reset(x.second);
     }
-    return v;
+    //return v;
 }
 
 template <class T>
