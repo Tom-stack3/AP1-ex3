@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <memory>
 class Classified
 {
 private:
@@ -37,6 +38,8 @@ public:
      * Get distance between this classified object and other classified object.
      */
     virtual double getDistance(const Classified &f) const=0;
+
+    virtual std::unique_ptr<Classified> clone() const = 0;
 };
 
 #endif
