@@ -3,7 +3,7 @@
 template <class T>
 std::vector<T> Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x)
 {
-    std::multimap<int, T&> m;
+    std::multimap<double, T&> m;
     // Store values in a multimap with the difference
     // with X as key
     for (int i = 0; i < v.size(); i++)
