@@ -16,7 +16,7 @@ int main()
 
     const int k = 5;
     // Create a new KNNClassifier
-    KNNClassifier knn(classifiedFlowers, k);
+    KNNClassifier knn(classifiedObjects, k);
     Classifier& classifier = knn;
 
     for (std::unique_ptr<Classified>& f : unclassifiedFlowers)

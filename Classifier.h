@@ -8,6 +8,6 @@ public:
     /**
      * Return a label predicted for a Flower.
      */
-    virtual std::string predict(const Flower &f)=0;
+    virtual std::string predict(const Classified &f)=0;
 };
 #endif
