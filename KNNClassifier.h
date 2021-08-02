@@ -8,18 +8,18 @@
 class KNNClassifier : public Classifier
 {
 private:
-    std::vector<Flower> m_data;
+    std::vector<std::unique_ptr<Classified>> m_data;
     // the K we want the prediction to work with.
     int m_k;
 
 public:
-    KNNClassifier(std::vector<Flower> data, const int k = 5);
+    KNNClassifier(std::vector<std::unique_ptr<Classified>>& data, const int k = 5);
 
     /**
-     * Return a label predicted for a Flower.
+     * Return a label predicted for a classified object.
      * (Overiding the interface function)
      */
-    std::string predict(const Flower &f);
+    std::string predict(const Classified &f);
 
     /**
      * Set a new K.

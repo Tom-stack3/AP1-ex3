@@ -11,12 +11,12 @@ public:
     /**
      * Sort the vector.
      */
-    std::vector<T> sortByDiffrence(std::vector<T> v, T x);
+    std::vector<T> sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x);
 
     /**
      * Return the K smallest elements.
      */
-    std::vector<T> getKSmallest(std::vector<T> sorted, int k);
+    std::vector<T> getKSmallest(std::vector<std::unique_ptr<T>> sorted, int k);
 };
 
 #endif

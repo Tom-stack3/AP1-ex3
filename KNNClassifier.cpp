@@ -1,8 +1,8 @@
 #include "KNNClassifier.h"
 
-KNNClassifier::KNNClassifier(std::vector<Flower> flowerArray, int k)
+KNNClassifier::KNNClassifier(std::vector<std::unique_ptr<Classified>>& classifiedObjects, int k)
 {
-    m_data = flowerArray;
+    m_data = classifiedObjects;
     m_k = k;
 }
 
@@ -10,10 +10,10 @@ void KNNClassifier::setK(const int k){
     m_k = k;
 }
 
-std::string KNNClassifier::predict(const Flower &flower)
+std::string KNNClassifier::predict(const Classified &cls)
 {
-    Algorithm<Flower> algo;
-    std::vector<Flower> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(m_data, flower), m_k);
+    Algorithm<Classified> algo;
+    std::vector<Classified> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(m_data, cls), m_k);
 
     int result[]{0, 0, 0};
     for (int i = 0; i < m_k; i++)
