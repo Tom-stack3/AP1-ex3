@@ -1,43 +1,22 @@
 #ifndef FLOWER_H
 #define FLOWER_H
+#include "Classified.h"
 #include <string>
 #include <array>
 #include <math.h>
-class Flower
+class Flower : public Classified
 {
-private:
-    // the four properties of the flower.
-    std::array<double, 4> m_properties;
-    // the label of the flower.
-    std::string m_label;
-
 public:
     // constructors
-    Flower(){};
-    Flower(const Flower &f);
-    Flower(std::array<double, 4> properties, std::string label = "");
-
-    Flower &operator=(const Flower &flower);
+    Flower(const Classified &f) : Classified(f) {};
+    Flower(std::vector<double> properties, std::string label = "") : Classified(properties, label) {};
 
     /**
-     * Return a const reference to the properties of the flower.
+     * Get euclidean distance between this classified object and other classified object.
      */
-    const std::array<double, 4> &getProperties() const;
+    double getDistance(const Classified &cls) const;
 
-    /**
-     * Return a const reference to the label of the flower.
-     */
-    const std::string &getLabel() const;
-
-    /**
-     * Set a new label.
-     */
-    void setLabel(std::string newLabel);
-
-    /**
-     * Get distance between this flower and other flower.
-     */
-    double getDistance(const Flower &f) const;
+    std::unique_ptr<Classified> clone() const;
 };
 
 #endif
