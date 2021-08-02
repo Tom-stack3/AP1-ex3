@@ -19,9 +19,9 @@ int main()
     KNNClassifier knn(classifiedFlowers, k);
     Classifier& classifier = knn;
 
-    for (std::unique_ptr<Classified> f : unclassifiedFlowers)
+    for (std::unique_ptr<Classified>& f : unclassifiedFlowers)
     {
-        // Set the flowers label to the prediction the Model made
+        // Set the classified object label to the prediction the Model made
         f->setLabel(classifier.predict(*f));
     }
 
