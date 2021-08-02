@@ -1,8 +1,9 @@
 #ifndef READER_H
 #define READER_H
+#include "Flower.h"
 #include <vector>
 #include <fstream>
-#include "Flower.h"
+#include <memory>
 
 class Reader
 {
@@ -11,7 +12,7 @@ private:
     /**
      * Parse a line into a Flower.
      */
-    Flower parseLine(std::string &line) const;
+    std::unique_ptr<Classified> parseLine(std::string &line) const;
 
 public:
     Reader(std::string inputPath);
@@ -22,9 +23,9 @@ public:
     void setInputPath(std::string inputPath);
 
     /**
-     * Write the vector of Flowers to the output file.
+     * Read and initiazlize the classes.
      */
-    std::vector<Flower> read() const;
+    void read(std::vector<std::unique_ptr<Classified>>& v) const;
 };
 
 #endif

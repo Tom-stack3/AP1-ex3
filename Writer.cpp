@@ -10,13 +10,12 @@ void Writer::setOutputPath(std::string outputPath)
     m_outputPath = std::move(outputPath);
 }
 
-void Writer::write(const std::vector<Flower> flowers) const
+void Writer::write(const std::vector<std::unique_ptr<Classified>>& classifiedObjects) const
 {
     std::ofstream outFile(m_outputPath);
-    for (Flower const &flower : flowers)
+    for (const std::unique_ptr<Classified> &classified : classifiedObjects)
     {
-        const std::array<double, 4> &prop = flower.getProperties();
-        outFile << flower.getLabel() << std::endl;
+        outFile << classified->getLabel() << std::endl;
     }
     outFile.close();
 }

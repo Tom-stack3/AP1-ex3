@@ -10,7 +10,7 @@ void Reader::setInputPath(std::string inputPath)
     m_inputPath = std::move(inputPath);
 }
 
-Flower Reader::parseLine(std::string &line) const
+std::unique_ptr<Classified> Reader::parseLine(std::string &line) const
 {
     const std::string comma = ",";
     std::vector<std::string> strSplitted;
@@ -31,27 +31,25 @@ Flower Reader::parseLine(std::string &line) const
     {
         strSplitted.push_back(std::string(""));
     }
-    std::array<double, 4> properties;
+    std::vector<double> properties;
     for (int i = 0; i < 4; i++)
     {
         // string to double
-        properties[i] = std::stod(strSplitted.at(i));
+        properties.push_back(std::stod(strSplitted.at(i)));
     }
-    return Flower(properties, strSplitted.at(4));
+    return std::make_unique<Flower>(properties, strSplitted.at(4));
 }
 
-std::vector<Flower> Reader::read() const
+void Reader::read(std::vector<std::unique_ptr<Classified>>& v) const
 {
-    std::vector<Flower> v;
     std::string line;
     // open the input file.
     std::ifstream fileRead(m_inputPath);
+
     while (getline(fileRead, line))
     {
         // add a flower to the vector.
         v.push_back(parseLine(line));
     }
     fileRead.close();
-    // return the vector of Flowers.
-    return v;
 }

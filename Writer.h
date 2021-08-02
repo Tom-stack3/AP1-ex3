@@ -18,9 +18,9 @@ public:
     void setOutputPath(std::string outputPath);
 
     /**
-     * Write the vector of Flowers to the output file.
+     * Write the vector of Classified objects to the output file.
      */
-    void write(const std::vector<Flower> flowers) const;
+    void write(const std::vector<std::unique_ptr<Classified>>& classifiedObjects) const;
 };
 
 #endif
