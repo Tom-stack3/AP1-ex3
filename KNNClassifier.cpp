@@ -14,7 +14,6 @@ void KNNClassifier::setK(const int k){
 std::string KNNClassifier::predict(const Classified &cls)
 {
     Algorithm<Classified> algo;
-    //std::cout << m_data[1]->getProperties()[0] << " " << m_data[2]->getProperties()[0];
 
     algo.sortByDiffrence(m_data, cls);
     std::vector<std::shared_ptr<Classified>> knnFlowers = algo.getKSmallest(m_data, m_k);
