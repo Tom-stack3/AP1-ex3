@@ -12,7 +12,7 @@ private:
     /**
      * Parse a line into a Flower.
      */
-    std::unique_ptr<Classified> parseLine(std::string &line) const;
+    std::shared_ptr<Classified> parseLine(std::string &line) const;
 
 public:
     Reader(std::string inputPath);
@@ -25,7 +25,7 @@ public:
     /**
      * Read and initiazlize the classes.
      */
-    void read(std::vector<std::unique_ptr<Classified>>& v) const;
+    void read(std::vector<std::shared_ptr<Classified>>& v) const;
 };
 
 #endif

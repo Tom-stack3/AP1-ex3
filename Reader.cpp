@@ -10,7 +10,7 @@ void Reader::setInputPath(std::string inputPath)
     m_inputPath = std::move(inputPath);
 }
 
-std::unique_ptr<Classified> Reader::parseLine(std::string &line) const
+std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
 {
     const std::string comma = ",";
     std::vector<std::string> strSplitted;
@@ -37,10 +37,10 @@ std::unique_ptr<Classified> Reader::parseLine(std::string &line) const
         // string to double
         properties.push_back(std::stod(strSplitted.at(i)));
     }
-    return std::make_unique<Flower>(properties, strSplitted.at(4));
+    return std::make_shared<Flower>(properties, strSplitted.at(4));
 }
 
-void Reader::read(std::vector<std::unique_ptr<Classified>>& v) const
+void Reader::read(std::vector<std::shared_ptr<Classified>>& v) const
 {
     std::string line;
     // open the input file.

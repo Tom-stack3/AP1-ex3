@@ -1,10 +1,11 @@
 #include "Algorithm.h"
 
 template <class T>
-void Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& x)
+void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>>& v, const T &x)
 {
-    /*
-    std::multimap<double, T&> m;
+    // last thing to implement
+    
+    /*std::multimap<double, T&> m;
     // Store values in a multimap with the difference
     // with X as key
     for (int i = 0; i < v.size(); i++)
@@ -16,17 +17,23 @@ void Algorithm<T>::sortByDiffrence(std::vector<std::unique_ptr<T>>& v, const T& 
     {
         v[i++].reset(x.second);
     }
-    //return v;
-    */
+    //return v;*/
 }
 
 template <class T>
-std::vector<T> Algorithm<T>::getKSmallest(std::vector<std::unique_ptr<T>>& sorted, int k)
+std::vector<std::shared_ptr<T>> Algorithm<T>::getKSmallest(std::vector<std::shared_ptr<T>> &sorted, int k)
 {
-    std::vector<T> kSmallest;
-    for(int i=0;i<k;i++){
-        kSmallest.push_back(*(sorted[i]));
+    std::vector<std::shared_ptr<T>> kSmallest;
+    for (int i = 0; i < k; i++)
+    {
+        kSmallest.push_back(sorted[i]);
     }
+
+    /*std::vector<std::shared_ptr<typename T>>::iterator i;
+    for (i = sorted.begin(); i < sorted.begin() + k; i++)
+    {
+        //kSmallest.push_back(**i);
+    }*/
     //std::vector<T> kSmallest(sorted.begin(), sorted.begin() + k);
 
     return kSmallest;

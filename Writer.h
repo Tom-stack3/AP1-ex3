@@ -20,7 +20,7 @@ public:
     /**
      * Write the vector of Classified objects to the output file.
      */
-    void write(const std::vector<std::unique_ptr<Classified>>& classifiedObjects) const;
+    void write(const std::vector<std::shared_ptr<Classified>>& classifiedObjects) const;
 };
 
 #endif
