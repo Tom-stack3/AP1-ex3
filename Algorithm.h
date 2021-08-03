@@ -16,7 +16,7 @@ public:
     /**
      * Return the K smallest elements.
      */
-    std::vector<T> getKSmallest(std::vector<std::unique_ptr<T>> sorted, int k);
+    std::vector<T> getKSmallest(std::vector<std::unique_ptr<T>>& sorted, int k);
 };
 
 #endif

@@ -13,7 +13,8 @@ void KNNClassifier::setK(const int k){
 std::string KNNClassifier::predict(const Classified &cls)
 {
     Algorithm<Classified> algo;
-    std::vector<Classified> knnFlowers = algo.getKSmallest(algo.sortByDiffrence(m_data, cls), m_k);
+    algo.sortByDiffrence(m_data, cls);
+    std::vector<Classified> knnFlowers = algo.getKSmallest(m_data, m_k);
 
     int result[]{0, 0, 0};
     for (int i = 0; i < m_k; i++)
