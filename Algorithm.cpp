@@ -5,19 +5,19 @@ void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>>& v, const T &
 {
     // last thing to implement
 
-    /*std::multimap<double, T&> m;
+    std::multimap<double, std::shared_ptr<T>> m;
     // Store values in a multimap with the difference
     // with X as key
     for (int i = 0; i < v.size(); i++)
-        m.insert(std::make_pair(abs(v[i]->getDistance(x)), *v[i]));
+        m.insert(std::make_pair(abs(v[i]->getDistance(x)), v[i]));
 
     // Update the values of array
     int i = 0;
     for (auto const &x : m)
     {
-        v[i++].reset(x.second);
+        v[i++] = x.second;
     }
-    //return v;*/
+    //return v;
 }
 
 template <class T>

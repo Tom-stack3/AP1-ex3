@@ -16,7 +16,7 @@ public:
      */
     double getDistance(const Classified &cls) const;
 
-    std::unique_ptr<Classified> clone() const;
+    //std::shared_ptr<Classified> clone() const;
 };
 
 #endif

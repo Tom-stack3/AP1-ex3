@@ -39,7 +39,7 @@ public:
      */
     virtual double getDistance(const Classified &f) const=0;
 
-    virtual std::unique_ptr<Classified> clone() const = 0;
+    //virtual std::shared_ptr<Classified> clone() const = 0;
 };
 
 #endif
