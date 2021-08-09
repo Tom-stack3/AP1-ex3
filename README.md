@@ -39,6 +39,6 @@ Now you can cd to the file and run it (if you run it using Cmake it will work fi
 Have Fun Classifying!
 
 ## Special improvements
-- We have used `std::multimap` in order to sort the Objects by distance. doing so in `n*log(n)`.
+- We have used `std::multimap` in order to sort the Objects by distance. doing so in `Θ(nlog(n))` complexity.
 - We have a Pure Abstract Class named `Classifier`, which KNN inherits from.
 - We have a Abstract Class named `Classified`, which is an Object to be Classified by some `Classifier`. It has an abstract virtual method `getDistance()`, which returns the distance from the current Classified Object to another. It is abstract because Distances can be measured differently.
