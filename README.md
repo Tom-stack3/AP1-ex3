@@ -1,5 +1,6 @@
 # AP1 - Ex1
 ## First assignment in Advanced Programming 1
+![uml](https://user-images.githubusercontent.com/76645845/128697955-63860283-4e9f-4852-80e8-767b47bcf9de.png)
 
 ## What is KNN Clasifier
 In statistics, the k-nearest neighbors algorithm (k-NN) is a non-parametric classification method first developed by Evelyn Fix and Joseph Hodges in 1951, and later expanded by Thomas Cover. It is used for classification and regression. In both cases, the input consists of the k closest training examples in data set. The output depends on whether k-NN is used for classification or regression:
