@@ -12,11 +12,21 @@ In Order to run our classifier, you will need to have two csv files
 
  - **classified.csv** - data set which contains 3 kinds of irises (versicolor, virginica, setosa), for every iris you will need to assign four properties (width, sepal length, sepal width, petal length). this dataset is being use to classify other irises, therefore this dataset will contain all irises with their known type.
 
-Example: (Tommi add pic because csv files on mac look like shit)
+Example:
+```
+5.4,3.9,1.7,0.4,Iris-setosa
+5.0,2.0,3.5,1.0,Iris-versicolor
+6.3,2.7,4.9,1.8,Iris-virginica
+```
 
  - **unclassified.csv** - a dataset which contains the unclassified irises 4 values.
 
-Example: (Tommi add pic because csv files on mac look like shit)
+Example:
+```
+4.6,3.1,1.5,0.2
+6.9,3.1,4.9,1.5
+6.3,3.3,6,2.5
+```
 
 Clone the git using
 ```
