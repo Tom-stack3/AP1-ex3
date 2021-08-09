@@ -1,5 +1,7 @@
 # AP1 - Ex1
-## First assignment in Advanced Programming 1
+First assignment in Advanced Programming 1
+
+## UML Diagram
 ![uml](https://user-images.githubusercontent.com/76645845/128697955-63860283-4e9f-4852-80e8-767b47bcf9de.png)
 
 ## What is KNN Clasifier
