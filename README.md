@@ -7,6 +7,7 @@ In statistics, the k-nearest neighbors algorithm (k-NN) is a non-parametric clas
 
 In k-NN classification, the output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
 
+**In out classifier, we chose k = 5 as the default k value**
 ## How To Run The Classifier
 In Order to run our classifier, you will need to have two csv files, containing the data.
 They will need to be stored in the `./data` folder.
