@@ -13,9 +13,13 @@ void Writer::setOutputPath(std::string outputPath)
 void Writer::write(const std::vector<std::shared_ptr<Classified>>& classifiedObjects) const
 {
     std::ofstream outFile(m_outputPath);
-    for (const std::shared_ptr<Classified> &classified : classifiedObjects)
+    for (auto classified = classifiedObjects.begin(); classified != classifiedObjects.end(); ++classified)
     {
-        outFile << classified->getLabel() << std::endl;
+        if(classified + 2 <= classifiedObjects.end()){
+            outFile << (*classified)->getLabel() << std::endl;
+        }else{
+            outFile << (*classified)->getLabel();
+        }
     }
     outFile.close();
 }
