@@ -38,9 +38,9 @@ git clone https://github.com/idanturkenits/AP1-ex1
 ```
 Now you can cd to the file and run it (if you run it using Cmake it will work fine, otherwise you will need to create a new folder, cd to it, and run the program from there)
 
-Have Fun Classifying!
-
 ## Special Improvements
 - We have used `std::multimap` in order to sort the Objects by distance. doing so in `Θ(nlog(n))` complexity.
 - We have a Pure Abstract Class named `Classifier`, which KNN inherits from.
 - We have a Abstract Class named `Classified`, which is an Object to be Classified by some `Classifier`. It has an abstract virtual method `getDistance()`, which returns the distance from the current Classified Object to another. It is abstract because Distances can be measured differently.
+
+Have Fun Classifying!
