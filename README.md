@@ -1,4 +1,4 @@
-# AP1 - Ex1
+# AP1 - Ex2
 First assignment in Advanced Programming 1
 
 ## UML Diagram
