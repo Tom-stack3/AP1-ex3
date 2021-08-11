@@ -46,7 +46,8 @@ void Udp::sendSocket(std::string message)
 
 void Udp::recvSocket(char *buffer, int len)
 {
-    int read_bytes = recvfrom(this->getSocketNum(), buffer, sizeof(buffer), 0, (struct sockaddr *) &other, sizeof(other));
+    unsigned int from_len = sizeof(struct sockaddr_in);
+    int read_bytes = recvfrom(this->getSocketNum(), buffer, sizeof(buffer), 0, (struct sockaddr *) &other, &from_len);
 	if (read_bytes == 0)
 	{
 		// connection is closed
