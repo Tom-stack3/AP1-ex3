@@ -5,6 +5,7 @@
 class Tcp : public Socket
 {
 public:
+    Tcp (){}
     void init(const int ipV);
 
     void connectSocket(const char* destIp, const int destPort);

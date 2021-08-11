@@ -2,6 +2,7 @@
 
 int main()
 {
+    /*
     // Create a new Reader instance
     Reader r = Reader(std::string("../data/classified.csv"));
     // Read and load the Classified Flowers
@@ -30,4 +31,17 @@ int main()
     // Write the newly classified Flowers to the output file.
     // The flowers in "unclassifiedFlowers" vector are now classified.
     w.write(unclassifiedFlowers);
+    */
+
+    Tcp tcpC{};
+    Socket& server = tcpC;
+
+    server.init(AF_INET);
+    server.bindSocket("127.0.0.1", 5555);
+    std::cout << "Wating for client" << std::endl;
+    server.acceptSocket();
+    char buffer [100];
+    server.recvSocket(buffer, 100);
+    std::cout << "Messege from client: " << buffer << std::endl;
+
 }

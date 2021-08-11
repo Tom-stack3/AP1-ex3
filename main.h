@@ -5,6 +5,8 @@
 #include "Reader.h"
 #include "Classifier.h"
 #include "KNNClassifier.h"
+#include "Socket.h"
+#include "Tcp.h"
 #include <iostream>
 
 int main();
