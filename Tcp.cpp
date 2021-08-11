@@ -40,7 +40,6 @@ void Tcp::sendSocket(std::string message)
 {
 	int data_len = strlen(message.c_str());
 	int sent_bytes = send(this->getSocketNum(), message.c_str(), data_len, 0);
-
 	if (sent_bytes < 0)
 	{
 		perror("error sending message to server");
