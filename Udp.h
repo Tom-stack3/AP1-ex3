@@ -1,11 +1,13 @@
-#ifndef TCP_H
-#define TCP_H
+#ifndef UDP_H
+#define UDP_H
 #include "Socket.h"
 
-class Tcp : public Socket
+class Udp : public Socket
 {
+private:
+    // the other socket this socket needs to interact with.
+    struct sockaddr_in other;
 public:
-    Tcp (){}
     void init(const int ipV);
 
     void connectSocket(const char* destIp, const int destPort);
