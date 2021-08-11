@@ -7,6 +7,7 @@
 #include "KNNClassifier.h"
 #include "Socket.h"
 #include "Tcp.h"
+#include "Udp.h"
 #include <iostream>
 
 int main();
