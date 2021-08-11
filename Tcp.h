@@ -4,8 +4,10 @@
 
 class Tcp : public Socket
 {
+private:
+    // the other socket this socket needs to interact with.
+    int otherSocket;
 public:
-    Tcp (){}
     void init(const int ipV);
 
     void connectSocket(const char* destIp, const int destPort);

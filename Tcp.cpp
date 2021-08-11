@@ -1,5 +1,4 @@
 #include "Tcp.h"
-#include <iostream>
 
 void Tcp::init(const int ipV)
 {
@@ -25,6 +24,8 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 	{
 		perror("error connecting to server");
 	}
+	// if we got connected to a server, we need to use send() with our socket number.
+	this->otherSocket = this->getSocketNum();
 }
 
 void Tcp::acceptSocket()
@@ -37,17 +38,17 @@ void Tcp::acceptSocket()
 	struct sockaddr_in client_sin;
 	unsigned int addr_len = sizeof(client_sin);
 	int client_sock = accept(this->getSocketNum(), (struct sockaddr *) &client_sin, &addr_len);
-	std::cout << this->getSocketNum() << std::endl;
 	if (client_sock < 0)
 	{
 		perror("error accepting client");
 	}
+	this->otherSocket = client_sock;
 }
 
 void Tcp::sendSocket(std::string message)
 {
 	int data_len = strlen(message.c_str());
-	int sent_bytes = send(this->getSocketNum(), message.c_str(), data_len, 0);
+	int sent_bytes = send(this->otherSocket, message.c_str(), data_len, 0);
 	if (sent_bytes < 0)
 	{
 		perror("error sending message to server");
@@ -56,17 +57,20 @@ void Tcp::sendSocket(std::string message)
 
 void Tcp::recvSocket(char *buffer, int len)
 {
-	int read_bytes = recv(this->getSocketNum(), buffer, len, 0);
+	int read_bytes = recv(this->otherSocket, buffer, len, 0);
 	if (read_bytes == 0)
 	{
 		// connection is closed
+		perror("connection is closed");
 	}
 	else if (read_bytes < 0)
 	{
 		// error
+		perror("error");
 	}
 	else
 	{
-		std::cout << buffer;
+		// everything is OK :)
+		// std::cout << buffer;
 	}
 }
