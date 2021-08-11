@@ -33,11 +33,15 @@ int main()
     w.write(unclassifiedFlowers);
     */
 
-    Tcp tcpC{};
-    Socket& server = tcpC;
+    Tcp udp{};
+    Socket& server = udp;
 
+    std::cout << "Waaa?!?" << std::endl;
+    
     server.init(AF_INET);
     server.bindSocket("127.0.0.1", 5555);
+
+    
     while(true){
         std::cout << "Wating for client" << std::endl;
         server.acceptSocket();
