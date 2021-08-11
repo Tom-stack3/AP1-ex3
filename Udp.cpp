@@ -51,13 +51,16 @@ void Udp::recvSocket(char *buffer, int len)
 	if (read_bytes == 0)
 	{
 		// connection is closed
+		perror("connection is closed");
 	}
 	else if (read_bytes < 0)
 	{
 		// error
+		perror("error");
 	}
 	else
 	{
-		std::cout << buffer;
+		// everything is OK :)
+		// std::cout << buffer;
 	}
 }
