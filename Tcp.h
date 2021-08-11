@@ -5,8 +5,8 @@
 class Tcp : public Socket
 {
 private:
-    // the other socket this socket needs to interact with.
-    int otherSocket;
+    // the socket used to communicate with the other socket.
+    int connectionSocket;
 public:
     void init(const int ipV);
 
