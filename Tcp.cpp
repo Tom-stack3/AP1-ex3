@@ -1,4 +1,5 @@
 #include "Tcp.h"
+#include <iostream>
 
 void Tcp::init(const int ipV)
 {
@@ -8,8 +9,8 @@ void Tcp::init(const int ipV)
 		perror("error creating socket");
 	}
 
-    this->setSocketNum(sock);
-    this->setIpV(ipV);
+	this->setSocketNum(sock);
+	this->setIpV(ipV);
 }
 
 void Tcp::connectSocket(const char *destIp, const int destPort)
@@ -26,14 +27,21 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 	}
 }
 
-void Tcp::acceptSocket(){
-    struct sockaddr_in client_sin;
-    unsigned int addr_len = sizeof(client_sin);
-    int client_sock = accept(this->getSocketNum(),  (struct sockaddr *) &client_sin,  &addr_len);
+void Tcp::acceptSocket()
+{
+	if (listen(this->getSocketNum(), 5) < 0)
+	{
+		perror("error listening to a socket");
+	}
 
-    if (client_sock < 0) {
-        perror("error accepting client");
-    }
+	struct sockaddr_in client_sin;
+	unsigned int addr_len = sizeof(client_sin);
+	int client_sock = accept(this->getSocketNum(), (struct sockaddr *) &client_sin, &addr_len);
+	std::cout << this->getSocketNum() << std::endl;
+	if (client_sock < 0)
+	{
+		perror("error accepting client");
+	}
 }
 
 void Tcp::sendSocket(std::string message)
