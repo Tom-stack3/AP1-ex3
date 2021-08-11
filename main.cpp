@@ -40,8 +40,8 @@ int main()
     server.bindSocket("127.0.0.1", 5555);
     std::cout << "Wating for client" << std::endl;
     server.acceptSocket();
-    char buffer [100];
-    server.recvSocket(buffer, 100);
+    char buffer [9];
+    server.recvSocket(buffer, 9);
     std::cout << "Messege from client: " << buffer << std::endl;
 
 }
