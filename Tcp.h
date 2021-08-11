@@ -1,5 +1,5 @@
-#ifndef TCPCLIENT_H
-#define TCPCLIENT_H
+#ifndef TCP_H
+#define TCP_H
 #include "Socket.h"
 
 class Tcp : public Socket
