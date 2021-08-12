@@ -48,6 +48,10 @@ int main()
         char buffer [10000] = {0};
         server.recvSocket(buffer, 10000);
         std::cout << "Text File From Client: " << std::endl << buffer << std::endl;
+
+        // create a csv from the input the user entered.
+        Writer w = Writer(std::string("./server_data/input.csv"));
+        w.write(buffer);
     }
     
 }
