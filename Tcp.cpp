@@ -72,6 +72,5 @@ void Tcp::recvSocket(char *buffer, int len)
 	else
 	{
 		// everything is OK :)
-		// std::cout << buffer;
 	}
 }
