@@ -27,6 +27,9 @@ public:
      */
     void read(std::vector<std::shared_ptr<Classified>> &v) const;
 
+    /**
+     * Return a string of the file read.
+     */
     std::string toString();
 };
 
