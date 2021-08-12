@@ -52,7 +52,6 @@ int main()
         Writer w = Writer(std::string("./server_data/input.csv"));
         w.write(input);
 
-
         // Create a new Reader instance
         Reader r = Reader(std::string("./data/classified.csv"));
         // Read and load the Classified Flowers
@@ -76,15 +75,15 @@ int main()
             f->setLabel(classifier.predict(*f));
         }
 
-        // Create a new Writer
+        // Write the labels classified.
         w.setOutputPath("./server_data/clients_output.csv");
         w.write(unclassifiedFlowers);
         r.setInputPath("./server_data/clients_output.csv");
         std::string output = r.toString();
+        // Send the client the labels classified.
         server.sendSocket(output);
-        std::cout << "\nSent the classified objects!\nyou can also see it in  ClientsInputPath.csv\n" << std::endl;
-        // Write the newly classified Flowers to the output file.
-        // The flowers in "unclassifiedFlowers" vector are now classified.
-        
+        std::cout << std::endl
+                  << "Sent the classified objects back to the client!" << std::endl
+                  << std::endl;
     }
 }
