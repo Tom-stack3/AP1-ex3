@@ -20,7 +20,7 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 	sin.sin_addr.s_addr = inet_addr(destIp);
 	sin.sin_port = htons(destPort);
 
-	if (connect(this->getSocketNum(), (struct sockaddr *) &sin, sizeof(sin)) < 0)
+	if (connect(this->getSocketNum(), (struct sockaddr *)&sin, sizeof(sin)) < 0)
 	{
 		perror("error connecting to server");
 	}
@@ -37,7 +37,7 @@ void Tcp::acceptSocket()
 
 	struct sockaddr_in client_sin;
 	unsigned int addr_len = sizeof(client_sin);
-	int client_sock = accept(this->getSocketNum(), (struct sockaddr *) &client_sin, &addr_len);
+	int client_sock = accept(this->getSocketNum(), (struct sockaddr *)&client_sin, &addr_len);
 	if (client_sock < 0)
 	{
 		perror("error accepting client");

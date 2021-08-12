@@ -16,6 +16,7 @@ private:
     int socketNum;
     // the ip version. either AF_INET or AF_INET6.
     int ipV;
+
 protected:
     // set socket num
     void setSocketNum(const int socket);
@@ -25,36 +26,36 @@ protected:
     void setIpV(const int ipV);
     // get the Ip version
     int getIpV() const;
-public:
 
+public:
     void sendVectorFromTextFile(std::string file);
     /**
      * binding the socket IP to the socket port.
      */
-	void bindSocket(const char *sourceIp, const int sourcePort);
+    void bindSocket(const char *sourceIp, const int sourcePort);
 
     /**
      * close the socket.
      */
-	void closeSocket();
+    void closeSocket();
 
     /**
      * initialize the socket.
      */
     virtual void init(const int ipV) = 0;
-    
-	virtual void connectSocket(const char *destIp, const int destPort) = 0;
 
-	virtual void acceptSocket() = 0;
+    virtual void connectSocket(const char *destIp, const int destPort) = 0;
+
+    virtual void acceptSocket() = 0;
 
     /**
      * sending a messege to another socket.
      */
-	virtual void sendSocket(std::string message) = 0;
+    virtual void sendSocket(std::string message) = 0;
 
     /**
      * receiving a messege from another socket.
      */
-	virtual void recvSocket(char *buffer, int len) = 0;
+    virtual void recvSocket(char *buffer, int len) = 0;
 };
 #endif

@@ -7,10 +7,11 @@ class Tcp : public Socket
 private:
     // the socket used to communicate with the other socket.
     int connectionSocket;
+
 public:
     void init(const int ipV);
 
-    void connectSocket(const char* destIp, const int destPort);
+    void connectSocket(const char *destIp, const int destPort);
 
     void acceptSocket();
 

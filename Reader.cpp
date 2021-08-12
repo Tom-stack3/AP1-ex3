@@ -70,6 +70,6 @@ std::string Reader::toString()
     fileRead.close();
 
     // remove the last '\n
-    sTotal = sTotal.substr(0, sTotal.size()-1);
+    sTotal = sTotal.substr(0, sTotal.size() - 1);
     return sTotal;
 }

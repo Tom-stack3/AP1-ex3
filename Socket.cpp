@@ -36,7 +36,7 @@ void Socket::bindSocket(const char *sourceIp, const int sourcePort)
 
 	sin.sin_port = htons(sourcePort);
 
-	if (bind(this->socketNum, (struct sockaddr *) &sin, sizeof(sin)) < 0)
+	if (bind(this->socketNum, (struct sockaddr *)&sin, sizeof(sin)) < 0)
 	{
 		perror("error binding socket");
 	}
