@@ -8,15 +8,13 @@ class Flower : public Classified
 {
 public:
     // constructors
-    Flower(const Classified &f) : Classified(f) {};
-    Flower(std::vector<double> properties, std::string label = "") : Classified(properties, label) {};
+    Flower(const Classified &f) : Classified(f){};
+    Flower(std::vector<double> properties, std::string label = "") : Classified(properties, label){};
 
     /**
      * Get euclidean distance between this classified object and other classified object.
      */
     double getDistance(const Classified &cls) const;
-
-    //std::shared_ptr<Classified> clone() const;
 };
 
 #endif

@@ -12,10 +12,3 @@ double Flower::getDistance(const Classified &cls) const
 
     return sqrt(euclideanDist);
 }
-
-/*
-std::shared_ptr<Classified> Flower::clone() const
-{
-    return std::make_shared<Flower>(*this);
-}
-*/
