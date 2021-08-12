@@ -45,10 +45,10 @@ int main()
         server.acceptSocket();
         std::cout << "Client is connected!" << std::endl;
         server.sendSocket("Im Ready to get messeges - Enter input path");
-        char input[10000] = {0};
-        server.recvSocket(input, 10000);
+        char input[1000] = {0};
+        server.recvSocket(input, sizeof(input));
 
-        // create a csv from the input the user entered.
+        // Create a csv from the input the user entered.
         Writer w = Writer(std::string("./server_data/input.csv"));
         w.write(input);
 
