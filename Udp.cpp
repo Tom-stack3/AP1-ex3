@@ -20,19 +20,30 @@ void Udp::connectSocket(const char *destIp, const int destPort)
 	sin.sin_addr.s_addr = inet_addr(destIp);
 	sin.sin_port = htons(destPort);
 
-	if (connect(this->getSocketNum(), (struct sockaddr *)&sin, sizeof(sin)) < 0)
-	{
-		perror("error connecting to server");
-	}
+	char data[] = "first_msg";
+	int data_len = sizeof(data);
 
+	if (sendto(this->getSocketNum(), data, data_len, 0, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+	{
+		perror("error writing to socket");
+	}
 	// we set the other socket to interact with.
 	this->other = sin;
 }
 
 void Udp::acceptSocket()
 {
-	// UDP accepts from everyone
-	memset(&other, 0, sizeof(other));
+	struct sockaddr_in from;
+	memset(&from, 0, sizeof(from));
+	unsigned int from_len = sizeof(struct sockaddr_in);
+	char buffer[4096];
+	int bytes = recvfrom(this->getSocketNum(), buffer, sizeof(buffer), 0, (struct sockaddr *)&from, &from_len);
+	if (bytes < 0)
+	{
+		perror("error reading from socket");
+	}
+
+	this->other = from;
 }
 
 void Udp::sendSocket(std::string message)
@@ -48,7 +59,7 @@ void Udp::sendSocket(std::string message)
 void Udp::recvSocket(char *buffer, int len)
 {
 	unsigned int from_len = sizeof(struct sockaddr_in);
-	int read_bytes = recvfrom(this->getSocketNum(), buffer, sizeof(buffer), 0, (struct sockaddr *)&other, &from_len);
+	int read_bytes = recvfrom(this->getSocketNum(), buffer, len, 0, (struct sockaddr *)&other, &from_len);
 	if (read_bytes == 0)
 	{
 		// connection is closed
@@ -62,6 +73,5 @@ void Udp::recvSocket(char *buffer, int len)
 	else
 	{
 		// everything is OK :)
-		// std::cout << buffer;
 	}
 }
