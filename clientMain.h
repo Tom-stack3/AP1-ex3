@@ -5,6 +5,9 @@
 #include "Tcp.h"
 #include "Udp.h"
 #include "Writer.h"
+#include <iterator>
+#include <sstream>
+#include <iostream>
 
 int main();
 
