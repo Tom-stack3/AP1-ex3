@@ -31,10 +31,11 @@ std::string KNNClassifier::predict(const Classified &cls)
     // get the string that apperes max times in the map
     std::string maxString;
     int max = 0;
-    
+
     for (auto const &x : map)
     {
-        if(x.second > max){
+        if (x.second > max)
+        {
             max = x.second;
             maxString = x.first;
         }
