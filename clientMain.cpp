@@ -11,7 +11,7 @@ int main()
 
     char buffer[50] = {0};
     // Recieve the welcome message.
-    client.recvSocket(buffer, 50);
+    client.recvSocket(buffer, sizeof(buffer));
 
     std::cout << "From server:" << buffer << std::endl;
 
@@ -39,7 +39,7 @@ int main()
     char outputBuffer[1000] = {0};
     // Recieve the classified labels from the server.
     client.recvSocket(outputBuffer, 1000);
-    std::cout << outputBuffer << std::endl;
+
     // Write the labels recieved to the wanted output path.
     Writer w = Writer(outputPath);
     w.write(outputBuffer);
