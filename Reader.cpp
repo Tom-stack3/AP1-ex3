@@ -56,16 +56,20 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v) const
 
 std::string Reader::toString()
 {
-    std::string s;
+    std::string line;
     std::string sTotal;
 
-    std::ifstream in;
-    in.open(m_inputPath);
+    // open the input file.
+    std::ifstream fileRead(m_inputPath);
 
-    while (!in.eof())
+    while (getline(fileRead, line))
     {
-        getline(in, s);
-        sTotal += s + "\n";
+        // add a line to the string.
+        sTotal += line + '\n';
     }
+    fileRead.close();
+
+    // remove the last '\n
+    sTotal = sTotal.substr(0, sTotal.size()-1);
     return sTotal;
 }
