@@ -45,9 +45,9 @@ int main()
         server.acceptSocket();
         std::cout << "Client is connected!" << std::endl;
         server.sendSocket("Im Ready to get messeges");
-        char buffer [10000];
-        server.recvSocket(buffer, 100000);
-        std::cout << "Text File From Client: " << buffer << std::endl;
+        char buffer [10000] = {0};
+        server.recvSocket(buffer, 10000);
+        std::cout << "Text File From Client: " << std::endl << buffer << std::endl;
     }
     
 }
