@@ -1,7 +1,6 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 #include <string>
-#include <iostream>
 #include <sys/socket.h>
 #include <stdio.h>
 #include <netinet/in.h>

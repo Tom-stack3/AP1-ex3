@@ -1,6 +1,5 @@
 #include "KNNClassifier.h"
 
-#include <iostream>
 KNNClassifier::KNNClassifier(std::vector<std::shared_ptr<Classified>>& classifiedObjects, int k)
 {
     m_data = classifiedObjects;
