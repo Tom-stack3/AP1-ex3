@@ -21,6 +21,11 @@ public:
      * Write the vector of Classified objects to the output file.
      */
     void write(const std::vector<std::shared_ptr<Classified>>& classifiedObjects) const;
+
+    /**
+     * Write a char* to the output file.
+     */
+    void write(const char* st) const;
 };
 
 #endif
