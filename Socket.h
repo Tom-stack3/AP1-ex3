@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include "Reader.h"
 
 class Socket
 {
@@ -25,6 +26,8 @@ protected:
     // get the Ip version
     int getIpV() const;
 public:
+
+    void sendVectorFromTextFile(std::string file);
     /**
      * binding the socket IP to the socket port.
      */

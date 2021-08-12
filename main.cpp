@@ -32,11 +32,10 @@ int main()
     // The flowers in "unclassifiedFlowers" vector are now classified.
     w.write(unclassifiedFlowers);
     */
-
-    Udp s{};
+   
+    Tcp s{};
     Socket& server = s;
 
-    std::cout << "Waaa?!?" << std::endl;
     
     server.init(AF_INET);
     server.bindSocket("127.0.0.1", 7444);
@@ -44,9 +43,11 @@ int main()
     while(true){
         std::cout << "Wating for client" << std::endl;
         server.acceptSocket();
-        char buffer [9];
-        server.recvSocket(buffer, 9);
-        std::cout << "Messege from client: " << buffer << std::endl;
+        std::cout << "Client is connected!" << std::endl;
+        server.sendSocket("Im Ready to get messeges");
+        char buffer [10000];
+        server.recvSocket(buffer, 100000);
+        std::cout << "Text File From Client: " << buffer << std::endl;
     }
-    // server.closeSocket();
+    
 }

@@ -40,7 +40,7 @@ std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
     return std::make_shared<Flower>(properties, strSplitted.at(4));
 }
 
-void Reader::read(std::vector<std::shared_ptr<Classified>>& v) const
+void Reader::read(std::vector<std::shared_ptr<Classified>> &v) const
 {
     std::string line;
     // open the input file.
@@ -52,4 +52,20 @@ void Reader::read(std::vector<std::shared_ptr<Classified>>& v) const
         v.push_back(parseLine(line));
     }
     fileRead.close();
+}
+
+std::string Reader::toString()
+{
+    std::string s;
+    std::string sTotal;
+
+    std::ifstream in;
+    in.open(m_inputPath);
+
+    while (!in.eof())
+    {
+        getline(in, s);
+        sTotal += s + "\n";
+    }
+    return sTotal;
 }

@@ -25,7 +25,9 @@ public:
     /**
      * Read and initiazlize the classes.
      */
-    void read(std::vector<std::shared_ptr<Classified>>& v) const;
+    void read(std::vector<std::shared_ptr<Classified>> &v) const;
+
+    std::string toString();
 };
 
 #endif
