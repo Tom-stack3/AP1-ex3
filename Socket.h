@@ -27,7 +27,6 @@ protected:
     int getIpV() const;
 
 public:
-    void sendVectorFromTextFile(std::string file);
     /**
      * binding the socket IP to the socket port.
      */
