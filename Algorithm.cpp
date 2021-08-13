@@ -1,7 +1,7 @@
 #include "Algorithm.h"
 
 template <class T>
-void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>>& v, const T &x)
+void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>> &v, const T &x)
 {
     // last thing to implement
 

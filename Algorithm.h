@@ -12,12 +12,12 @@ public:
     /**
      * Sort the vector.
      */
-    void sortByDiffrence(std::vector<std::shared_ptr<T>>& v, const T& x);
+    void sortByDiffrence(std::vector<std::shared_ptr<T>> &v, const T &x);
 
     /**
      * Return the K smallest elements.
      */
-    std::vector<std::shared_ptr<T>> getKSmallest(std::vector<std::shared_ptr<T>>& sorted, int k);
+    std::vector<std::shared_ptr<T>> getKSmallest(std::vector<std::shared_ptr<T>> &sorted, int k);
 };
 
 #endif
