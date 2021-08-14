@@ -17,13 +17,21 @@ private:
     int ipV;
 
 protected:
-    // set socket num
+    /**
+     * set the socket number.
+     */
     void setSocketNum(const int socket);
-    // get socket num
+    /**
+     * get the socket number.
+     */
     int getSocketNum() const;
-    // set the Ip version
+    /**
+     * set the Ip version.
+     */
     void setIpV(const int ipV);
-    // get the Ip version
+    /**
+     * get the Ip version
+     */
     int getIpV() const;
 
 public:
@@ -42,6 +50,9 @@ public:
      */
     virtual void init(const int ipV) = 0;
 
+    /**
+     * connect to a socket.
+     */
     virtual void connectSocket(const char *destIp, const int destPort) = 0;
 
     virtual void acceptSocket() = 0;
