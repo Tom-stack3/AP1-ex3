@@ -37,7 +37,7 @@ int main()
     Socket &server = s;
 
     server.init(AF_INET);
-    server.bindSocket("127.0.0.1", 49152);
+    server.bindSocket("127.0.0.1", 54269);
 
     while (true)
     {
