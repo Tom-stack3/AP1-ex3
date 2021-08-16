@@ -7,7 +7,7 @@ int main()
     Socket &client = cl;
     client.init(AF_INET);
     // Connect to the server.
-    client.connectSocket("127.0.0.1", 7444);
+    client.connectSocket("127.0.0.1", 49152);
 
     char buffer[50] = {0};
     // Recieve the welcome message.
