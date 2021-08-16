@@ -34,7 +34,7 @@ int main()
     // Read and send the server the unclassified flowers.
     Reader r = Reader(unclassifiedInputPath);
     std::string str = r.toString();
-    cl.sendSocket(str);
+    client.sendSocket(str);
 
     char outputBuffer[1000] = {0};
     // Recieve the classified labels from the server.
