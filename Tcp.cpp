@@ -30,7 +30,7 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 
 void Tcp::acceptSocket()
 {
-	if (listen(this->getSocketNum(), 5) < 0)
+	if (listen(this->getSocketNum(), 1) < 0)
 	{
 		perror("error listening to a socket");
 	}
