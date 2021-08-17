@@ -12,9 +12,9 @@
 class Socket
 {
 private:
-    int socketNum;
+    int m_socketNum;
     // the ip version. either AF_INET or AF_INET6.
-    int ipV;
+    int m_ipV;
 
 protected:
     /**

@@ -2,22 +2,22 @@
 
 void Socket::setSocketNum(const int socket)
 {
-	this->socketNum = socket;
+	m_socketNum = socket;
 }
 
 int Socket::getSocketNum() const
 {
-	return this->socketNum;
+	return m_socketNum;
 }
 
 void Socket::setIpV(const int ipV)
 {
-	this->ipV = ipV;
+	m_ipV = ipV;
 }
 
 int Socket::getIpV() const
 {
-	return this->ipV;
+	return m_ipV;
 }
 
 void Socket::bindSocket(const char *sourceIp, const int sourcePort)
@@ -36,7 +36,7 @@ void Socket::bindSocket(const char *sourceIp, const int sourcePort)
 
 	sin.sin_port = htons(sourcePort);
 
-	if (bind(this->socketNum, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+	if (bind(getSocketNum(), (struct sockaddr *)&sin, sizeof(sin)) < 0)
 	{
 		perror("error binding socket");
 	}
@@ -44,5 +44,5 @@ void Socket::bindSocket(const char *sourceIp, const int sourcePort)
 
 void Socket::closeSocket()
 {
-	close(this->socketNum);
+	close(getSocketNum());
 }

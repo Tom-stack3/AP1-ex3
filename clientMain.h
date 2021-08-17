@@ -8,6 +8,7 @@
 #include <iterator>
 #include <sstream>
 #include <iostream>
+#include <string.h>
 
 int main();
 
