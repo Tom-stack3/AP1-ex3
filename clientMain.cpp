@@ -3,7 +3,6 @@
 int main()
 {
     // Create a new Socket.
-    
     Socket *client;
     Tcp t = Tcp{};
     client = &t;

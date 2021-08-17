@@ -2,17 +2,24 @@
 
 int main(int argc, char **argv)
 {
-   
-    Socket * server;
+
+    // Create a new abstract Socket.
+    Socket *server;
     Tcp t;
     Udp u;
-    if(strcmp(argv[1], "Tcp") == 0){
-        std::cout << "Tcp" << std::endl;
+
+    // making the Socket pointer points to the right protocol.
+    if (strcmp(argv[1], "Tcp") == 0)
+    {
+        std::cout << "Server is working with Tcp Protocol." << std::endl;
         t = Tcp{};
         server = &t;
-    }else{
+    }
+    else if (strcmp(argv[1], "Tcp") == 0)
+    {
+        std::cout << "server is working with Udp Protocol." << std::endl;
         u = Udp{};
-         server = &u;
+        server = &u;
     }
 
     server->init(AF_INET);
