@@ -8,31 +8,66 @@ int main(int argc, char **argv)
     Tcp t;
     Udp u;
 
-    // making the Socket pointer points to the right protocol.
-    if (strcmp(argv[1], "Tcp") == 0)
+    // Port number the server is going to run on.
+    int port;
+
+    // If recieved no communication protocol. (Udp/Tcp)
+    if (argc < 2)
+    {
+        std::cout << "Error! Please enter a communication protocol (Udp/Tcp)" << std::endl;
+        exit(1);
+    }
+
+    std::string protocolChosen = std::string(argv[1]);
+    // convert the protocol chosen to lower case
+    std::for_each(protocolChosen.begin(), protocolChosen.end(), [](char &c)
+                  { c = ::tolower(c); });
+
+    // Making the Socket pointer point to the right protocol.
+    if (protocolChosen == "tcp")
     {
         std::cout << "Server is working with Tcp Protocol." << std::endl;
         t = Tcp{};
         server = &t;
+        port = 54269;
     }
-    else if (strcmp(argv[1], "Tcp") == 0)
+    else if (protocolChosen == "udp")
     {
-        std::cout << "server is working with Udp Protocol." << std::endl;
+        std::cout << "Server is working with Udp Protocol." << std::endl;
         u = Udp{};
         server = &u;
+        port = 56942;
+    }
+    else
+    {
+        std::cout << "Error! Please choose a valid communication protocol (Udp/Tcp)" << std::endl;
+        exit(1);
     }
 
     server->init(AF_INET);
-    server->bindSocket("127.0.0.1", 54269);
+    server->bindSocket("127.0.0.1", port);
 
     while (true)
     {
         std::cout << "Wating for client..." << std::endl;
         server->acceptSocket();
         std::cout << "Client is connected!" << std::endl;
-        server->sendSocket("Im Ready to get messeges - Enter input path");
+
+        // If we are running a TCP server, the server should send a Welcome message.
+        if (protocolChosen == "tcp")
+        {
+            server->sendSocket("Im Ready to get messeges - Enter input path");
+        }
+
         char input[1000] = {0};
         server->recvSocket(input, sizeof(input));
+        std::cout << "input:" << input << "|\n";
+
+        // if the client chose the other server, we start waiting for another client.
+        if (strcmp(input, "didnt_choose_you") == 0)
+        {
+            continue;
+        }
 
         // Create a csv from the input the user entered.
         Writer w = Writer(std::string("./server_data/input.csv"));
