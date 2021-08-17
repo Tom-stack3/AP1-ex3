@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iostream>
 #include <string.h>
+#include <algorithm>
 
 int main();
 
