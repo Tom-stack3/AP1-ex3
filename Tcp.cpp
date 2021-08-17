@@ -25,7 +25,7 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 		perror("error connecting to server");
 	}
 	// if we got connected to a server, we use our own socket to communicate.
-	this->connectionSocket = this->getSocketNum();
+	m_connectionSocket = this->getSocketNum();
 }
 
 void Tcp::acceptSocket()
@@ -43,13 +43,13 @@ void Tcp::acceptSocket()
 		perror("error accepting client");
 	}
 	// we just created a new socket for the spesific client.
-	this->connectionSocket = client_sock;
+	m_connectionSocket = client_sock;
 }
 
 void Tcp::sendSocket(std::string message)
 {
 	int data_len = strlen(message.c_str());
-	int sent_bytes = send(this->connectionSocket, message.c_str(), data_len, 0);
+	int sent_bytes = send(m_connectionSocket, message.c_str(), data_len, 0);
 	if (sent_bytes < 0)
 	{
 		perror("error sending message to server");
@@ -58,7 +58,7 @@ void Tcp::sendSocket(std::string message)
 
 void Tcp::recvSocket(char *buffer, int len)
 {
-	int read_bytes = recv(this->connectionSocket, buffer, len, 0);
+	int read_bytes = recv(m_connectionSocket, buffer, len, 0);
 	if (read_bytes == 0)
 	{
 		// connection is closed

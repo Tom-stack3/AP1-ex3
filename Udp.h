@@ -6,7 +6,7 @@ class Udp : public Socket
 {
 private:
     // the other socket this socket needs to interact with.
-    struct sockaddr_in other;
+    struct sockaddr_in m_other;
 
 public:
     void init(const int ipV);

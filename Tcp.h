@@ -6,7 +6,7 @@ class Tcp : public Socket
 {
 private:
     // the socket used to communicate with the other socket.
-    int connectionSocket;
+    int m_connectionSocket;
 
 public:
     void init(const int ipV);
