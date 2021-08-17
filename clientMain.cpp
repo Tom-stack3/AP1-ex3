@@ -3,17 +3,20 @@
 int main()
 {
     // Create a new Socket.
-    Socket *client;
-    Tcp t = Tcp{};
-    client = &t;
-    
-    client->init(AF_INET);
-    // Connect to the server.
-    client->connectSocket("127.0.0.1", 54269);
+    Socket *chosenSocket;
+    Tcp tcp = Tcp{};
+    Udp udp = Udp{};
+
+    tcp.init(AF_INET);
+    udp.init(AF_INET);
+    // Connect to both servers.
+    tcp.connectSocket("127.0.0.1", 54269);
+    udp.connectSocket("127.0.0.1", 56942);
 
     char buffer[50] = {0};
-    // Recieve the welcome message.
-    client->recvSocket(buffer, sizeof(buffer));
+
+    // Recieve the welcome message from the TCP server.
+    tcp.recvSocket(buffer, sizeof(buffer));
 
     std::cout << "From server:" << buffer << std::endl;
 
@@ -29,24 +32,45 @@ int main()
     std::istringstream iss(userInput);
     std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
 
-    std::string protocolWanted = results[0];
-    
+    std::string protocolChosen = results[0];
+
     std::string unclassifiedInputPath = results[1];
     std::string outputPath = results[2];
 
+    // convert the protocol chosen to lower case
+    std::for_each(protocolChosen.begin(), protocolChosen.end(), [](char &c)
+                  { c = ::tolower(c); });
+
+    // Making the Socket pointer point to the right protocol.
+    if (protocolChosen == "tcp")
+    {
+        chosenSocket = &tcp;
+        udp.sendSocket("didnt_choose_you");
+    }
+    else if (protocolChosen == "udp")
+    {
+        chosenSocket = &udp;
+        tcp.sendSocket("didnt_choose_you");
+    }
+    else
+    {
+        std::cout << "Error! Please choose a valid communication protocol (Udp/Tcp)" << std::endl;
+        exit(1);
+    }
     // Read and send the server the unclassified flowers.
     Reader r = Reader(unclassifiedInputPath);
     std::string str = r.toString();
-    client->sendSocket(str);
+    chosenSocket->sendSocket(str);
 
     char outputBuffer[1000] = {0};
     // Recieve the classified labels from the server.
-    client->recvSocket(outputBuffer, 1000);
+    chosenSocket->recvSocket(outputBuffer, 1000);
 
     // Write the labels recieved to the wanted output path.
     Writer w = Writer(outputPath);
     w.write(outputBuffer);
 
-    // Close the socket.
-    client->closeSocket();
+    // Close both sockets.
+    udp.closeSocket();
+    tcp.closeSocket();
 }
