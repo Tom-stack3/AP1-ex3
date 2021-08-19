@@ -61,7 +61,6 @@ int main(int argc, char **argv)
 
         char input[1000] = {0};
         server->recvSocket(input, sizeof(input));
-        std::cout << "input:" << input << "|\n";
 
         // if the client chose the other server, we start waiting for another client.
         if (strcmp(input, "didnt_choose_you") == 0)
@@ -74,7 +73,7 @@ int main(int argc, char **argv)
         w.write(input);
 
         // Create a new Reader instance
-        Reader r = Reader(std::string("./data/classified.csv"));
+        Reader r = Reader(std::string("./server_data/classified.csv"));
         // Read and load the Classified Flowers
         std::vector<std::shared_ptr<Classified>> classifiedObjects;
         r.read(classifiedObjects);
