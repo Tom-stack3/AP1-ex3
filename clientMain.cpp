@@ -33,8 +33,10 @@ int main()
     std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
 
     // If didn't Recieve 3 parameters
-    if(results.size() != 3){
-        std::cout << "Error! Please enter 3 parameters in the right format:" << std::endl << "[Udp/Tcp] [path to unclassified data] [path to output]" << std::endl;
+    if (results.size() != 3)
+    {
+        std::cout << "Error! Please enter 3 parameters in the right format:" << std::endl
+                  << "[Udp/Tcp] [path to unclassified data] [path to output]" << std::endl;
         exit(1);
     }
 
