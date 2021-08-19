@@ -5,14 +5,23 @@ Second assignment in Course "Advanced Programming 1".
 ![uml](https://user-images.githubusercontent.com/76645845/128697955-63860283-4e9f-4852-80e8-767b47bcf9de.png)
 
 
-### Running the Server
-```
-g++ main.cpp Udp.cpp Tcp.cpp Socket.cpp Reader.cpp Writer.cpp Classified.cpp Flower.cpp KNNClassifier.cpp Algorithm.cpp -o ser.out
-./ser.out
+### Running the Servers
+```c
+// Compiling the servers script
+g++ Server.cpp Udp.cpp Tcp.cpp Socket.cpp Reader.cpp Writer.cpp Classified.cpp Flower.cpp KNNClassifier.cpp Algorithm.cpp -o ser.out
+
+// Running the TCP server
+./ser.out Tcp
+
+// Running the UDP server
+./ser.out Udp
 ```
 ### Running the Client
-```
-g++ clientMain.cpp Udp.cpp Tcp.cpp Socket.cpp Flower.cpp Classified.cpp Reader.cpp Writer.cpp -o cl.out
+```c
+// Compiling the Client script
+g++ Client.cpp Udp.cpp Tcp.cpp Socket.cpp Flower.cpp Classified.cpp Reader.cpp Writer.cpp -o cl.out
+
+// Running a client
 ./cl.out
 ```
 
