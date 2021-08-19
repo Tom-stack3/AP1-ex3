@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SERVER_H
+#define SERVER_H
 #include "Flower.h"
 #include "Writer.h"
 #include "Reader.h"
