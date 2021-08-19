@@ -23,7 +23,7 @@ std::string KNNClassifier::predict(const Classified &cls)
 
     // creates a map with the key as the lables, and the value as the number of apperences in the array.
     std::map<std::string, int> map;
-    for (std::shared_ptr<Classified> &classified : knnFlowers)
+    for (auto &classified : knnFlowers)
     {
         map[classified->getLabel()]++;
     }

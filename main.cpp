@@ -90,7 +90,7 @@ int main(int argc, char **argv)
         KNNClassifier knn(classifiedObjects, k);
         Classifier &classifier = knn;
 
-        for (const std::shared_ptr<Classified> &f : unclassifiedFlowers)
+        for (auto const &f : unclassifiedFlowers)
         {
             // Set the classified object label to the prediction the Model made
             f->setLabel(classifier.predict(*f));
