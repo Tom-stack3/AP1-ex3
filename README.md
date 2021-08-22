@@ -4,6 +4,17 @@ Second assignment in Course "Advanced Programming 1".
 ## UML Diagram
 ![uml](https://user-images.githubusercontent.com/76645845/128697955-63860283-4e9f-4852-80e8-767b47bcf9de.png)
 
+### Special Parameteres
+```c
+// TCP server port number
+port = 54269
+
+// UDP server port number
+port = 56942
+
+// Buffer size
+size = 1000
+```
 
 ### Running the Servers
 ```c
