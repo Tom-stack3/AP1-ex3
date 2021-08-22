@@ -3,7 +3,7 @@
 int main()
 {
     // Create a new Socket.
-    Socket *chosenSocket;
+    Socket *chosenSocket = nullptr;
     Tcp tcp = Tcp{};
     Udp udp = Udp{};
 

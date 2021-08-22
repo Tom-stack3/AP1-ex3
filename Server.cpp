@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 
     // Create a new abstract Socket.
-    Socket *server;
+    Socket *server = nullptr;
     Tcp t;
     Udp u;
 
