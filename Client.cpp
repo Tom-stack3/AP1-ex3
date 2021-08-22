@@ -37,6 +37,9 @@ int main()
     {
         std::cout << "Error! Please enter 3 parameters in the right format:" << std::endl
                   << "[Udp/Tcp] [path to unclassified data] [path to output]" << std::endl;
+        // We infrom the server that the client-side had an error interacting with the client.
+        udp.sendSocket("client_error");
+        tcp.sendSocket("client_error");
         exit(1);
     }
 
@@ -62,6 +65,9 @@ int main()
     else
     {
         std::cout << "Error! Please choose a valid communication protocol (Udp/Tcp)" << std::endl;
+        // We infrom the server that the client-side had an error interacting with the client.
+        udp.sendSocket("client_error");
+        tcp.sendSocket("client_error");
         exit(1);
     }
     // Read and send the server the unclassified flowers.
