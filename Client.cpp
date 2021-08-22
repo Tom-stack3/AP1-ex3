@@ -77,7 +77,7 @@ int main()
 
     char outputBuffer[1000] = {0};
     // Recieve the classified labels from the server.
-    chosenSocket->recvSocket(outputBuffer, 1000);
+    chosenSocket->recvSocket(outputBuffer, sizeof(outputBuffer));
 
     // Write the labels recieved to the wanted output path.
     Writer w = Writer(outputPath);
