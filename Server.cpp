@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 
     // Create a new abstract Socket.
-    Socket *server;
+    Socket *server = nullptr;
     Tcp t;
     Udp u;
 
@@ -62,8 +62,15 @@ int main(int argc, char **argv)
         char input[1000] = {0};
         server->recvSocket(input, sizeof(input));
 
-        // if the client chose the other server, we start waiting for another client.
+        // If the client chose the other server.
+        // We end the communication with the current client and start waiting for another client.
         if (strcmp(input, "didnt_choose_you") == 0)
+        {
+            continue;
+        }
+        // If the client-side had an error interacting with the client.
+        // We end the communication with the current client and start waiting for another client.
+        if (strcmp(input, "client_error") == 0)
         {
             continue;
         }
