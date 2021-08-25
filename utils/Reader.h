@@ -1,6 +1,6 @@
 #ifndef READER_H
 #define READER_H
-#include "Flower.h"
+#include "../Flower.h"
 #include <vector>
 #include <fstream>
 #include <memory>

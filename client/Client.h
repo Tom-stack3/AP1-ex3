@@ -1,10 +1,12 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "Socket.h"
-#include "Tcp.h"
-#include "Udp.h"
-#include "Writer.h"
+#include "../protocol/Socket.h"
+#include "../protocol/Tcp.h"
+#include "../protocol/Udp.h"
+#include "../utils/Writer.h"
+#include "../utils/Reader.h"
+
 #include <iterator>
 #include <sstream>
 #include <iostream>
