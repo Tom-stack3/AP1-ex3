@@ -28,7 +28,6 @@ make
 ```
 
 ### Running the Servers
-After building the server, go to the build folder. (where we left off after building the project)
 go to `./build/server` folder.
 inside choose one of the following commands:
 ```c
