@@ -16,24 +16,33 @@ port = 56942
 size = 1000
 ```
 
-### Running the Servers
+## Building and Running
+To build both Client and Server:
 ```c
-// Compiling the servers script
-g++ Server.cpp Udp.cpp Tcp.cpp Socket.cpp Reader.cpp Writer.cpp Classified.cpp Flower.cpp KNNClassifier.cpp Algorithm.cpp -o ser.out
+git clone https://github.com/Tom-stack3/AP1-ex2.git
+cd AP1-ex2
+mkdir build
+cd build
+cmake ..
+make
+```
 
-// Running the TCP server
-./ser.out Tcp
+### Running the Servers
+After building the server, go to the build folder. (where we left off after building the project)
+go to `./build/server` folder.
+inside choose one of the following commands:
+```c
+// To run the TCP server
+./Server Tcp
 
 // Running the UDP server
-./ser.out Udp
+./Server Udp
 ```
 ### Running the Client
+go to `./build/client` folder.
 ```c
-// Compiling the Client script
-g++ Client.cpp Udp.cpp Tcp.cpp Socket.cpp Flower.cpp Classified.cpp Reader.cpp Writer.cpp -o cl.out
-
 // Running a client
-./cl.out
+./Client
 ```
 
 Have Fun Classifying!
