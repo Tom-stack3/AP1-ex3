@@ -2,7 +2,7 @@
 Second assignment in Course "Advanced Programming 1".
 
 ## UML Diagram
-![image](https://user-images.githubusercontent.com/60852129/130918680-d34cee15-b90f-4fc3-9f38-f027c857dfd0.png)
+![uml](https://user-images.githubusercontent.com/76645845/131028290-d2c2371d-8de1-425a-97b1-a36d54fbea06.png)
 
 ### Special Parameters
 ```c
