@@ -34,7 +34,7 @@ inside choose one of the following commands:
 // To run the TCP server
 ./Server Tcp
 
-// Running the UDP server
+// To run the UDP server
 ./Server Udp
 ```
 ### Running the Client
