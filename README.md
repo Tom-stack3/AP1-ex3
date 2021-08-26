@@ -45,5 +45,3 @@ go to `./build/client` folder.
 ```
 
 Have Fun Classifying!
-
-<sup>*sus*</sup>
