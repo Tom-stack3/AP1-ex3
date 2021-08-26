@@ -76,17 +76,17 @@ int main(int argc, char **argv)
         }
 
         // Create a csv from the input the user entered.
-        Writer w = Writer(std::string("./data/input.csv"));
+        Writer w = Writer(std::string("../../server/data/input.csv"));
         w.write(input);
 
         // Create a new Reader instance
-        Reader r = Reader(std::string("./data/classified.csv"));
+        Reader r = Reader(std::string("../../server/data/classified.csv"));
         // Read and load the Classified Flowers
         std::vector<std::shared_ptr<Classified>> classifiedObjects;
         r.read(classifiedObjects);
 
         // Change the reader path to the path of the Unclassified Flowers
-        r.setInputPath(std::string("./data/input.csv"));
+        r.setInputPath(std::string("../../server/data/input.csv"));
         // Read and load the Unclassified Flowers
         std::vector<std::shared_ptr<Classified>> unclassifiedFlowers;
         r.read(unclassifiedFlowers);
@@ -103,9 +103,9 @@ int main(int argc, char **argv)
         }
 
         // Write the labels classified.
-        w.setOutputPath("./data/clients_output.csv");
+        w.setOutputPath("../../server/data/clients_output.csv");
         w.write(unclassifiedFlowers);
-        r.setInputPath("./data/clients_output.csv");
+        r.setInputPath("../../server/data/clients_output.csv");
         std::string output = r.toString();
         // Send the client the labels classified.
         server->sendSocket(output);
