@@ -2,7 +2,7 @@
 Second assignment in Course "Advanced Programming 1".
 
 ## UML Diagram
-![image](https://user-images.githubusercontent.com/60852129/131017192-32ef935b-f1b3-4523-8fcf-731d1b662397.png)
+![image](https://user-images.githubusercontent.com/60852129/130918680-d34cee15-b90f-4fc3-9f38-f027c857dfd0.png)
 
 ### Special Parameters
 ```c
@@ -17,6 +17,8 @@ size = 1000
 ```
 
 ### Running the Servers
+go to `./build/server` folder.
+inside choose one of the following commands:
 ```c
 // Compiling the servers script
 g++ Server.cpp Udp.cpp Tcp.cpp Socket.cpp Reader.cpp Writer.cpp Classified.cpp Flower.cpp KNNClassifier.cpp Algorithm.cpp -o ser.out
@@ -24,8 +26,8 @@ g++ Server.cpp Udp.cpp Tcp.cpp Socket.cpp Reader.cpp Writer.cpp Classified.cpp F
 // Running the TCP server
 ./ser.out Tcp
 
-// Running the UDP server
-./ser.out Udp
+// To run the UDP server
+./Server Udp
 ```
 ### Running the Client
 ```c
@@ -37,5 +39,3 @@ g++ Client.cpp Udp.cpp Tcp.cpp Socket.cpp Flower.cpp Classified.cpp Reader.cpp W
 ```
 
 Have Fun Classifying!
-
-<sup>*sus*</sup>
