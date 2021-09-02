@@ -1,5 +1,5 @@
 # AP1 - Ex2
-Second assignment in Course "Advanced Programming 1".
+Third assignment in Course "Advanced Programming 1".
 
 ## UML Diagram
 ![uml](https://user-images.githubusercontent.com/76645845/131028290-d2c2371d-8de1-425a-97b1-a36d54fbea06.png)
