@@ -34,6 +34,9 @@ protected:
     int getIpV() const;
 
 public:
+    // buffer size
+    static const int BUFFER_SIZE = 1024;
+
     /**
      * binding the socket IP to the socket port.
      */

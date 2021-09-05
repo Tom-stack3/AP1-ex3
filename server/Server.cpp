@@ -59,7 +59,7 @@ int main(int argc, char **argv)
             server->sendSocket("Im Ready to get messeges - Enter input path");
         }
 
-        char input[1000] = {0};
+        char input[Socket::BUFFER_SIZE] = {0};
         server->recvSocket(input, sizeof(input));
 
         // If the client chose the other server.

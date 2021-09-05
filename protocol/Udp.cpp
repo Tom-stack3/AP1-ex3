@@ -36,7 +36,7 @@ void Udp::acceptSocket()
 	struct sockaddr_in from;
 	memset(&from, 0, sizeof(from));
 	unsigned int from_len = sizeof(struct sockaddr_in);
-	char buffer[4096];
+	char buffer[Socket::BUFFER_SIZE];
 	int bytes = recvfrom(this->getSocketNum(), buffer, sizeof(buffer), 0, (struct sockaddr *)&from, &from_len);
 	if (bytes < 0)
 	{

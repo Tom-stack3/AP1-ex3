@@ -13,7 +13,7 @@ int main()
     tcp.connectSocket("127.0.0.1", 54269);
     udp.connectSocket("127.0.0.1", 56942);
 
-    char buffer[50] = {0};
+    char buffer[Socket::BUFFER_SIZE] = {0};
 
     // Recieve the welcome message from the TCP server.
     tcp.recvSocket(buffer, sizeof(buffer));
@@ -75,7 +75,7 @@ int main()
     std::string str = r.toString();
     chosenSocket->sendSocket(str);
 
-    char outputBuffer[1000] = {0};
+    char outputBuffer[Socket::BUFFER_SIZE] = {0};
     // Recieve the classified labels from the server.
     chosenSocket->recvSocket(outputBuffer, sizeof(outputBuffer));
 
