@@ -43,6 +43,11 @@ public:
     distMetric getDistMetric() const;
 
     /**
+     * Set a new distance metric.
+     */
+    void setDistMetric(std::string distanceType);
+
+    /**
      * Set a new label.
      */
     void setLabel(std::string newLabel);
