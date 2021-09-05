@@ -1,8 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
-#include "../Classified.h"
-#include "../Classifier.h"
-#include "../KNNClassifier.h"
+#include "../classifier/Classified.h"
+#include "../classifier/Classifier.h"
+#include "../classifier/KNNClassifier.h"
 
 #include "../utils/Writer.h"
 #include "../utils/Reader.h"

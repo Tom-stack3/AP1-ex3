@@ -2,6 +2,7 @@
 #define CLASSIFIER_H
 #include "Classified.h"
 #include <vector>
+
 class Classifier
 {
 public:

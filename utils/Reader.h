@@ -1,6 +1,6 @@
 #ifndef READER_H
 #define READER_H
-#include "../Classified.h"
+#include "../classifier/Classified.h"
 #include <vector>
 #include <fstream>
 #include <memory>

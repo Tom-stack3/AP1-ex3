@@ -3,8 +3,8 @@
 #include "distance/EucDistance.h"
 #include <string>
 #include <vector>
-
 #include <memory>
+
 class Classified
 {
 private:
