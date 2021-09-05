@@ -1,8 +1,8 @@
 #ifndef WRITER_H
 #define WRITER_H
+#include "../Classified.h"
 #include <vector>
 #include <fstream>
-#include "../Flower.h"
 
 class Writer
 {

@@ -107,6 +107,9 @@ int main(int argc, char **argv)
         w.write(unclassifiedFlowers);
         r.setInputPath("../../server/data/clients_output.csv");
         std::string output = r.toString();
+
+        std::cout << "output:" << output << std::endl;
+
         // Send the client the labels classified.
         server->sendSocket(output);
         std::cout << std::endl

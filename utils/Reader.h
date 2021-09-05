@@ -1,6 +1,6 @@
 #ifndef READER_H
 #define READER_H
-#include "../Flower.h"
+#include "../Classified.h"
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -10,7 +10,7 @@ class Reader
 private:
     std::string m_inputPath;
     /**
-     * Parse a line into a Flower.
+     * Parse a line into a Classified object.
      */
     std::shared_ptr<Classified> parseLine(std::string &line) const;
 

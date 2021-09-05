@@ -1,10 +1,9 @@
 #ifndef ALGORITHM_H
 #define ALGORITHM_H
-#include "Flower.h"
 #include <vector>
 #include <iterator>
 #include <map>
-
+#include "Classified.h"
 template <class T>
 class Algorithm
 {

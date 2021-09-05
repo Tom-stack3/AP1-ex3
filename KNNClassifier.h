@@ -1,6 +1,6 @@
 #ifndef KNNCLASSIFIER_H
 #define KNNCLASSIFIER_H
-#include "Flower.h"
+#include "Classified.h"
 #include "Classifier.h"
 #include "Algorithm.h"
 #include <vector>

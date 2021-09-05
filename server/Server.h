@@ -1,6 +1,6 @@
 #ifndef SERVER_H
 #define SERVER_H
-#include "../Flower.h"
+#include "../Classified.h"
 #include "../Classifier.h"
 #include "../KNNClassifier.h"
 

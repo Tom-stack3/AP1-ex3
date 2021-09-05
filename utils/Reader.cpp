@@ -37,7 +37,7 @@ std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
         // string to double
         properties.push_back(std::stod(strSplitted.at(i)));
     }
-    return std::make_shared<Flower>(properties, strSplitted.at(4));
+    return std::make_shared<Classified>(properties, strSplitted.at(4));
 }
 
 void Reader::read(std::vector<std::shared_ptr<Classified>> &v) const
@@ -48,7 +48,7 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v) const
 
     while (getline(fileRead, line))
     {
-        // add a flower to the vector.
+        // add a classified to the vector.
         v.push_back(parseLine(line));
     }
     fileRead.close();

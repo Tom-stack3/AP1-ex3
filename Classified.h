@@ -1,8 +1,9 @@
 #ifndef CLASSIFIED_H
 #define CLASSIFIED_H
+#include "distance/EucDistance.h"
 #include <string>
 #include <vector>
-#include <math.h>
+
 #include <memory>
 class Classified
 {
@@ -11,11 +12,13 @@ private:
     std::vector<double> m_properties;
     // the label of the classified object.
     std::string m_label;
+    // the distance metric
+    double (*m_dist)(const Classified&, const Classified&);
 
 public:
     // constructors
     Classified(const Classified &f);
-    Classified(std::vector<double> properties, std::string label = "");
+    Classified(std::vector<double> properties, std::string label = "", std::string distanceType = "EUC");
 
     Classified &operator=(const Classified &classified);
 
@@ -29,6 +32,13 @@ public:
      */
     const std::string &getLabel() const;
 
+    typedef double (*distMetric)(const Classified&, const Classified&);
+
+    /**
+     * Return a ptr to the distance metric used.
+     */
+    distMetric getDistMetric() const;
+
     /**
      * Set a new label.
      */
@@ -37,7 +47,7 @@ public:
     /**
      * Get distance between this classified object and other classified object.
      */
-    virtual double getDistance(const Classified &f) const = 0;
+    double getDistance(const Classified &f) const;
 };
 
 #endif

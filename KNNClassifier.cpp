@@ -16,14 +16,14 @@ std::string KNNClassifier::predict(const Classified &cls)
     Algorithm<Classified> algo;
 
     algo.sortByDiffrence(m_data, cls);
-    std::vector<std::shared_ptr<Classified>> knnFlowers = algo.getKSmallest(m_data, m_k);
+    std::vector<std::shared_ptr<Classified>> knnObjects = algo.getKSmallest(m_data, m_k);
     // return the string that apperes max times in the array
 
     // stores the amount each lable apperes in the array.
 
     // creates a map with the key as the lables, and the value as the number of apperences in the array.
     std::map<std::string, int> map;
-    for (auto &classified : knnFlowers)
+    for (auto &classified : knnObjects)
     {
         map[classified->getLabel()]++;
     }
