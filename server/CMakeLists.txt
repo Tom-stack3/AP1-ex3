@@ -1,3 +1,3 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-add_executable(Server Server.cpp ../protocol/Udp.cpp ../protocol/Tcp.cpp ../protocol/Socket.cpp ../utils/Reader.cpp ../utils/Writer.cpp ../classifier/Classified.cpp ../classifier/KNNClassifier.cpp ../classifier/Algorithm.cpp ../classifier/distance/EucDistance.cpp)
+add_executable(Server Server.cpp ../protocol/Udp.cpp ../protocol/Tcp.cpp ../protocol/Socket.cpp ../utils/Reader.cpp ../utils/Writer.cpp ../classifier/Classified.cpp ../classifier/KNNClassifier.cpp ../classifier/Algorithm.cpp ../classifier/distance/EucDistance.cpp ../classifier/distance/ManDistance.cpp ../classifier/distance/CheDistance.cpp)
