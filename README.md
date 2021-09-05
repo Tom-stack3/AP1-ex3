@@ -13,7 +13,7 @@ port = 54269
 port = 56942
 
 // Buffer size
-size = 1000
+size = 1024
 ```
 
 ## Building and Running
