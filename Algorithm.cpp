@@ -3,8 +3,6 @@
 template <class T>
 void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>> &v, const T &x)
 {
-    // last thing to implement
-
     std::multimap<double, std::shared_ptr<T>> m;
     // Store values in a multimap with the difference
     // with X as key
@@ -17,7 +15,6 @@ void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>> &v, const T &
     {
         v[i++] = x.second;
     }
-    //return v;
 }
 
 template <class T>
