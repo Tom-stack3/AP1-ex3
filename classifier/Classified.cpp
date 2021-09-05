@@ -17,8 +17,22 @@ Classified::Classified(std::vector<double> properties, std::string label, std::s
 {
     m_label = std::move(label);
     m_properties = properties;
-    if(distanceType == "EUC"){
+    if (distanceType == "EUC")
+    {
         m_dist = &EucDistance::getDist;
+    }
+    else if (distanceType == "MAN")
+    {
+        m_dist = &ManDistance::getDist;
+    }
+    else if (distanceType == "CHE")
+    {
+        m_dist = &CheDistance::getDist;
+    }
+    else
+    {
+        perror(std::string("Error! not a valid distance metric: " + distanceType).c_str());
+        exit(1);
     }
 }
 

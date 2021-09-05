@@ -1,6 +1,9 @@
 #ifndef CLASSIFIED_H
 #define CLASSIFIED_H
 #include "distance/EucDistance.h"
+#include "distance/ManDistance.h"
+#include "distance/CheDistance.h"
+
 #include <string>
 #include <vector>
 #include <memory>
@@ -13,7 +16,7 @@ private:
     // the label of the classified object.
     std::string m_label;
     // the distance metric
-    double (*m_dist)(const Classified&, const Classified&);
+    double (*m_dist)(const Classified &, const Classified &);
 
 public:
     // constructors
@@ -32,7 +35,7 @@ public:
      */
     const std::string &getLabel() const;
 
-    typedef double (*distMetric)(const Classified&, const Classified&);
+    typedef double (*distMetric)(const Classified &, const Classified &);
 
     /**
      * Return a ptr to the distance metric used.
