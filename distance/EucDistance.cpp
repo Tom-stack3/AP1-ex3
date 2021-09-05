@@ -1,7 +1,6 @@
 #include "EucDistance.h"
-#include <iostream>
+
 double EucDistance::getDist(const Classified &cls1, const Classified &cls2){
-    std::cout<<"Calc_  _"<<std::endl;
     std::vector<double> properites1 = cls1.getProperties();
     std::vector<double> properites2 = cls2.getProperties();
     double euclideanDist = 0;
