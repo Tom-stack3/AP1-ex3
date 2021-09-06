@@ -12,7 +12,7 @@ const std::string &Command::getDescription() const
     return m_description;
 }
 
-const DataManager *Command::getDataManager()
+DataManager *Command::getDataManager()
 {
     return m_dataManager;
 }

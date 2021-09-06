@@ -24,7 +24,7 @@ public:
     /**
      * Get a const reference to the data manager.
      */
-    const DataManager* getDataManager();
+    DataManager* getDataManager();
 
     /**
      * Get a const reference to the dio.
