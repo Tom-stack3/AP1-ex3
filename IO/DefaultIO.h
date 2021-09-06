@@ -9,11 +9,11 @@ public:
     /**
      * Read.
      */
-    virtual std::string read() = 0;
+    virtual std::string read() const = 0;
 
     /**
      * Write.
      */
-    virtual void write(std::string) = 0;
+    virtual void write(std::string) const = 0;
 };
 #endif

@@ -10,11 +10,11 @@ public:
     /**
      * Read.
      */
-    std::string read();
+    std::string read() const;
 
     /**
      * Write.
      */
-    void write(std::string);
+    void write(std::string) const;
 };
 #endif
