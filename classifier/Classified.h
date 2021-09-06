@@ -15,13 +15,17 @@ private:
     std::vector<double> m_properties;
     // the label of the classified object.
     std::string m_label;
+
+    typedef double (*distMetricFunc)(const Classified &, const Classified &);
     // the distance metric
-    double (*m_dist)(const Classified &, const Classified &);
+    distMetricFunc* m_dist;
 
 public:
+    typedef double (*distMetric)(const Classified &, const Classified &);
+
     // constructors
     Classified(const Classified &f);
-    Classified(std::vector<double> properties, std::string label = "", std::string distanceType = "EUC");
+    Classified(std::vector<double> properties, distMetric *distMetric, std::string label = "");
 
     Classified &operator=(const Classified &classified);
 
@@ -35,8 +39,6 @@ public:
      */
     const std::string &getLabel() const;
 
-    typedef double (*distMetric)(const Classified &, const Classified &);
-
     /**
      * Return a ptr to the distance metric used.
      */
@@ -45,12 +47,7 @@ public:
     /**
      * Set a new distance metric.
      */
-    void setDistMetric(std::string distanceType);
-
-    /**
-     * Set a new distance metric.
-     */
-    void setDistMetric(distMetric);
+    void setDistMetric(distMetric*);
 
     /**
      * Set a new label.

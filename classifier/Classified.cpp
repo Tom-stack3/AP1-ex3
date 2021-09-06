@@ -5,28 +5,8 @@ void Classified::setLabel(std::string newLabel)
     m_label = std::move(newLabel);
 }
 
-void Classified::setDistMetric(distMetric newDistMetric){
+void Classified::setDistMetric(distMetric* newDistMetric){
     m_dist = newDistMetric;
-}
-
-void Classified::setDistMetric(std::string distanceType){
-    if (distanceType == "EUC")
-    {
-        m_dist = &EucDistance::getDist;
-    }
-    else if (distanceType == "MAN")
-    {
-        m_dist = &ManDistance::getDist;
-    }
-    else if (distanceType == "CHE")
-    {
-        m_dist = &CheDistance::getDist;
-    }
-    else
-    {
-        perror(std::string("Error! not a valid distance metric: " + distanceType).c_str());
-        exit(1);
-    }
 }
 
 Classified &Classified::operator=(const Classified &cls)
@@ -37,11 +17,11 @@ Classified &Classified::operator=(const Classified &cls)
     return *this;
 }
 
-Classified::Classified(std::vector<double> properties, std::string label, std::string distanceType)
+Classified::Classified(std::vector<double> properties,Classified::distMetric *distMetric, std::string label)
 {
     m_label = std::move(label);
     m_properties = properties;
-    setDistMetric(distanceType);
+    setDistMetric(distMetric);
 }
 
 Classified::Classified(const Classified &cls)
