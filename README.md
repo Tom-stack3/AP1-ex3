@@ -19,8 +19,8 @@ size = 1024
 ## Building and Running
 To build both Client and Server:
 ```shell
-git clone https://github.com/Tom-stack3/AP1-ex2.git
-cd AP1-ex2
+git clone https://github.com/Tom-stack3/AP1-ex3.git
+cd AP1-ex3
 mkdir build
 cd build
 cmake ..
