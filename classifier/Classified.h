@@ -42,7 +42,7 @@ public:
     /**
      * Return a ptr to the distance metric used.
      */
-    distMetric getDistMetric() const;
+    distMetric *getDistMetric() const;
 
     /**
      * Set a new distance metric.
