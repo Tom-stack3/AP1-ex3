@@ -39,7 +39,7 @@ public:
     /**
      * Get test data.
      */
-    std::vector<std::shared_ptr<Classified>> getTestData();
+    std::vector<std::shared_ptr<Classified>> getTestData() const;
     /**
      * Set test data.
      */
@@ -48,7 +48,8 @@ public:
     /**
      * Get classified data.
      */
-    std::vector<std::shared_ptr<Classified>> getClassifiedData();
+    std::vector<std::shared_ptr<Classified>> getClassifiedData() const;
+    
     /**
      * Set classified data.
      */
