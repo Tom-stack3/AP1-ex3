@@ -40,10 +40,12 @@ void DataManager::setClassifiedData(std::vector<std::shared_ptr<Classified>> m_c
     m_classifiedData = m_classifiedData;
 }
 
-DataManager::distMetric DataManager::getDistMetric(){
-    return m_dist;
+DataManager::distMetric *DataManager::getDistMetric()
+{
+    return &m_dist;
 }
 
-void DataManager::setDistMetric(DataManager::distMetric met) {
+void DataManager::setDistMetric(DataManager::distMetric met)
+{
     m_dist = met;
 }

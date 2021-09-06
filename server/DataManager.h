@@ -17,25 +17,50 @@ private:
 
 public:
     typedef double (*distMetric)(const Classified &, const Classified &);
-    
-    // getter and setter for k
+
+    /**
+     * Get K used.
+     */
     int getK();
+    /**
+     * Set K used.
+     */
     void setK(int k);
 
-    // getter and setter for train data
+    /**
+     * Get train data.
+     */
     std::vector<std::shared_ptr<Classified>> getTrainData();
+    /**
+     * Set train data.
+     */
     void setTrainData(std::vector<std::shared_ptr<Classified>> data);
 
-    // getter and setter for test data
+    /**
+     * Get test data.
+     */
     std::vector<std::shared_ptr<Classified>> getTestData();
+    /**
+     * Set test data.
+     */
     void setTestData(std::vector<std::shared_ptr<Classified>> data);
 
-    // getter and setter for classified data
+    /**
+     * Get classified data.
+     */
     std::vector<std::shared_ptr<Classified>> getClassifiedData();
+    /**
+     * Set classified data.
+     */
     void setClassifiedData(std::vector<std::shared_ptr<Classified>> data);
 
-    // getter and setter for dist function pointer
-    distMetric getDistMetric();
+    /**
+     * Get pointer to the pointer to the distance metric function.
+     */
+    distMetric *getDistMetric();
+    /**
+     * Set distance metric.
+     */
     void setDistMetric(distMetric ds);
 };
 
