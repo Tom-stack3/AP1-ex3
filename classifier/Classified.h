@@ -18,7 +18,7 @@ private:
 
     typedef double (*distMetricFunc)(const Classified &, const Classified &);
     // the distance metric
-    distMetricFunc* m_dist;
+    distMetricFunc *m_dist;
 
 public:
     typedef double (*distMetric)(const Classified &, const Classified &);
@@ -47,7 +47,7 @@ public:
     /**
      * Set a new distance metric.
      */
-    void setDistMetric(distMetric*);
+    void setDistMetric(distMetric *);
 
     /**
      * Set a new label.

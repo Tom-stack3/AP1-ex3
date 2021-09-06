@@ -5,7 +5,8 @@ void Classified::setLabel(std::string newLabel)
     m_label = std::move(newLabel);
 }
 
-void Classified::setDistMetric(distMetric* newDistMetric){
+void Classified::setDistMetric(distMetric *newDistMetric)
+{
     m_dist = newDistMetric;
 }
 
@@ -17,7 +18,7 @@ Classified &Classified::operator=(const Classified &cls)
     return *this;
 }
 
-Classified::Classified(std::vector<double> properties,Classified::distMetric *distMetric, std::string label)
+Classified::Classified(std::vector<double> properties, Classified::distMetric *distMetric, std::string label)
 {
     m_label = std::move(label);
     m_properties = properties;
