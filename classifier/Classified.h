@@ -48,6 +48,11 @@ public:
     void setDistMetric(std::string distanceType);
 
     /**
+     * Set a new distance metric.
+     */
+    void setDistMetric(distMetric);
+
+    /**
      * Set a new label.
      */
     void setLabel(std::string newLabel);
