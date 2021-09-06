@@ -5,6 +5,10 @@ void Classified::setLabel(std::string newLabel)
     m_label = std::move(newLabel);
 }
 
+void Classified::setDistMetric(distMetric newDistMetric){
+    m_dist = newDistMetric;
+}
+
 void Classified::setDistMetric(std::string distanceType){
     if (distanceType == "EUC")
     {
