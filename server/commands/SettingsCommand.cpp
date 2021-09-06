@@ -32,7 +32,7 @@ void SettingsCommand::execute()
     std::string kChosen = results[0];
     std::string distMetricChosen = results[1];
 
-    // If k is not a int, or not doesn't have a valid int value (too big or too small).
+    // If k is not an int, or doesn't have a valid int value (too big or too small).
     if (!isNumber(kChosen) || !d->setK(std::stoi(kChosen)))
     {
         getDIO()->write("invalid value for K");
