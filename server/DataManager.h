@@ -9,6 +9,9 @@
 class DataManager
 {
 private:
+    const int MIN_K_VALUE = 1;
+    const int MAX_K_VALUE = 10;
+
     int m_k;
     std::vector<std::shared_ptr<Classified>> m_trainData;
     std::vector<std::shared_ptr<Classified>> m_testData;
@@ -24,8 +27,10 @@ public:
     int getK();
     /**
      * Set K used.
+     * 
+     * Returns 1 if valid change, 0 if not.
      */
-    void setK(int k);
+    int setK(int k);
 
     /**
      * Get train data.
@@ -59,10 +64,23 @@ public:
      * Get pointer to the pointer to the distance metric function.
      */
     distMetric *getDistMetric();
+
     /**
      * Set distance metric.
      */
     void setDistMetric(distMetric ds);
+
+    /**
+     * Get the name of the distance metric function used.
+     */
+    std::string getDistMetricName() const;
+
+    /**
+     * Set the distance metric function used by name.
+     * 
+     * Returns 1 if valid change, 0 if not.
+     */
+    int setDistMetricByName(std::string distMetricName);
 };
 
 #endif

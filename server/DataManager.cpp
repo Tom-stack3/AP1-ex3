@@ -5,9 +5,15 @@ int DataManager::getK()
     return m_k;
 }
 
-void DataManager::setK(int m_K)
+int DataManager::setK(int k)
 {
-    m_k = m_k;
+    // if k is invalid.
+    if (k > MAX_K_VALUE || k < MIN_K_VALUE)
+    {
+        return 0;
+    }
+    m_k = k;
+    return 1;
 }
 
 std::vector<std::shared_ptr<Classified>> DataManager::getTrainData()
@@ -35,9 +41,9 @@ std::vector<std::shared_ptr<Classified>> DataManager::getClassifiedData() const
     return m_classifiedData;
 }
 
-void DataManager::setClassifiedData(std::vector<std::shared_ptr<Classified>> m_classifiedData)
+void DataManager::setClassifiedData(std::vector<std::shared_ptr<Classified>> classifiedData)
 {
-    m_classifiedData = m_classifiedData;
+    m_classifiedData = classifiedData;
 }
 
 DataManager::distMetric *DataManager::getDistMetric()
@@ -48,4 +54,47 @@ DataManager::distMetric *DataManager::getDistMetric()
 void DataManager::setDistMetric(DataManager::distMetric met)
 {
     m_dist = met;
+}
+
+std::string DataManager::getDistMetricName() const
+{
+    if (m_dist == &EucDistance::getDist)
+    {
+        return "EUC";
+    }
+    else if (m_dist == &ManDistance::getDist)
+    {
+        return "MAN";
+    }
+    else if (m_dist == &CheDistance::getDist)
+    {
+        return "CHE";
+    }
+    else
+    {
+        perror("Error! unknown distance metric function used.");
+        return "UNKNOWN";
+    }
+}
+
+int DataManager::setDistMetricByName(std::string distMetricName)
+{
+    if (distMetricName == "EUC")
+    {
+        setDistMetric(&EucDistance::getDist);
+    }
+    else if (distMetricName == "MAN")
+    {
+        setDistMetric(&ManDistance::getDist);
+    }
+    else if (distMetricName == "CHE")
+    {
+        setDistMetric(&CheDistance::getDist);
+    }
+    else
+    {
+        // if the distance metric name recieved is not supported.
+        return 0;
+    }
+    return 1;
 }
