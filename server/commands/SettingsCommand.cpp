@@ -1,4 +1,4 @@
-#include "SettingCommand.h"
+#include "SettingsCommand.h"
 
 // To check if a string consists of digits only.
 bool isNumber(const std::string &str)
