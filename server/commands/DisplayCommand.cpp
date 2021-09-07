@@ -13,6 +13,6 @@ void DisplayCommand::execute()
         i++;
     }
     getDIO()->write("Done.");
-    // Wait for the user to press "enter", then end
+    // Wait for the user to press "enter", then continue to the Commands menu
     getDIO()->read();
 }

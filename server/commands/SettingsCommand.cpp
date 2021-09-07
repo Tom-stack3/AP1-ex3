@@ -26,7 +26,7 @@ void SettingsCommand::execute()
         return;
     }
 
-    // Split the string the user entered by spaces.
+    // Split the string the user entered by spaces
     std::istringstream iss(in);
     std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
 
@@ -40,14 +40,14 @@ void SettingsCommand::execute()
     std::string kChosen = results[0];
     std::string distMetricChosen = results[1];
 
-    // If k is not an int, or doesn't have a valid int value (too big or too small).
+    // If k is not an int, or doesn't have a valid int value (too big or too small)
     if (!isNumber(kChosen) || !d->setK(std::stoi(kChosen)))
     {
         getDIO()->write("invalid value for K");
         return;
     }
 
-    // If the distance metric chosen is not supported.
+    // If the distance metric chosen is not supported
     if (!d->setDistMetricByName(distMetricChosen))
     {
         getDIO()->write("invalid distance metric");
