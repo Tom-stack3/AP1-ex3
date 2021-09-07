@@ -13,8 +13,11 @@ void Reader::setInputPath(std::string inputPath)
 
 std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
 {
+    // Remove the '\r' char
+    line = StringFunctions::removeChar(line, '\r');
+
     const std::string comma = ",";
-    std::vector<std::string> strSplitted = Split::split(line, comma);
+    std::vector<std::string> strSplitted = StringFunctions::split(line, comma);
 
     // If the row doesn't have a label, we add an empty one.
     if (strSplitted.size() == m_numOfProperties)
@@ -32,8 +35,12 @@ std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
 
 void Reader::initNumOfProperties(std::string firstLine)
 {
+    // Remove the '\r' char
+    firstLine = StringFunctions::removeChar(firstLine, '\r');
+
     const std::string comma = ",";
-    std::vector<std::string> strSplitted = Split::split(firstLine, comma);
+    std::vector<std::string> strSplitted = StringFunctions::split(firstLine, comma);
+
     int len = strSplitted.size();
     int numOfProperties = 0;
     for (auto p : strSplitted)

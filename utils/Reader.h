@@ -1,7 +1,7 @@
 #ifndef READER_H
 #define READER_H
 #include "../classifier/Classified.h"
-#include "Split.h"
+#include "StringFunctions.h"
 #include "InputValidator.h"
 
 #include <vector>
