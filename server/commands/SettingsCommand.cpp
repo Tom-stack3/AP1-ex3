@@ -19,6 +19,13 @@ void SettingsCommand::execute()
     getDIO()->write(out);
 
     std::string in = getDIO()->read();
+
+    // If the user entered an empty input, we do not change any of the settings
+    if (in.empty())
+    {
+        return;
+    }
+
     // Split the string the user entered by spaces.
     std::istringstream iss(in);
     std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
@@ -27,6 +34,7 @@ void SettingsCommand::execute()
     if (results.size() != 2)
     {
         getDIO()->write("please enter 2 parameters: <K> <distance metric>");
+        return;
     }
 
     std::string kChosen = results[0];
@@ -36,11 +44,13 @@ void SettingsCommand::execute()
     if (!isNumber(kChosen) || !d->setK(std::stoi(kChosen)))
     {
         getDIO()->write("invalid value for K");
+        return;
     }
 
     // If the distance metric chosen is not supported.
     if (!d->setDistMetricByName(distMetricChosen))
     {
         getDIO()->write("invalid distance metric");
+        return;
     }
 }
