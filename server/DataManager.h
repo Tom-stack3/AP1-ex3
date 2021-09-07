@@ -2,7 +2,6 @@
 #define DATA_MANAGER_H
 
 #include "../classifier/Classified.h"
-#include "commands/Command.h"
 #include <vector>
 #include <iterator>
 #include <map>
@@ -22,8 +21,6 @@ private:
     std::vector<std::shared_ptr<Classified>> m_classifiedData;
     // Distance metric
     double (*m_dist)(const Classified &, const Classified &);
-    // Vector of pointers to the commands
-    std::vector<Command *> m_commands;
 
 public:
     typedef double (*distMetric)(const Classified &, const Classified &);
@@ -41,17 +38,7 @@ public:
      * Returns 1 if valid change, 0 if not.
      */
     int setK(int k);
-
-    /**
-     * Get the vector of pointers to the commands.
-     */
-    std::vector<Command *> getCommandsVector() const;
-
-    /**
-     * Add a command to the vector of pointers to commands.
-     */
-    void addCommand(Command*);
-
+    
     /**
      * Get train data.
      */

@@ -22,16 +22,6 @@ int DataManager::setK(int k)
     return 1;
 }
 
-std::vector<Command *> DataManager::getCommandsVector() const
-{
-    return m_commands;
-}
-
-void DataManager::addCommand(Command *commandPtr)
-{
-    m_commands.push_back(commandPtr);
-}
-
 std::vector<std::shared_ptr<Classified>> DataManager::getTrainData() const
 {
     return m_trainData;
