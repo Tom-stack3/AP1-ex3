@@ -2,6 +2,7 @@
 #define DATA_MANAGER_H
 
 #include "../classifier/Classified.h"
+#include "commands/Command.h"
 #include <vector>
 #include <iterator>
 #include <map>
@@ -11,15 +12,24 @@ class DataManager
 private:
     const int MIN_K_VALUE = 1;
     const int MAX_K_VALUE = 10;
+    const int DEFAULT_K = 5;
+    const std::string DEFAULT_DISTANCE_METRIC = "EUC";
 
-    int m_k;
+    int m_k = DEFAULT_K;
+    // Data
     std::vector<std::shared_ptr<Classified>> m_trainData;
     std::vector<std::shared_ptr<Classified>> m_testData;
     std::vector<std::shared_ptr<Classified>> m_classifiedData;
+    // Distance metric
     double (*m_dist)(const Classified &, const Classified &);
+    // Vector of pointers to the commands
+    std::vector<Command *> m_commands;
 
 public:
     typedef double (*distMetric)(const Classified &, const Classified &);
+
+    // constructor.
+    DataManager();
 
     /**
      * Get K used.
@@ -33,9 +43,19 @@ public:
     int setK(int k);
 
     /**
+     * Get the vector of pointers to the commands.
+     */
+    std::vector<Command *> getCommandsVector() const;
+
+    /**
+     * Add a command to the vector of pointers to commands.
+     */
+    void addCommand(Command*);
+
+    /**
      * Get train data.
      */
-    std::vector<std::shared_ptr<Classified>> getTrainData();
+    std::vector<std::shared_ptr<Classified>> getTrainData() const;
     /**
      * Set train data.
      */
@@ -54,7 +74,7 @@ public:
      * Get classified data.
      */
     std::vector<std::shared_ptr<Classified>> getClassifiedData() const;
-    
+
     /**
      * Set classified data.
      */

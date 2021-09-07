@@ -1,5 +1,11 @@
 #include "DataManager.h"
 
+DataManager::DataManager()
+{
+    // Set the default distance metric
+    setDistMetricByName(DEFAULT_DISTANCE_METRIC);
+}
+
 int DataManager::getK()
 {
     return m_k;
@@ -7,7 +13,7 @@ int DataManager::getK()
 
 int DataManager::setK(int k)
 {
-    // if k is invalid.
+    // If k is invalid
     if (k > MAX_K_VALUE || k < MIN_K_VALUE)
     {
         return 0;
@@ -16,7 +22,17 @@ int DataManager::setK(int k)
     return 1;
 }
 
-std::vector<std::shared_ptr<Classified>> DataManager::getTrainData()
+std::vector<Command *> DataManager::getCommandsVector() const
+{
+    return m_commands;
+}
+
+void DataManager::addCommand(Command *commandPtr)
+{
+    m_commands.push_back(commandPtr);
+}
+
+std::vector<std::shared_ptr<Classified>> DataManager::getTrainData() const
 {
     return m_trainData;
 }
