@@ -3,7 +3,7 @@
 std::string StandardIO::read() const
 {
     std::string in;
-    std::cin >> in;
+    std::getline(std::cin, in);
     return in;
 }
 
