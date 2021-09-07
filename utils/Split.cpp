@@ -1,6 +1,6 @@
 #include "Split.h"
 
-std::vector<std::string> Split::split(std::string const &strToSplit, std::string const &delimiter = " ")
+std::vector<std::string> Split::split(std::string const &strToSplit, std::string const &delimiter)
 {
     std::vector<std::string> strSplitted;
 
