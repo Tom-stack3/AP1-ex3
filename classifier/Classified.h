@@ -23,6 +23,8 @@ private:
 public:
     typedef double (*distMetric)(const Classified &, const Classified &);
 
+    const static int NUM_OF_PROPERTIES = 4;
+
     // constructors
     Classified(const Classified &f);
     Classified(std::vector<double> properties, distMetric *distMetric, std::string label = "");

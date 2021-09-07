@@ -27,12 +27,12 @@ std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
     strSplitted.push_back(line.substr(start, end - start));
 
     // if the row doesn't have a label, we add an empty one.
-    if (strSplitted.size() == 4)
+    if (strSplitted.size() == Classified::NUM_OF_PROPERTIES)
     {
         strSplitted.push_back(std::string(""));
     }
     std::vector<double> properties;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < Classified::NUM_OF_PROPERTIES; i++)
     {
         // string to double
         properties.push_back(std::stod(strSplitted.at(i)));
