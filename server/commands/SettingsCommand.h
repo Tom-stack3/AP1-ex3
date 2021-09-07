@@ -2,6 +2,7 @@
 #define SETTINGS_COMMAND_H
 
 #include "Command.h"
+#include "../../utils/InputValidator.h"
 #include <sstream>
 
 #define DESCRIPTION "algorithm settings"

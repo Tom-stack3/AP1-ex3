@@ -1,16 +1,5 @@
 #include "SettingsCommand.h"
 
-// To check if a string consists of digits only.
-bool isNumber(const std::string &str)
-{
-    for (char const &c : str)
-    {
-        if (std::isdigit(c) == 0)
-            return false;
-    }
-    return true;
-}
-
 void SettingsCommand::execute()
 {
     DataManager *d = getDataManager();
@@ -41,7 +30,7 @@ void SettingsCommand::execute()
     std::string distMetricChosen = results[1];
 
     // If k is not an int, or doesn't have a valid int value (too big or too small)
-    if (!isNumber(kChosen) || !d->setK(std::stoi(kChosen)))
+    if (!InputValidator::isInt(kChosen) || !d->setK(std::stoi(kChosen)))
     {
         getDIO()->write("invalid value for K");
         return;
