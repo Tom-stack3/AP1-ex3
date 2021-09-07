@@ -11,6 +11,7 @@ public:
      * Returns true if the str is a valid double, Otherwise - returns false.
      */
     static bool isDouble(std::string const &str);
+    
     /**
      * Returns true if the str is a valid integer, Otherwise - returns false.
      */

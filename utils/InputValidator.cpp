@@ -12,9 +12,9 @@ bool InputValidator::isDouble(std::string const &str)
 
 bool InputValidator::isInt(const std::string &s)
 {
-    char *p;
-    long converted = strtol(s.c_str(), &p, 10);
-    if (*p)
+    char *ptr;
+    long converted = strtol(s.c_str(), &ptr, 10);
+    if (*ptr)
     {
         // conversion failed because the input wasn't a number
         return false;
