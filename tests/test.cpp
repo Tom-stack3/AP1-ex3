@@ -51,7 +51,7 @@ void testReader()
     std::cout << "test 1: reading from a file with no labels" << std::endl;
     Classified::distMetric d = &EucDistance::getDist;
     // Create a new Reader instance
-    Reader r = Reader(std::string("../client/data/Unclassified.csv"), &d);
+    Reader r = Reader(std::string("../../client/data/Unclassified.csv"), &d);
     // Read and load the Classified Flowers
     std::vector<std::shared_ptr<Classified>> classifiedObjects;
     r.read(classifiedObjects);
@@ -69,6 +69,19 @@ void testReader()
     r.read(classifiedObjects2, "4.2,5,marco\n8,4,polo");
 
     for (auto f : classifiedObjects2)
+    {
+        std::cout << "num of properties:" << f->getProperties().size() << ", first property:" << f->getProperties()[0] << ", label:" << f->getLabel() << std::endl;
+    }
+
+    std::cout << std::endl
+              << "test 3: changing the reader path and reading from a file with labels:" << std::endl
+              << std::endl;
+
+    r.setInputPath("../../server/data/classified.csv");
+    std::vector<std::shared_ptr<Classified>> classifiedObjects3;
+    r.read(classifiedObjects3);
+
+    for (auto f : classifiedObjects3)
     {
         std::cout << "num of properties:" << f->getProperties().size() << ", first property:" << f->getProperties()[0] << ", label:" << f->getLabel() << std::endl;
     }
