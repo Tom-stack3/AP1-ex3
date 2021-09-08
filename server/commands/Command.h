@@ -24,12 +24,12 @@ public:
     /**
      * Get a const reference to the data manager.
      */
-    DataManager* getDataManager();
+    DataManager *getDataManager();
 
     /**
      * Get a const reference to the dio.
      */
-    const DefaultIO* getDIO();
+    const DefaultIO *getDIO();
 
     /**
      * Execute the command.

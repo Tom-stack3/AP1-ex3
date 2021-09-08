@@ -36,7 +36,7 @@ const std::vector<double> &Classified::getProperties() const { return m_properti
 
 const std::string &Classified::getLabel() const { return m_label; };
 
-Classified::distMetric* Classified::getDistMetric() const { return m_dist; }
+Classified::distMetric *Classified::getDistMetric() const { return m_dist; }
 
 double Classified::getDistance(const Classified &cls) const
 {

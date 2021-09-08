@@ -13,6 +13,6 @@ double CheDistance::getDist(const Classified &cls1, const Classified &cls2)
             max = current;
         }
     }
-    
+
     return max;
 }

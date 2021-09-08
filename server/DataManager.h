@@ -38,7 +38,7 @@ public:
      * Returns 1 if valid change, 0 if not.
      */
     int setK(int k);
-    
+
     /**
      * Get train data.
      */

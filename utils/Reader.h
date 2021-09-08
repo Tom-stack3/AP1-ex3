@@ -44,7 +44,6 @@ public:
      */
     void read(std::vector<std::shared_ptr<Classified>> &v, std::string input);
 
-
     /**
      * Return a string of the file read.
      */

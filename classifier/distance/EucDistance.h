@@ -3,7 +3,7 @@
 #include "../Classified.h"
 #include <math.h>
 
-class Classified; // forward declaration 
+class Classified; // forward declaration
 
 class EucDistance
 {

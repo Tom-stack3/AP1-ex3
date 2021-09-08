@@ -13,7 +13,7 @@ private:
     int m_k;
 
 public:
-    KNNClassifier(std::vector<std::shared_ptr<Classified>>& data, const int k = 5);
+    KNNClassifier(std::vector<std::shared_ptr<Classified>> &data, const int k = 5);
 
     /**
      * Return a label predicted for a classified object.

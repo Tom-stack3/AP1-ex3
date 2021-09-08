@@ -1,5 +1,5 @@
 #include "UploadCommand.h"
 
-void UploadCommand::execute(){
-
+void UploadCommand::execute()
+{
 }
