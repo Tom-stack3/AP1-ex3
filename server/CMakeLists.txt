@@ -18,5 +18,4 @@ add_executable(
   ./commands/UploadCommand.cpp
   ./commands/ClassifyCommand.cpp
   ./commands/SettingsCommand.cpp
-  DataManager.cpp
-)
+  DataManager.cpp)
