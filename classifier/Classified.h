@@ -55,6 +55,11 @@ public:
     void setLabel(std::string newLabel);
 
     /**
+     * Delete the label.
+     */
+    void deleteLabel();
+
+    /**
      * Get distance between this classified object and other classified object.
      */
     double getDistance(const Classified &f) const;
