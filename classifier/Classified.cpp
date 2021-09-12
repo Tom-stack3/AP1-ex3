@@ -5,7 +5,8 @@ void Classified::setLabel(std::string newLabel)
     m_label = std::move(newLabel);
 }
 
-void Classified::deleteLabel(){
+void Classified::deleteLabel()
+{
     setLabel("");
 }
 
