@@ -22,7 +22,7 @@ public:
     const std::string &getDescription() const;
 
     /**
-     * Get a const reference to the data manager.
+     * Get a pointer to the data manager.
      */
     DataManager *getDataManager();
 
