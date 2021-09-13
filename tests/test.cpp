@@ -1,9 +1,4 @@
-#include "../utils/InputValidator.h"
-#include "../utils/StringFunctions.h"
-#include "../utils/Reader.h"
-
-#include <fstream>
-#include <iostream>
+#include "test.h"
 
 void testIsDouble()
 {
@@ -42,6 +37,37 @@ void testSplit()
     {
         std::cout << "'" << f << "'" << std::endl;
     }
+}
+
+void testCommands()
+{
+    DataManager d = DataManager();
+    StandardIO std = StandardIO();
+    DefaultIO* dio = &std;
+
+    Classified::distMetric euc = &EucDistance::getDist;
+    // Create a new Reader instance
+    Reader r = Reader(std::string("../../server/data/Iris_train.csv"), &euc);
+    // Load the train data
+    std::vector<std::shared_ptr<Classified>> train;
+    r.read(train);
+    // Load the test data
+    r.setInputPath("../../server/data/Iris_test.csv");
+    std::vector<std::shared_ptr<Classified>> test;
+    r.read(test);
+
+    d.setTrainData(train);
+    d.setTestData(test);
+    
+
+    DisplayCommand disp = DisplayCommand(dio, &d);
+    ClassifyCommand classify = ClassifyCommand(dio, &d);
+    ConfusionMatrixCommand confusionMatrix = ConfusionMatrixCommand(dio, &d);
+    SettingsCommand settings = SettingsCommand(dio, &d);
+
+    classify.execute();
+    confusionMatrix.execute();
+    dio->write(confusionMatrix.getDescription() + ", " + classify.getDescription());
 }
 
 void testReader()
@@ -89,5 +115,5 @@ void testReader()
 
 int main(int argc, char **argv)
 {
-    testReader();
+    testCommands();
 }
