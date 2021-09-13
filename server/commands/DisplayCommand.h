@@ -17,4 +17,5 @@ public:
     void execute();
 };
 
+#undef DESCRIPTION
 #endif
