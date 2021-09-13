@@ -43,7 +43,7 @@ void Reader::initNumOfProperties(std::string firstLine)
 
     int len = strSplitted.size();
     int numOfProperties = 0;
-    for (auto p : strSplitted)
+    for (auto const &p : strSplitted)
     {
         if (InputValidator::isDouble(p))
         {
