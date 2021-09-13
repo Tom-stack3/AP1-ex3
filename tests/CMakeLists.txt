@@ -9,6 +9,9 @@ add_executable(
   ../utils/StringFunctions.cpp
   ../utils/Reader.cpp
 
+  # IO
+  ../IO/StandardIO.cpp
+
   # Server
   ../server/DataManager.cpp
 
@@ -18,6 +21,7 @@ add_executable(
   ../server/commands/ClassifyCommand.cpp
   ../server/commands/SettingsCommand.cpp
   ../server/commands/DisplayCommand.cpp
+  ../server/commands/ConfusionMatrixCommand.cpp
 
   # Classifier
   ../classifier/Classifier.cpp
