@@ -5,6 +5,7 @@
 #include <vector>
 #include <iterator>
 #include <map>
+#include <algorithm>
 
 class DataManager
 {
@@ -88,6 +89,11 @@ public:
      * Returns 1 if valid change, 0 if not.
      */
     int setDistMetricByName(std::string distMetricName);
+
+    /**
+     * Get a vector of all the different labels of the objects in the test data.
+     */
+    std::vector<std::string> getTestLabels() const;
 };
 
 #endif

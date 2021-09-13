@@ -104,3 +104,19 @@ int DataManager::setDistMetricByName(std::string distMetricName)
     }
     return 1;
 }
+
+std::vector<std::string> DataManager::getTestLabels() const
+{
+    std::vector<std::string> labels;
+    for (auto const &cls : getTestData())
+    {
+        std::string currentLabel = (*cls).getLabel();
+        // If the label is not in the labels vector
+        if (std::find(labels.begin(), labels.end(), currentLabel) == labels.end())
+        {
+            // Add the label to the labels vector
+            labels.push_back(currentLabel);
+        }
+    }
+    return labels;
+}
