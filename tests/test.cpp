@@ -67,6 +67,10 @@ void testCommands()
 
     classify.execute();
     confusionMatrix.execute();
+    settings.execute();
+    classify.execute();
+    confusionMatrix.execute();
+    disp.execute();
     dio->write(confusionMatrix.getDescription() + ", " + classify.getDescription());
 }
 

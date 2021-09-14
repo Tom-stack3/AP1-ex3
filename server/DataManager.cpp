@@ -99,15 +99,17 @@ int DataManager::setDistMetricByName(std::string distMetricName)
     }
     else
     {
-        // if the distance metric name recieved is not supported.
+        // If the distance metric name recieved is not supported.
         return 0;
     }
+    // Everything went OK
     return 1;
 }
 
 std::vector<std::string> DataManager::getTestLabels() const
 {
     std::vector<std::string> labels;
+    // Loop over the test data
     for (auto const &cls : getTestData())
     {
         std::string currentLabel = (*cls).getLabel();
@@ -120,3 +122,5 @@ std::vector<std::string> DataManager::getTestLabels() const
     }
     return labels;
 }
+
+// sus
