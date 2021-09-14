@@ -21,11 +21,9 @@ private:
     std::vector<std::shared_ptr<Classified>> m_testData;
     std::vector<std::shared_ptr<Classified>> m_classifiedData;
     // Distance metric
-    double (*m_dist)(const Classified &, const Classified &);
+    Classified::distMetric m_dist;
 
 public:
-    typedef double (*distMetric)(const Classified &, const Classified &);
-
     // constructor.
     DataManager();
 
@@ -71,12 +69,12 @@ public:
     /**
      * Get pointer to the pointer to the distance metric function.
      */
-    distMetric *getDistMetric();
+    Classified::distMetric *getDistMetric();
 
     /**
      * Set distance metric.
      */
-    void setDistMetric(distMetric ds);
+    void setDistMetric(Classified::distMetric ds);
 
     /**
      * Get the name of the distance metric function used.

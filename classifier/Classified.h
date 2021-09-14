@@ -10,19 +10,18 @@
 
 class Classified
 {
+public:
+    typedef double (*distMetric)(const Classified &, const Classified &);
+
 private:
     // the properties of the classified object.
     std::vector<double> m_properties;
     // the label of the classified object.
     std::string m_label;
-
-    typedef double (*distMetricFunc)(const Classified &, const Classified &);
     // the distance metric
-    distMetricFunc *m_dist;
+    distMetric *m_dist;
 
 public:
-    typedef double (*distMetric)(const Classified &, const Classified &);
-
     // constructors
     Classified(const Classified &f);
     Classified(std::vector<double> properties, distMetric *distMetric, std::string label = "");
