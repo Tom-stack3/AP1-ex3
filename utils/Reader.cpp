@@ -6,6 +6,12 @@ Reader::Reader(std::string inputPath, Classified::distMetric *distMetric)
     m_distMetric = distMetric;
 }
 
+Reader::Reader(Classified::distMetric *distMetric)
+{
+    m_inputPath = nullptr;
+    m_distMetric = distMetric;
+}
+
 void Reader::setInputPath(std::string inputPath)
 {
     m_inputPath = std::move(inputPath);

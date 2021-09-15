@@ -28,7 +28,7 @@ private:
 
 public:
     Reader(std::string inputPath, Classified::distMetric *distMetric);
-
+    Reader(Classified::distMetric *distMetric);
     /**
      * Set a new input path.
      */
