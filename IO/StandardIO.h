@@ -16,5 +16,10 @@ public:
      * Write.
      */
     void write(std::string) const;
+
+    /**
+     * get IO kind such as standard, socket ..
+     */
+    std::string getIOKind() const;
 };
 #endif
