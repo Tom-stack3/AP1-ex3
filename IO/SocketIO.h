@@ -31,17 +31,11 @@ public:
     /**
      * Get socket function.
      */
-    Tcp *getSocket() const
-    {
-        return socket;
-    }
+    Tcp *getSocket() const;
 
     /**
      * Set socket function.
      */
-    void setSocket(Tcp *s)
-    {
-        socket = s;
-    }
+    void setSocket(Tcp *s);
 };
 #endif
