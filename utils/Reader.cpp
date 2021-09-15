@@ -69,6 +69,11 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
     // Open the input file.
     std::ifstream fileRead(m_inputPath);
 
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: " + m_inputPath);
+    }
+
     // Read the first line
     getline(fileRead, line);
     // init the num of properties the classified objects have based on the first line of the file
