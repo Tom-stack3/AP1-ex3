@@ -10,6 +10,11 @@ void SocketIO::setSocket(Tcp *s)
     socket = s;
 }
 
+Tcp *SocketIO::getSocket() const
+{
+    return socket;
+}
+
 std::string SocketIO::read() const
 {
     char buffer[10000];
