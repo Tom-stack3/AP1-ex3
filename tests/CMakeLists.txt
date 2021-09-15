@@ -11,6 +11,7 @@ add_executable(
 
   # IO
   ../IO/StandardIO.cpp
+  ../IO/SocketIO.cpp
 
   # Server
   ../server/DataManager.cpp
