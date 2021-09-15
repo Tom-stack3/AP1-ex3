@@ -1,10 +1,12 @@
 #include "SocketIO.h"
 
-SocketIO::SocketIO(Tcp *s){
+SocketIO::SocketIO(Tcp *s)
+{
     setSocket(s);
 }
 
-void SocketIO::setSocket(Tcp *s){
+void SocketIO::setSocket(Tcp *s)
+{
     socket = s;
 }
 
