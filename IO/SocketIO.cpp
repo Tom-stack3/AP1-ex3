@@ -17,7 +17,8 @@ Tcp *SocketIO::getSocket() const
 
 std::string SocketIO::read() const
 {
-    char buffer[10000];
+    char buffer[Socket::BUFFER_SIZE];
+
     getSocket()->recvSocket(buffer, sizeof(buffer));
     return buffer;
 }
