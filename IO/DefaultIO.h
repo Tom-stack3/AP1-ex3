@@ -2,8 +2,6 @@
 #define DEFAULT_IO_H
 
 #include <string>
-#define STANDARD_KIND "standard"
-#define SOCKET_KIND "socket"
 
 class DefaultIO
 {

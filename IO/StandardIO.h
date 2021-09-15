@@ -7,6 +7,8 @@
 class StandardIO : public DefaultIO
 {
 public:
+    static constexpr const char *KIND = "standard";
+
     /**
      * Read.
      */

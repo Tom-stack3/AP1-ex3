@@ -30,5 +30,5 @@ void SocketIO::write(std::string str) const
 
 std::string SocketIO::getIOKind() const
 {
-    return SOCKET_KIND;
+    return SocketIO::KIND;
 }

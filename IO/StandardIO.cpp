@@ -14,5 +14,5 @@ void StandardIO::write(std::string str) const
 
 std::string StandardIO::getIOKind() const
 {
-    return STANDARD_KIND;
+    return StandardIO::KIND;
 }

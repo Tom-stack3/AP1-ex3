@@ -8,10 +8,12 @@ void UploadCommand::execute()
     getDIO()->write("Please upload your local test CSV file.");
     std::string test = getDIO()->read();
 
-    if (!getDIO()->getIOKind().compare(STANDARD_KIND))
+    DataManager *m = getDataManager();
+
+    if (!getDIO()->getIOKind().compare(StandardIO::KIND))
     {
-        // know that the input is a path
-        DataManager *m = getDataManager();
+        // The input is a path
+
         Reader trainReader = Reader(train, m->getDistMetric());
         Reader testReader = Reader(test, m->getDistMetric());
 
@@ -25,10 +27,9 @@ void UploadCommand::execute()
         m->setTrainData(trainVector);
     }
 
-    if (!getDIO()->getIOKind().compare(SOCKET_KIND))
+    else if (!getDIO()->getIOKind().compare(SocketIO::KIND))
     {
-        // know that the input is a string contains the contents of a file
-        DataManager *m = getDataManager();
+        // The input is a string contains the contents of a file
 
         Reader trainReader = Reader(m->getDistMetric());
         Reader testReader = Reader(m->getDistMetric());

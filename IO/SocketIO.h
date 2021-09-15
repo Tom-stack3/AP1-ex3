@@ -13,6 +13,8 @@ private:
     Tcp *socket;
 
 public:
+    static constexpr const char *KIND = "socket";
+
     /**
     * Constructor.
     */
