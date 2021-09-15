@@ -37,5 +37,10 @@ public:
      * Set socket function.
      */
     void setSocket(Tcp *s);
+
+    /**
+     * get IO kind such as standard, socket ..
+     */
+    std::string getIOKind() const;
 };
 #endif

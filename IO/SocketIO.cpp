@@ -26,3 +26,8 @@ void SocketIO::write(std::string str) const
 {
     getSocket()->sendSocket(str);
 }
+
+std::string SocketIO::getIOKind() const
+{
+    return SOCKET_KIND;
+}
