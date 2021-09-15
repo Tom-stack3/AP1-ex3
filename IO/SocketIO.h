@@ -7,7 +7,17 @@
 
 class SocketIO : public DefaultIO
 {
+
+private:
+    // Socket to send and get messeges from client.
+    Tcp *socket;
+
 public:
+    /**
+    * Constructor.
+    */
+    SocketIO(Tcp *socket);
+
     /**
      * Read.
      */
@@ -17,5 +27,21 @@ public:
      * Write.
      */
     void write(std::string) const;
+
+    /**
+     * Get socket function.
+     */
+    Tcp *getSocket() const
+    {
+        return socket;
+    }
+
+    /**
+     * Set socket function.
+     */
+    void setSocket(Tcp *s)
+    {
+        socket = s;
+    }
 };
 #endif
