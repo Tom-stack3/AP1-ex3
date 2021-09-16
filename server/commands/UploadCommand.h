@@ -2,6 +2,9 @@
 #define UPLOAD_COMMAND_H
 
 #include "Command.h"
+#include "../../utils/Reader.h"
+#include "../../IO/SocketIO.h"
+#include "../../IO/StandardIO.h"
 
 #define DESCRIPTION "upload an unclassified csv data file"
 

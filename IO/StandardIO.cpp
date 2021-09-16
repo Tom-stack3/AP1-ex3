@@ -11,3 +11,8 @@ void StandardIO::write(std::string str) const
 {
     std::cout << str << std::endl;
 }
+
+std::string StandardIO::getIOKind() const
+{
+    return StandardIO::KIND;
+}

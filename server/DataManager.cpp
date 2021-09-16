@@ -78,8 +78,7 @@ std::string DataManager::getDistMetricName() const
     }
     else
     {
-        perror("Error! unknown distance metric function used.");
-        return "UNKNOWN";
+        throw std::runtime_error("Error! unknown distance metric function used.");
     }
 }
 

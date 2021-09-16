@@ -47,24 +47,26 @@ void testCommands()
 
     Classified::distMetric euc = &EucDistance::getDist;
     // Create a new Reader instance
-    Reader r = Reader(std::string("../../server/data/Iris_train.csv"), &euc);
-    // Load the train data
-    std::vector<std::shared_ptr<Classified>> train;
-    r.read(train);
-    // Load the test data
-    r.setInputPath("../../server/data/Iris_test.csv");
-    std::vector<std::shared_ptr<Classified>> test;
-    r.read(test);
+    // Reader r = Reader(std::string("../../server/data/Iris_train.csv"), &euc);
+    // // Load the train data
+    // std::vector<std::shared_ptr<Classified>> train;
+    // r.read(train);
+    // // Load the test data
+    // r.setInputPath("../../server/data/Iris_test.csv");
+    // std::vector<std::shared_ptr<Classified>> test;
+    // r.read(test);
 
-    d.setTrainData(train);
-    d.setTestData(test);
+    // d.setTrainData(train);
+    // d.setTestData(test);
     
 
     DisplayCommand disp = DisplayCommand(dio, &d);
     ClassifyCommand classify = ClassifyCommand(dio, &d);
     ConfusionMatrixCommand confusionMatrix = ConfusionMatrixCommand(dio, &d);
     SettingsCommand settings = SettingsCommand(dio, &d);
+    UploadCommand upload = UploadCommand(dio, &d);
 
+    upload.execute();
     classify.execute();
     confusionMatrix.execute();
     settings.execute();

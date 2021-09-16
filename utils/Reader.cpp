@@ -6,6 +6,12 @@ Reader::Reader(std::string inputPath, Classified::distMetric *distMetric)
     m_distMetric = distMetric;
 }
 
+Reader::Reader(Classified::distMetric *distMetric)
+{
+    m_inputPath = nullptr;
+    m_distMetric = distMetric;
+}
+
 void Reader::setInputPath(std::string inputPath)
 {
     m_inputPath = std::move(inputPath);
@@ -62,6 +68,11 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
     std::string line;
     // Open the input file.
     std::ifstream fileRead(m_inputPath);
+
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: " + m_inputPath);
+    }
 
     // Read the first line
     getline(fileRead, line);

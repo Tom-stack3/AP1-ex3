@@ -28,7 +28,7 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 	m_connectionSocket = this->getSocketNum();
 }
 
-void Tcp::acceptSocket()
+int Tcp::acceptSocket()
 {
 	if (listen(this->getSocketNum(), 1) < 0)
 	{
@@ -44,6 +44,7 @@ void Tcp::acceptSocket()
 	}
 	// we just created a new socket for the spesific client.
 	m_connectionSocket = client_sock;
+	return client_sock;
 }
 
 void Tcp::sendSocket(std::string message)
