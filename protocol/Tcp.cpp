@@ -30,7 +30,7 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 
 int Tcp::acceptSocket()
 {
-	if (listen(this->getSocketNum(), 1) < 0)
+	if (listen(this->getSocketNum(), m_queueSize) < 0)
 	{
 		perror("error listening to a socket");
 	}
@@ -74,4 +74,8 @@ void Tcp::recvSocket(char *buffer, int len)
 	{
 		// everything is OK :)
 	}
+}
+
+void Tcp::setQueueSize(int s){
+	m_queueSize = s;
 }
