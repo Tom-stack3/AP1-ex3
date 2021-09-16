@@ -13,7 +13,7 @@ public:
 
     void connectSocket(const char *destIp, const int destPort);
 
-    void acceptSocket();
+    int acceptSocket();
 
     void sendSocket(std::string message);
 
