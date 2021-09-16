@@ -37,16 +37,15 @@ void ConfusionMatrixCommand::execute()
         correctLabels.push_back(f->getLabel());
     }
 
-    //double matrix[labels.size()][labels.size()] = {0};
-    //std::array<std::array<double, labels.size()>, labels.size()> matrix;
     std::vector<std::vector<double>> matrix;
-    // Fill the matrix with zero's
+    // Fill the matrix with zeros
     for (int i = 0; i < labels.size(); i++)
     {
         std::vector<double> v(labels.size(), 0.0);
         matrix.push_back(v);
     }
 
+    // Fill the matrix with the number of guesses
     for (int i = 0; i < correctLabels.size(); i++)
     {
         matrix[labelsMap[correctLabels[i]]][labelsMap[classifiedLabels[i]]]++;
@@ -55,12 +54,13 @@ void ConfusionMatrixCommand::execute()
     // Calculate percentages and put them in the matrix
     for (int row = 0; row < labels.size(); row++)
     {
-        // Calculate the number of objects of that kind
+        // Calculate the number of objects of that kind (by summing the row)
         int rowSum = 0;
-        for (int col = 0; col < labels.size(); col++)
+        for (const auto &f : matrix[row])
         {
-            rowSum += matrix[row][col];
+            rowSum += f;
         }
+
         // Write percentages in the matrix instead of amount of objects
         for (int col = 0; col < labels.size(); col++)
         {
@@ -82,9 +82,9 @@ void ConfusionMatrixCommand::m_printMatrix(std::vector<std::vector<double>> matr
     for (int row = 0; row < labels.size(); row++)
     {
         std::string line = labels[row];
-        for (int col = 0; col < labels.size(); col++)
+        for (const auto &f : matrix[row])
         {
-            line += "\t" + std::to_string(matrix[row][col]) + "%";
+            line += "\t" + std::to_string(f) + "%";
         }
         getDIO()->write(line);
     }
