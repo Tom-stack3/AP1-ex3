@@ -33,4 +33,9 @@ add_executable(
   # Distance metrics
   ../classifier/distance/EucDistance.cpp
   ../classifier/distance/ManDistance.cpp
-  ../classifier/distance/CheDistance.cpp)
+  ../classifier/distance/CheDistance.cpp
+
+  # Communication Protocols
+  ../protocol/Socket.cpp
+  ../protocol/Tcp.cpp
+  ../protocol/TcpServer.cpp)
