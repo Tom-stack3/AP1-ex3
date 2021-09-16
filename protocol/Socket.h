@@ -17,10 +17,6 @@ private:
 
 protected:
     /**
-     * set the socket number.
-     */
-    void setSocketNum(const int socket);
-    /**
      * get the socket number.
      */
     int getSocketNum() const;
@@ -68,5 +64,10 @@ public:
      * receiving a messege from another socket.
      */
     virtual void recvSocket(char *buffer, int len) = 0;
+
+    /**
+     * set the socket number.
+     */
+    void setSocketNum(const int socket);
 };
 #endif
