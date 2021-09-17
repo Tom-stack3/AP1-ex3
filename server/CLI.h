@@ -34,6 +34,11 @@ public:
      * Write the start message.
      */
     void start();
+
+    /**
+     * 
+     */
+    void communicateWithUser();
 };
 
 #endif
