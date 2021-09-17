@@ -76,6 +76,14 @@ void testCommands()
     dio->write(confusionMatrix.getDescription() + ", " + classify.getDescription());
 }
 
+void testCLI(){
+    DataManager d = DataManager();
+    StandardIO std = StandardIO();
+    DefaultIO* dio = &std;
+
+   // CLI c = CLI(dio, &d);
+}
+
 void testReader()
 {
     std::cout << "Reader test:" << std::endl;
@@ -121,5 +129,5 @@ void testReader()
 
 int main(int argc, char **argv)
 {
-    testCommands();
+    testCLI();
 }
