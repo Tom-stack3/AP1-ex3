@@ -43,7 +43,7 @@ void testCommands()
 {
     DataManager d = DataManager();
     StandardIO std = StandardIO();
-    DefaultIO* dio = &std;
+    DefaultIO *dio = &std;
 
     Classified::distMetric euc = &EucDistance::getDist;
     // Create a new Reader instance
@@ -58,7 +58,6 @@ void testCommands()
 
     // d.setTrainData(train);
     // d.setTestData(test);
-    
 
     DisplayCommand disp = DisplayCommand(dio, &d);
     ClassifyCommand classify = ClassifyCommand(dio, &d);
@@ -76,12 +75,13 @@ void testCommands()
     dio->write(confusionMatrix.getDescription() + ", " + classify.getDescription());
 }
 
-void testCLI(){
+void testCLI()
+{
     DataManager d = DataManager();
     StandardIO std = StandardIO();
-    DefaultIO* dio = &std;
+    DefaultIO *dio = &std;
 
-   // CLI c = CLI(dio, &d);
+    CLI c = CLI(dio, &d);
 }
 
 void testReader()
