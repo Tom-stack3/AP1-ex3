@@ -129,7 +129,7 @@ std::string Reader::toString()
     return sTotal;
 }
 
-std::string Reader::csvToString(const std::string path)
+std::string Reader::fileToString(const std::string path)
 {
     std::string line;
     std::string sTotal;

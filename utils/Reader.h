@@ -50,9 +50,9 @@ public:
     std::string toString();
 
     /**
-     * Convert csv to string.
+     * Get file content and return as a string.
      */
-    static std::string csvToString(const std::string);
+    static std::string fileToString(const std::string);
 };
 
 #endif

@@ -25,7 +25,7 @@ int main()
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
-            tcp.sendSocket(Reader::csvToString(userInput));
+            tcp.sendSocket(Reader::fileToString(userInput));
 
             // Test data
             for (int i = 0; i < sizeof(buffer); i++)
@@ -35,7 +35,7 @@ int main()
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
-            tcp.sendSocket(Reader::csvToString(userInput));
+            tcp.sendSocket(Reader::fileToString(userInput));
         }
     }
     tcp.closeSocket();
