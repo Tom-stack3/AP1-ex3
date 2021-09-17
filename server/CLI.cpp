@@ -28,8 +28,20 @@ void CLI::printMenu()
     int i = 1;
     for (auto const &command : m_commands)
     {
-        m_dio->write(i + ". " + (*command).getDescription());
+        m_dio->write(std::to_string(i) + ". " + (*command).getDescription());
         i++;
+    }
+}
+
+void CLI::communicateWithUser()
+{
+    while (true)
+    {
+        std::string res = m_dio->read();
+        // need to validate the input.
+        int choise = std::stoi(res) - 1;
+        m_commands.at(choise)->execute();
+        printMenu();
     }
 }
 
@@ -37,4 +49,5 @@ void CLI::start()
 {
     m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:");
     printMenu();
+    communicateWithUser();
 }

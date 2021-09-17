@@ -82,6 +82,7 @@ void testCLI()
     DefaultIO *dio = &std;
 
     CLI c = CLI(dio, &d);
+    c.start();
 }
 
 void testReader()
