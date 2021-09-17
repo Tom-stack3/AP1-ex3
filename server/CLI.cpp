@@ -28,7 +28,7 @@ void CLI::printMenu()
     int i = 1;
     for (auto const &command : m_commands)
     {
-        m_dio->write(i + ". " + (*command).getDescription());
+        m_dio->write(std::to_string(i) + ". " + (*command).getDescription());
         i++;
     }
 }
