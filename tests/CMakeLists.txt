@@ -15,6 +15,7 @@ add_executable(
 
   # Server
   ../server/DataManager.cpp
+  ../server/CLI.cpp
 
   # Commands
   ../server/commands/Command.cpp
@@ -23,6 +24,7 @@ add_executable(
   ../server/commands/SettingsCommand.cpp
   ../server/commands/DisplayCommand.cpp
   ../server/commands/ConfusionMatrixCommand.cpp
+  ../server/commands/DownloadCommand.cpp
 
   # Classifier
   ../classifier/Classifier.cpp
