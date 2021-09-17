@@ -3,7 +3,7 @@
 void SettingsCommand::execute()
 {
     DataManager *d = getDataManager();
-    std::string out = "The current KNN parameters are: K = " + std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName();
+    std::string out = "The current KNN parameters are: K = " + std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName() + "\n";
     getDIO()->write(out);
 
     std::string in = getDIO()->read();
@@ -21,7 +21,8 @@ void SettingsCommand::execute()
     // If didn't Recieve 2 parameters
     if (results.size() != 2)
     {
-        getDIO()->write("please enter 2 parameters: <K> <distance metric>");
+        getDIO()->write("please enter 2 parameters: <K> <distance metric>, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 
@@ -31,14 +32,16 @@ void SettingsCommand::execute()
     // If k is not an int, or doesn't have a valid int value (too big or too small)
     if (!InputValidator::isInt(kChosen) || !d->setK(std::stoi(kChosen)))
     {
-        getDIO()->write("invalid value for K");
+        getDIO()->write("invalid value for K, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 
     // If the distance metric chosen is not supported
     if (!d->setDistMetricByName(distMetricChosen))
     {
-        getDIO()->write("invalid distance metric");
+        getDIO()->write("invalid distance metric, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 }
