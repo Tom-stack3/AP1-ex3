@@ -8,7 +8,8 @@ Reader::Reader(std::string inputPath, Classified::distMetric *distMetric)
 
 Reader::Reader(Classified::distMetric *distMetric)
 {
-    m_inputPath = nullptr;
+    m_numOfProperties = 0;
+    m_inputPath = "";
     m_distMetric = distMetric;
 }
 
