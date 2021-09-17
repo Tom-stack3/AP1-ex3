@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
 class StringFunctions
 {
@@ -21,6 +22,11 @@ public:
      * Remove a char from a string and return the new string.
      */
     static std::string removeChar(const std::string &str, char oldChar);
+
+    /**
+     * Convert csv to string.
+     */
+    static std::string csvToString(const std::string);
 };
 
 #endif
