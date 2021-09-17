@@ -1,39 +1,40 @@
 #include "CLI.h"
 
-
 CLI::CLI(DefaultIO *dio, DataManager *data)
 {
     m_dio = dio;
     m_data = data;
 
-    DisplayCommand disp = DisplayCommand(dio, m_data);
-    ClassifyCommand classify = ClassifyCommand(dio, m_data);
-    ConfusionMatrixCommand confusionMatrix = ConfusionMatrixCommand(dio, m_data);
-    SettingsCommand settings = SettingsCommand(dio, m_data);
-    UploadCommand upload = UploadCommand(dio, m_data);
-    DownloadCommand download = DownloadCommand(dio, m_data);
+    std::vector<std::shared_ptr<Command>> commands;
+    commands.push_back(std::make_shared<DisplayCommand>(dio, data));
+    commands.push_back(std::make_shared<ClassifyCommand>(dio, data));
+    commands.push_back(std::make_shared<ConfusionMatrixCommand>(dio, data));
+    commands.push_back(std::make_shared<SettingsCommand>(dio, data));
+    commands.push_back(std::make_shared<UploadCommand>(dio, data));
+    commands.push_back(std::make_shared<DownloadCommand>(dio, data));
 
-    m_commands.push_back(upload);
-    m_commands.push_back(settings);
-    m_commands.push_back(classify);
-    m_commands.push_back(disp);
-    m_commands.push_back(download);
-    m_commands.push_back(confusionMatrix);
+    m_commands = commands;
 }
 
-CLI::CLI(DefaultIO *dio, DataManager *data, std::vector<Command> commands)
+CLI::CLI(DefaultIO *dio, DataManager *data, std::vector<std::shared_ptr<Command>> commands)
 {
     m_dio = dio;
     m_data = data;
     m_commands = commands;
 }
 
-void CLI::start()
+void CLI::printMenu()
 {
     int i = 1;
-    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:");
-    for (Command &command : m_commands)
+    for (auto const &command : m_commands)
     {
-        m_dio->write(i + ". " + command.getDescription());
+        m_dio->write(i + ". " + (*command).getDescription());
+        i++;
     }
+}
+
+void CLI::start()
+{
+    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:");
+    printMenu();
 }
