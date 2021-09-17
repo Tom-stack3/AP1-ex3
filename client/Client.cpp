@@ -17,6 +17,7 @@ int main()
 
         if (userInput.compare("1") == 0)
         {
+            // Train data
             for (int i = 0; i < sizeof(buffer); i++)
             {
                 buffer[i] = 0;
@@ -24,8 +25,9 @@ int main()
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
-            tcp.sendSocket(StringFunctions::csvToString(userInput));
+            tcp.sendSocket(Reader::csvToString(userInput));
 
+            // Test data
             for (int i = 0; i < sizeof(buffer); i++)
             {
                 buffer[i] = 0;
@@ -33,7 +35,7 @@ int main()
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
-            tcp.sendSocket(StringFunctions::csvToString(userInput));
+            tcp.sendSocket(Reader::csvToString(userInput));
         }
     }
     tcp.closeSocket();

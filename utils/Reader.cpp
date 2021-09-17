@@ -128,3 +128,23 @@ std::string Reader::toString()
     sTotal = sTotal.substr(0, sTotal.size() - 1);
     return sTotal;
 }
+
+std::string Reader::csvToString(const std::string path)
+{
+    std::string line;
+    std::string sTotal;
+
+    // Open the input file.
+    std::ifstream fileRead(path);
+
+    while (getline(fileRead, line))
+    {
+        // Add a line to the string.
+        sTotal += line + '\n';
+    }
+    fileRead.close();
+
+    // Remove the last '\n
+    sTotal = sTotal.substr(0, sTotal.size() - 1);
+    return sTotal;
+}

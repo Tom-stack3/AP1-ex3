@@ -48,6 +48,11 @@ public:
      * Return a string of the file read.
      */
     std::string toString();
+
+    /**
+     * Convert csv to string.
+     */
+    static std::string csvToString(const std::string);
 };
 
 #endif
