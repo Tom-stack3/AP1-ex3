@@ -81,7 +81,8 @@ void testCLI(){
     StandardIO std = StandardIO();
     DefaultIO* dio = &std;
 
-   // CLI c = CLI(dio, &d);
+   CLI c = CLI(dio, &d);
+   c.start();
 }
 
 void testReader()
