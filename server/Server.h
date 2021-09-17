@@ -9,11 +9,17 @@
 
 #include "../protocol/Socket.h"
 #include "../protocol/Tcp.h"
-#include "../protocol/Udp.h"
+
+#include "DataManager.h"
+#include "CLI.h"
+
+#include "../IO/SocketIO.h"
+#include "../IO/DefaultIO.h"
+#include "../IO/StandardIO.h"
 
 #include <iostream>
 #include <algorithm>
 
-int main(int argc, char **argv);
+int main();
 
 #endif
