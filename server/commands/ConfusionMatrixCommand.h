@@ -12,7 +12,7 @@ private:
     /**
      * Print the confusion matrix.
      */
-    void m_printMatrix(std::vector<std::vector<double>> matrix, std::vector<std::string> labels);
+    void m_printMatrix(std::vector<std::vector<double>> matrix, std::vector<std::string> labels, DataManager *d);
 
 public:
     // constructor.
