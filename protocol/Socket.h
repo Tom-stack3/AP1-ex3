@@ -31,7 +31,7 @@ protected:
 
 public:
     // buffer size
-    static const int BUFFER_SIZE = 1024;
+    static const int BUFFER_SIZE = 5000;
 
     /**
      * Binding the socket IP to the socket port.
