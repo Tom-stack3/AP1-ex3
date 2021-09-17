@@ -6,12 +6,12 @@ CLI::CLI(DefaultIO *dio, DataManager *data)
     m_data = data;
 
     std::vector<std::shared_ptr<Command>> commands;
-    commands.push_back(std::make_shared<DisplayCommand>(dio, data));
-    commands.push_back(std::make_shared<ClassifyCommand>(dio, data));
-    commands.push_back(std::make_shared<ConfusionMatrixCommand>(dio, data));
-    commands.push_back(std::make_shared<SettingsCommand>(dio, data));
     commands.push_back(std::make_shared<UploadCommand>(dio, data));
+    commands.push_back(std::make_shared<SettingsCommand>(dio, data));
+    commands.push_back(std::make_shared<ClassifyCommand>(dio, data));
+    commands.push_back(std::make_shared<DisplayCommand>(dio, data));
     commands.push_back(std::make_shared<DownloadCommand>(dio, data));
+    commands.push_back(std::make_shared<ConfusionMatrixCommand>(dio, data));
 
     m_commands = commands;
 }
@@ -26,11 +26,13 @@ CLI::CLI(DefaultIO *dio, DataManager *data, std::vector<std::shared_ptr<Command>
 void CLI::printMenu()
 {
     int i = 1;
+    std::string menu = "";
     for (auto const &command : m_commands)
     {
-        m_dio->write(std::to_string(i) + ". " + (*command).getDescription());
+        menu += (std::to_string(i) + ". " + (*command).getDescription() + "\n");
         i++;
     }
+    m_dio->write(menu);
 }
 
 void CLI::communicateWithUser()
@@ -45,9 +47,20 @@ void CLI::communicateWithUser()
     }
 }
 
+std::string CLI::getMenu()
+{
+    int i = 1;
+    std::string menu = "";
+    for (auto const &command : m_commands)
+    {
+        menu += (std::to_string(i) + ". " + (*command).getDescription() + "\n");
+        i++;
+    }
+    return menu;
+}
+
 void CLI::start()
 {
-    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:");
-    printMenu();
+    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:\n" + getMenu());
     communicateWithUser();
 }

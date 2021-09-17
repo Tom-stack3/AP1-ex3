@@ -39,6 +39,11 @@ public:
      * 
      */
     void communicateWithUser();
+
+    /*
+    * returns the menu as a string
+    */
+    std::string getMenu();
 };
 
 #endif
