@@ -1,5 +1,17 @@
 #include "Tcp.h"
 
+void Tcp::init(const int ipV, int connectionSocket)
+{
+	if (connectionSocket < 0)
+	{
+		perror("error creating socket");
+	}
+
+	this->setSocketNum(connectionSocket);
+	m_connectionSocket = connectionSocket;
+	this->setIpV(ipV);
+}
+
 void Tcp::init(const int ipV)
 {
 	int sock = socket(ipV, SOCK_STREAM, 0);

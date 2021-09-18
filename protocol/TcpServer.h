@@ -9,10 +9,16 @@ private:
 
 public:
     static const int SERVER_PORT = 55556;
+
     /**
      * Initialize the Tcp Server.
      */
     void init(const int ipV);
+
+    /**
+     * Binding the socket IP to the socket port.
+     */
+    void bindSocket(const char *sourceIp, const int sourcePort);
 
     /**
      * Accept an incoming socket.

@@ -20,7 +20,10 @@
 
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 int main();
+
+void handleClient(int connectionSocket);
 
 #endif
