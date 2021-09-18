@@ -26,6 +26,11 @@ public:
      * Write a char* to the output file.
      */
     void write(const char *st) const;
+
+    /**
+     * Write a string to the output file.
+     */
+    void write(const std::string) const;
 };
 
 #endif

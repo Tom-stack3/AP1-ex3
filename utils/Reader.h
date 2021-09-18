@@ -53,6 +53,11 @@ public:
      * Get file content and return as a string.
      */
     static std::string fileToString(const std::string);
+
+    /**
+     * Convert classified vector to string.
+     */
+    static std::string getLablesString(std::vector<std::shared_ptr<Classified>> classified);
 };
 
 #endif

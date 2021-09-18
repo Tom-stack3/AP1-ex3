@@ -153,3 +153,16 @@ std::string Reader::fileToString(const std::string path)
     sTotal = sTotal.substr(0, sTotal.size() - 1);
     return sTotal;
 }
+
+std::string Reader::getLablesString(std::vector<std::shared_ptr<Classified>> classified)
+{
+    int i = 1;
+    // Display the results
+    std::string list = "";
+    for (auto const &f : classified)
+    {
+        list += (std::to_string(i) + "\t" + f->getLabel() + "\n");
+        i++;
+    }
+    return list;
+}
