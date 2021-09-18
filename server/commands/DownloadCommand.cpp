@@ -18,7 +18,6 @@ void DownloadCommand::execute()
     getDIO()->write("Please insert path.\n");
     std::string path = getDIO()->read();
 
-    // compilation problem:
     Writer writer = Writer(std::string(path));
     writer.write(Reader::getLablesString(d->getClassifiedData()));
 }

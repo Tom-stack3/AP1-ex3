@@ -7,7 +7,8 @@ add_executable(
   ../utils/InputValidator.cpp
   ../utils/StringFunctions.cpp
   ../utils/Reader.cpp
-
+  ../utils/Writer.cpp
+  
   # IO
   ../IO/StandardIO.cpp
   ../IO/SocketIO.cpp
