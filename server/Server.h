@@ -9,6 +9,7 @@
 
 #include "../protocol/Socket.h"
 #include "../protocol/Tcp.h"
+#include "../protocol/TcpServer.h"
 
 #include "DataManager.h"
 #include "CLI.h"

@@ -4,7 +4,7 @@ int main()
 {
     Tcp tcp = Tcp{};
     tcp.init(AF_INET);
-    tcp.connectSocket("127.0.0.1", 55555);
+    tcp.connectSocket("127.0.0.1", TcpServer::SERVER_PORT);
     std::string userInput;
 
     while (true)

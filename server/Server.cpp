@@ -2,7 +2,7 @@
 
 int main()
 {
-    int port = 55555;
+    int port = TcpServer::SERVER_PORT;
 
     Tcp tcp{};
     Tcp *tcpp = &tcp;

@@ -3,6 +3,7 @@
 
 #include "../protocol/Socket.h"
 #include "../protocol/Tcp.h"
+#include "../protocol/TcpServer.h"
 #include "../utils/Writer.h"
 #include "../utils/Reader.h"
 

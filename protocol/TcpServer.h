@@ -8,6 +8,7 @@ private:
     Tcp m_tcp;
 
 public:
+    static const int SERVER_PORT = 55556;
     /**
      * Initialize the Tcp Server.
      */
