@@ -18,24 +18,22 @@ int main()
         if (userInput.compare("1") == 0)
         {
             // Train data
-            for (int i = 0; i < sizeof(buffer); i++)
-            {
-                buffer[i] = 0;
-            }
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
+            // Send the contents of the train file to the server
             tcp.sendSocket(Reader::fileToString(userInput));
 
             // Test data
-            for (int i = 0; i < sizeof(buffer); i++)
-            {
-                buffer[i] = 0;
-            }
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
+            // Send the contents of the test file to the server
             tcp.sendSocket(Reader::fileToString(userInput));
+
+            // Write the second "Upload complete."
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer << std::endl;
         }
     }
     tcp.closeSocket();

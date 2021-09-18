@@ -42,8 +42,7 @@ void CLI::communicateWithUser()
         }
         else
         {
-            m_dio->write("\nPlease Enter a Valid choice from the menu:\n");
-            printMenu();
+            m_dio->write("\nPlease Enter a Valid choice from the menu:\n" + getMenu());
         }
     }
 }
@@ -62,8 +61,7 @@ std::string CLI::getMenu()
 
 void CLI::start()
 {
-    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:\n");
-    printMenu();
+    m_dio->write("Welcome to the KNN Classifier Server. Please choose an option:\n" + getMenu());
     communicateWithUser();
 }
 

@@ -19,12 +19,11 @@ void UploadCommand::execute()
     {
         // The input is a string contains the contents of a file
         Reader trainReader = Reader(m->getDistMetric());
-        trainReader.read(trainVector);
+        trainReader.read(trainVector, train);
     }
 
-    getDIO()->write("Upload complete.");
+    getDIO()->write("Upload complete.\nPlease upload your local test CSV file.");
 
-    getDIO()->write("Please upload your local test CSV file.");
     std::string test = getDIO()->read();
 
     if (!getDIO()->getIOKind().compare(StandardIO::KIND))
@@ -37,7 +36,7 @@ void UploadCommand::execute()
     {
         // The input is a string contains the contents of a file
         Reader testReader = Reader(m->getDistMetric());
-        testReader.read(testVector);
+        testReader.read(testVector, test);
     }
 
     getDIO()->write("Upload complete.");

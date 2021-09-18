@@ -137,6 +137,11 @@ std::string Reader::fileToString(const std::string path)
     // Open the input file.
     std::ifstream fileRead(path);
 
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: '" + path + "'");
+    }
+
     while (getline(fileRead, line))
     {
         // Add a line to the string.
