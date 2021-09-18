@@ -10,9 +10,11 @@ int main()
     while (true)
     {
         char buffer[Socket::BUFFER_SIZE] = {0};
+        // Receive input from the server
         tcp.recvSocket(buffer, sizeof(buffer));
         std::cout << buffer;
         std::getline(std::cin, userInput);
+        // Send the server the Command the user entered
         tcp.sendSocket(userInput);
 
         if (userInput.compare("1") == 0)
