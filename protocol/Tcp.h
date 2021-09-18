@@ -1,6 +1,7 @@
 #ifndef TCP_H
 #define TCP_H
 #include "Socket.h"
+#include <cstring>
 
 class Tcp : public Socket
 {
