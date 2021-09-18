@@ -3,6 +3,8 @@
 
 #include "Command.h"
 #include "../../utils/Writer.h"
+#include "../../utils/Reader.h"
+
 
 #define DESCRIPTION "download results"
 

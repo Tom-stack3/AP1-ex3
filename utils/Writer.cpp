@@ -33,3 +33,10 @@ void Writer::write(const char *st) const
     outFile << st;
     outFile.close();
 }
+
+void Writer::write(std::string st) const
+{
+    std::ofstream outFile(m_outputPath);
+    outFile << st;
+    outFile.close();
+}
