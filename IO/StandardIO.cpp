@@ -9,7 +9,7 @@ std::string StandardIO::read() const
 
 void StandardIO::write(std::string str) const
 {
-    std::cout << str << std::endl;
+    std::cout << str;
 }
 
 std::string StandardIO::getIOKind() const

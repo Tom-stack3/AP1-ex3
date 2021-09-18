@@ -1,5 +1,17 @@
 #include "Tcp.h"
 
+void Tcp::init(const int ipV, int connectionSocket)
+{
+	if (connectionSocket < 0)
+	{
+		perror("error creating socket");
+	}
+
+	this->setSocketNum(connectionSocket);
+	m_connectionSocket = connectionSocket;
+	this->setIpV(ipV);
+}
+
 void Tcp::init(const int ipV)
 {
 	int sock = socket(ipV, SOCK_STREAM, 0);
@@ -59,6 +71,9 @@ void Tcp::sendSocket(std::string message)
 
 void Tcp::recvSocket(char *buffer, int len)
 {
+	// Fill the buffer with zeros at first.
+	std::memset(buffer, 0, len);
+	// Load the data received into the buffer
 	int read_bytes = recv(m_connectionSocket, buffer, len, 0);
 	if (read_bytes == 0)
 	{
@@ -76,6 +91,7 @@ void Tcp::recvSocket(char *buffer, int len)
 	}
 }
 
-void Tcp::setQueueSize(int s){
+void Tcp::setQueueSize(int s)
+{
 	m_queueSize = s;
 }

@@ -1,5 +1,10 @@
 #include "TcpServer.h"
 
+void TcpServer::bindSocket(const char *sourceIp, const int sourcePort)
+{
+    m_tcp.bindSocket(sourceIp, sourcePort);
+}
+
 void TcpServer::init(const int ipV)
 {
     m_tcp;

@@ -2,6 +2,7 @@
 #define DISPLAY_COMMAND_H
 
 #include "Command.h"
+#include "../../utils/Reader.h"
 
 #define DESCRIPTION "display results"
 

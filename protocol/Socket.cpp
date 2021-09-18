@@ -25,6 +25,7 @@ void Socket::bindSocket(const char *sourceIp, const int sourcePort)
 	struct sockaddr_in sin;
 	memset(&sin, 0, sizeof(sin));
 	sin.sin_family = AF_INET;
+
 	if (std::string(sourceIp) == "INADDR_ANY")
 	{
 		sin.sin_addr.s_addr = INADDR_ANY;

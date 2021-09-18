@@ -11,7 +11,8 @@ void ConfusionMatrixCommand::execute()
     // If the classified vector is empty - meaning we didn't classify the objects yet.
     if (classified.empty())
     {
-        getDIO()->write("please classify the data uploaded");
+        getDIO()->write("please classify the data uploaded, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 
@@ -68,17 +69,15 @@ void ConfusionMatrixCommand::execute()
         }
     }
     // Write the cofusion matrix
-    m_printMatrix(matrix, labels);
-
-    std::string out = "The current KNN parameters are: K = " + std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName();
-    getDIO()->write(out);
+    m_printMatrix(matrix, labels, d);
 
     // Wait for the user to press "Enter", then continue to the Commands menu
     getDIO()->read();
 }
 
-void ConfusionMatrixCommand::m_printMatrix(std::vector<std::vector<double>> matrix, std::vector<std::string> labels)
+void ConfusionMatrixCommand::m_printMatrix(std::vector<std::vector<double>> matrix, std::vector<std::string> labels, DataManager *d)
 {
+    std::string matrixString = "";
     for (int row = 0; row < labels.size(); row++)
     {
         std::string line = labels[row];
@@ -86,6 +85,9 @@ void ConfusionMatrixCommand::m_printMatrix(std::vector<std::vector<double>> matr
         {
             line += "\t" + std::to_string(f) + "%";
         }
-        getDIO()->write(line);
+        matrixString += line + "\n";
     }
+
+    std::string out = "The current KNN parameters are: K = " + (std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName() + "\n press ENTER to return to main menu\n");
+    getDIO()->write(matrixString + out);
 }
