@@ -40,3 +40,7 @@ add_executable(
   ../protocol/Socket.cpp
   ../protocol/Tcp.cpp
   ../protocol/TcpServer.cpp)
+
+# For threads
+find_package (Threads)
+target_link_libraries (Server ${CMAKE_THREAD_LIBS_INIT})

@@ -40,3 +40,7 @@ Client.cpp
 ../protocol/Socket.cpp
 ../protocol/Tcp.cpp
 ../protocol/TcpServer.cpp)
+
+# For threads
+find_package (Threads)
+target_link_libraries (Client ${CMAKE_THREAD_LIBS_INIT})
