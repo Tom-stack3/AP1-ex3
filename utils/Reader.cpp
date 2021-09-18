@@ -72,7 +72,7 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
 
     if (fileRead.fail())
     {
-        throw std::runtime_error("Error! failed to read the file: " + m_inputPath);
+        throw std::runtime_error("Error! failed to read the file: '" + m_inputPath + "'");
     }
 
     // Read the first line
