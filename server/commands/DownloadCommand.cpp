@@ -20,4 +20,9 @@ void DownloadCommand::execute()
 
     Writer writer = Writer(std::string(path));
     writer.write(Reader::getLablesString(d->getClassifiedData()));
+
+    getDIO()->write("Finished outputting file, press ENTER to return to menu\n");
+
+    // letting the user to press ENTER in order to return to main menu
+    getDIO()->read();
 }
