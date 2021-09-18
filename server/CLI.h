@@ -1,6 +1,5 @@
 #ifndef CLI_H
 #define CLI_H
-#include <vector>
 #include "../server/commands/Command.h"
 #include "../server/commands/ClassifyCommand.h"
 #include "../server/commands/ConfusionMatrixCommand.h"
@@ -11,6 +10,7 @@
 #include "../IO/DefaultIO.h"
 #include "../IO/StandardIO.h"
 #include "../IO/SocketIO.h"
+#include "../utils/InputValidator.h"
 
 class CLI
 {
@@ -41,9 +41,15 @@ public:
     void communicateWithUser();
 
     /*
-    * returns the menu as a string
+    * Returns the menu as a string.
     */
     std::string getMenu();
+
+    /**
+     * Validate user input, when entering command number.
+     * Returns true if the input is valid, false - otherwise.
+     */
+    bool validateUserInput(const std::string &);
 };
 
 #endif
