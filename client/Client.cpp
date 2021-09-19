@@ -26,7 +26,6 @@ int main()
             tcp.sendSocket(userInput);
         }
 
-
         if (userInput.compare("1") == 0)
         {
             // Train data
