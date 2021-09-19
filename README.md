@@ -6,14 +6,11 @@ Third assignment in the Course "Advanced Programming 1".
 
 ### Special Parameters
 ```c
-// TCP server port number
-port = 54269
-
-// UDP server port number
-port = 56942
+// Server port number
+port = 55556
 
 // Buffer size
-size = 1024
+size = 4096
 ```
 
 ## Building and Running
@@ -27,18 +24,16 @@ cmake ..
 make
 ```
 
-### Running the Servers
-go to `./build/server` folder.
-inside choose one of the following commands:
+### Running the Server
+Go to `./build/server` folder.
+Inside run the following:
 ```shell
-// To run the TCP server
-./Server Tcp
-
-// To run the UDP server
-./Server Udp
+// Running the server
+./Server
 ```
 ### Running the Client
-go to `./build/client` folder.
+Go to `./build/client` folder.
+Inside run the following:
 ```shell
 // Running a client
 ./Client
