@@ -33,6 +33,9 @@ public:
     // buffer size
     static const int BUFFER_SIZE = 4096;
 
+    // string to represent ENTER
+    static constexpr const char *ENTER = "ENTER";
+
     /**
      * Binding the socket IP to the socket port.
      */

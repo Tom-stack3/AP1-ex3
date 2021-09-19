@@ -15,13 +15,14 @@ int main()
         std::cout << buffer;
         std::getline(std::cin, userInput);
 
-        // Send the server the Command the user entered
+        // if the user entered ENTER (\n)
         if (userInput.length() == 0)
         {
-            tcp.sendSocket("a");
+            tcp.sendSocket(Socket::ENTER);
         }
         else
         {
+            // Send the server the Command the user entered
             tcp.sendSocket(userInput);
         }
 
