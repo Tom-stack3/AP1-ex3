@@ -26,6 +26,9 @@ int main()
             tcp.sendSocket(userInput);
         }
 
+        /* If the user chose the first task we need to send the content
+           of the file instead of the path (thats why there is a speciel if for task #1) */
+
         if (userInput.compare("1") == 0)
         {
             // Train data
