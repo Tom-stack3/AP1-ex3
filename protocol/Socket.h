@@ -17,17 +17,17 @@ private:
 
 protected:
     /**
-     * get the socket number.
-     */
-    int getSocketNum() const;
-    /**
-     * set the Ip version.
+     * Set the Ip version.
      */
     void setIpV(const int ipV);
     /**
-     * get the Ip version
+     * Get the Ip version
      */
     int getIpV() const;
+    /**
+     * Set the socket number.
+     */
+    void setSocketNum(const int socket);
 
 public:
     // buffer size
@@ -72,8 +72,8 @@ public:
     virtual void recvSocket(char *buffer, int len) = 0;
 
     /**
-     * Set the socket number.
+     * Get the socket number.
      */
-    void setSocketNum(const int socket);
+    int getSocketNum() const;
 };
 #endif
