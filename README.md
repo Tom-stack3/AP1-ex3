@@ -27,14 +27,14 @@ make
 ### Running the Server
 Go to `./build/server` folder.
 Inside run the following:
-```shell
+```c
 // Running the server
 ./Server
 ```
 ### Running the Client
 Go to `./build/client` folder.
 Inside run the following:
-```shell
+```c
 // Running a client
 ./Client
 ```
