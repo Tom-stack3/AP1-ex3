@@ -13,6 +13,13 @@ void TcpServer::init(const int ipV)
 
 int TcpServer::acceptSocket()
 {
+    struct timeval tv;
+    memset(&tv, 0, sizeof(tv));
+    // Timeout in seconds
+    tv.tv_sec = TcpServer::TIMEOUT_IN_SECONDS;
+    // Set the timeout for the Server socket
+    setsockopt(m_tcp.getSocketNum(), SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv, sizeof(struct timeval));
+
     return m_tcp.acceptSocket();
 }
 
