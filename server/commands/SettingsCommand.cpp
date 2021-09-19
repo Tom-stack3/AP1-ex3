@@ -9,14 +9,13 @@ void SettingsCommand::execute()
     std::string in = getDIO()->read();
 
     // If the user entered an empty input, we do not change any of the settings
-    if (in.empty())
+    if (in.empty() || in == Socket::ENTER)
     {
         return;
     }
 
     // Split the string the user entered by spaces
-    std::istringstream iss(in);
-    std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+    std::vector<std::string> results = StringFunctions::split(in, " ");
 
     // If didn't Recieve 2 parameters
     if (results.size() != 2)
