@@ -26,8 +26,8 @@ int main()
             tcp.sendSocket(userInput);
         }
 
-        /* If the user chose the first task we need to send the content
-           of the file instead of the path (thats why there is a speciel if for task #1) */
+        // If the user chose the first command we need to send the content of the file instead of the path.
+        // (that is why there is a speciel if statement for it)
 
         if (userInput.compare("1") == 0)
         {
