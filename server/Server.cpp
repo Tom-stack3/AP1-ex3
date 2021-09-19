@@ -1,12 +1,12 @@
 #include "Server.h"
 
-void handleClient(int connectionSocket, std::vector<int> &sockets)
+void handleClient(int connectionSocket, std::vector<int> *sockets)
 {
     Tcp clientSocket;
     Tcp *clientSocket_ptr = &clientSocket;
     clientSocket.init(AF_INET, connectionSocket);
     // Add the socket descriptor to the sockets vector.
-    sockets.push_back(connectionSocket);
+    sockets->push_back(connectionSocket);
 
     Classified::distMetric euc = &EucDistance::getDist;
     DataManager d = DataManager();
@@ -20,7 +20,7 @@ void handleClient(int connectionSocket, std::vector<int> &sockets)
 
     clientSocket.closeSocket();
     // Remove the socket descriptor from the sockets vector.
-    remove(sockets.begin(), sockets.end(), connectionSocket);
+    remove(sockets->begin(), sockets->end(), connectionSocket);
 }
 
 int main()
@@ -39,14 +39,21 @@ int main()
         // Meaning the timeout was reached, without any clients trying to connect
         if (socketWithClient == -1)
         {
+            std::cout << "Timeout has been reached!" << std::endl;
             break;
         }
 
         std::cout << "Client is connected!" << std::endl;
 
         // We create a new Thread for handling the client.
-        std::thread handlingClient(handleClient, socketWithClient, clientSockets);
+        std::thread handlingClient(handleClient, socketWithClient, &clientSockets);
         handlingClient.detach();
     }
+
+    // While we are not finished serving all the clients
+    while (!clientSockets.empty())
+    {
+    }
+
     return 0;
 }

@@ -50,9 +50,10 @@ int Tcp::acceptSocket()
 	struct sockaddr_in client_sin;
 	unsigned int addr_len = sizeof(client_sin);
 	int client_sock = accept(this->getSocketNum(), (struct sockaddr *)&client_sin, &addr_len);
+	// Meaning the timeout for accepting is reached
 	if (client_sock < 0)
 	{
-		perror("error accepting client");
+		return client_sock;
 	}
 	// we just created a new socket for the spesific client.
 	m_connectionSocket = client_sock;
