@@ -24,6 +24,6 @@
 
 int main();
 
-void handleClient(int connectionSocket);
+void handleClient(int connectionSocket, std::vector<int> *sockets);
 
 #endif

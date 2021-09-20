@@ -9,6 +9,8 @@ private:
 
 public:
     static const int SERVER_PORT = 55556;
+    static const int TIMEOUT_IN_SECONDS = 10;
+    static const int TIMEOUT_ERROR = -1;
 
     /**
      * Initialize the Tcp Server.

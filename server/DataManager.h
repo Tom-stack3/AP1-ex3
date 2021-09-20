@@ -22,15 +22,26 @@ private:
     std::vector<std::shared_ptr<Classified>> m_classifiedData;
     // Distance metric
     Classified::distMetric m_dist;
+    // If true, the user wanted to exit
+    bool m_didExit = false;
 
 public:
     // constructor.
     DataManager();
 
     /**
+     * True if user wants to exit, false otherwise.
+     */
+    bool getExitStatus() const;
+    /**
+     * Set Exit Status: True if user wants to exit, false otherwise.
+     */
+    void setExitStatus(bool);
+
+    /**
      * Get K used.
      */
-    int getK();
+    int getK() const;
     /**
      * Set K used.
      * 

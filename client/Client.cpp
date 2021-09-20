@@ -12,6 +12,13 @@ int main()
         char buffer[Socket::BUFFER_SIZE] = {0};
         // Receive input from the server
         tcp.recvSocket(buffer, sizeof(buffer));
+
+        // If the communication with the server has ended
+        if (strcmp(buffer, CLI::EXIT_CODE) == 0)
+        {
+            break;
+        }
+
         std::cout << buffer;
         std::getline(std::cin, userInput);
 
@@ -50,5 +57,6 @@ int main()
             std::cout << buffer << std::endl;
         }
     }
+
     tcp.closeSocket();
 }
