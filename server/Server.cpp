@@ -5,7 +5,7 @@ void handleClient(int connectionSocket, std::vector<int> *sockets)
     Tcp clientSocket;
     Tcp *clientSocket_ptr = &clientSocket;
     clientSocket.init(AF_INET, connectionSocket);
-    // Add the socket descriptor to the sockets vector.
+    // Add the socket descriptor to the sockets vector
     sockets->push_back(connectionSocket);
 
     Classified::distMetric euc = &EucDistance::getDist;
@@ -19,7 +19,7 @@ void handleClient(int connectionSocket, std::vector<int> *sockets)
     c.start();
 
     clientSocket.closeSocket();
-    // Remove the socket descriptor from the sockets vector.
+    // Remove the socket descriptor from the sockets vector
     remove(sockets->begin(), sockets->end(), connectionSocket);
 }
 
@@ -45,7 +45,7 @@ int main()
 
         std::cout << "Client is connected!" << std::endl;
 
-        // We create a new Thread for handling the client.
+        // We create a new Thread for handling the client
         std::thread handlingClient(handleClient, socketWithClient, &clientSockets);
         handlingClient.detach();
     }
@@ -55,5 +55,8 @@ int main()
     {
     }
 
+    std::cout << "Shutting down" << std::endl;
+    server.closeSocket();
+    std::cout << "Exiting" << std::endl;
     return 0;
 }
