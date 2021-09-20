@@ -37,7 +37,7 @@ int main()
         std::cout << "Wating for client..." << std::endl;
         int socketWithClient = server.acceptSocket();
         // Meaning the timeout was reached, without any clients trying to connect
-        if (socketWithClient == -1)
+        if (socketWithClient == TcpServer::TIMEOUT_ERROR)
         {
             std::cout << "Timeout has been reached!" << std::endl;
             break;

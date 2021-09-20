@@ -13,14 +13,32 @@ void TcpServer::init(const int ipV)
 
 int TcpServer::acceptSocket()
 {
+    // Start listening for connections
+    m_tcp.listenSocket();
+    int sock = m_tcp.getSocketNum();
+
     struct timeval tv;
     memset(&tv, 0, sizeof(tv));
     // Timeout in seconds
     tv.tv_sec = TcpServer::TIMEOUT_IN_SECONDS;
-    // Set the timeout for the Server socket
-    setsockopt(m_tcp.getSocketNum(), SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv, sizeof(struct timeval));
 
-    return m_tcp.acceptSocket();
+    fd_set readfds;
+    FD_ZERO(&readfds);
+    FD_SET(sock, &readfds);
+
+    // If an Error occured
+    if (select(sock + 1, &readfds, NULL, NULL, &tv) < 0)
+    {
+        perror("select error");
+    }
+    // If a connection has been made to connect to the server, and the Timeout hasn't passed yet
+    if (FD_ISSET(sock, &readfds))
+    {
+        // Accept the client that made the connection
+        return m_tcp.acceptSocket();
+    }
+    // Else, the Timeout has passed
+    return TcpServer::TIMEOUT_ERROR;
 }
 
 void TcpServer::closeSocket()
