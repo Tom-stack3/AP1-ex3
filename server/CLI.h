@@ -7,6 +7,7 @@
 #include "../server/commands/SettingsCommand.h"
 #include "../server/commands/UploadCommand.h"
 #include "../server/commands/DownloadCommand.h"
+#include "../server/commands/ExitCommand.h"
 #include "../IO/DefaultIO.h"
 #include "../IO/StandardIO.h"
 #include "../IO/SocketIO.h"
@@ -20,6 +21,8 @@ private:
     std::vector<std::shared_ptr<Command>> m_commands;
 
 public:
+    static constexpr const char *EXIT_CODE = "EXIT";
+
     // Constructors
     CLI(DefaultIO *dio, DataManager *data);
 
