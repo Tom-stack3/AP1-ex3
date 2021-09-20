@@ -1,5 +1,5 @@
 # AP1 - Ex3
-Third assignment in the Course "Advanced Programming 1", Written by Tommy Zaft and Idan Turkenits.
+Third assignment in the Course *Advanced Programming 1*, Written by Tommy Zaft and Idan Turkenits.
 
 ## Project Structure
 ### UML Diagram
