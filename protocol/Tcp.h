@@ -24,6 +24,8 @@ public:
 
     void connectSocket(const char *destIp, const int destPort);
 
+    void listenSocket();
+
     int acceptSocket();
 
     void sendSocket(std::string message);

@@ -57,6 +57,11 @@ public:
     virtual void connectSocket(const char *destIp, const int destPort) = 0;
 
     /**
+     *Listen for incoming sockets.
+     */
+    virtual void listenSocket() = 0;
+
+    /**
      * Accept an incoming socket.
      */
     virtual int acceptSocket() = 0;

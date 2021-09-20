@@ -40,13 +40,16 @@ void Tcp::connectSocket(const char *destIp, const int destPort)
 	m_connectionSocket = this->getSocketNum();
 }
 
-int Tcp::acceptSocket()
+void Tcp::listenSocket()
 {
 	if (listen(this->getSocketNum(), m_queueSize) < 0)
 	{
 		perror("error listening to a socket");
 	}
+}
 
+int Tcp::acceptSocket()
+{
 	struct sockaddr_in client_sin;
 	unsigned int addr_len = sizeof(client_sin);
 	int client_sock = accept(this->getSocketNum(), (struct sockaddr *)&client_sin, &addr_len);
