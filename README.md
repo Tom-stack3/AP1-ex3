@@ -1,5 +1,5 @@
 # AP1 - Ex3
-Third assignment in the Course "Advanced Programming 1".
+Third assignment in the Course "Advanced Programming 1", Written by Tommy Zaft and Idan Turkenits.
 
 ## UML Diagram
 ![uml](https://user-images.githubusercontent.com/76645845/131028290-d2c2371d-8de1-425a-97b1-a36d54fbea06.png)
@@ -11,6 +11,9 @@ port = 55556
 
 // Buffer size
 size = 4096
+
+// Server timeout length in Seconds
+timeout = 120
 ```
 
 ## Building and Running

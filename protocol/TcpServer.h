@@ -9,7 +9,7 @@ private:
 
 public:
     static const int SERVER_PORT = 55556;
-    static const int TIMEOUT_IN_SECONDS = 10;
+    static const int TIMEOUT_IN_SECONDS = 120;
     static const int TIMEOUT_ERROR = -1;
 
     /**
