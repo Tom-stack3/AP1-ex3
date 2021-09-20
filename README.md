@@ -3,7 +3,7 @@ Third assignment in the Course "Advanced Programming 1", Written by Tommy Zaft a
 
 ## Project Structure
 ### UML Diagram
-The UML diagram of the project in a PDF format can be found [here](./UML/black_color_regular.pdf).
+The UML diagram of the project in a PDF format can be found [here](./UML/black_color_regular.pdf). There is also a SVG format, which can be found [here](./UML/uml.svg) (better to view it raw).
 
 ### Special Parameters
 ```c
