@@ -12,6 +12,7 @@ CLI::CLI(DefaultIO *dio, DataManager *data)
     commands.push_back(std::make_shared<DisplayCommand>(dio, data));
     commands.push_back(std::make_shared<DownloadCommand>(dio, data));
     commands.push_back(std::make_shared<ConfusionMatrixCommand>(dio, data));
+    commands.push_back(std::make_shared<ExitCommand>(dio, data));
 
     m_commands = commands;
 }
@@ -38,6 +39,13 @@ void CLI::communicateWithUser()
         {
             int choise = std::stoi(res) - 1;
             m_commands.at(choise)->execute();
+
+            // If the user wants to exit
+            if (m_data->getExitStatus())
+            {
+                break;
+            }
+
             printMenu();
         }
         else

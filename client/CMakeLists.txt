@@ -26,6 +26,7 @@ Client.cpp
 ../server/commands/DisplayCommand.cpp
 ../server/commands/ConfusionMatrixCommand.cpp
 ../server/commands/DownloadCommand.cpp
+../server/commands/ExitCommand.cpp
 
 # Classifier
 ../classifier/Classifier.cpp
