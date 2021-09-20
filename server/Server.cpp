@@ -20,7 +20,7 @@ void handleClient(int connectionSocket, std::vector<int> *sockets)
 
     clientSocket.closeSocket();
     // Remove the socket descriptor from the sockets vector
-    remove(sockets->begin(), sockets->end(), connectionSocket);
+    sockets->erase(std::remove(sockets->begin(), sockets->end(), connectionSocket), sockets->end());
 }
 
 int main()
@@ -55,7 +55,7 @@ int main()
     {
     }
 
-    std::cout << "Shutting down" << std::endl;
+    std::cout << "Shutting down.." << std::endl;
     server.closeSocket();
     std::cout << "Exiting" << std::endl;
     return 0;
