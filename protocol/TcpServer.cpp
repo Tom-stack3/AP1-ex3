@@ -3,6 +3,8 @@
 void TcpServer::bindSocket(const char *sourceIp, const int sourcePort)
 {
     m_tcp.bindSocket(sourceIp, sourcePort);
+    // Start listening for connections
+    m_tcp.listenSocket();
 }
 
 void TcpServer::init(const int ipV)
@@ -13,8 +15,6 @@ void TcpServer::init(const int ipV)
 
 int TcpServer::acceptSocket()
 {
-    // Start listening for connections
-    m_tcp.listenSocket();
     int sock = m_tcp.getSocketNum();
 
     struct timeval tv;
