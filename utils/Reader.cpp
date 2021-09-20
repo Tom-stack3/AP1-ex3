@@ -154,7 +154,7 @@ std::string Reader::fileToString(const std::string path)
     return sTotal;
 }
 
-std::string Reader::getLablesString(std::vector<std::shared_ptr<Classified>> classified)
+std::string Reader::getLabelsString(std::vector<std::shared_ptr<Classified>> classified)
 {
     int i = 1;
     // Display the results

@@ -19,7 +19,7 @@ void DownloadCommand::execute()
     std::string path = getDIO()->read();
 
     Writer writer = Writer(std::string(path));
-    writer.write(Reader::getLablesString(d->getClassifiedData()));
+    writer.write(Reader::getLabelsString(d->getClassifiedData()));
 
     getDIO()->write("Finished outputting file, press ENTER to return to menu\n");
 

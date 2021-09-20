@@ -57,7 +57,7 @@ public:
     /**
      * Convert classified vector to string.
      */
-    static std::string getLablesString(std::vector<std::shared_ptr<Classified>> classified);
+    static std::string getLabelsString(std::vector<std::shared_ptr<Classified>> classified);
 };
 
 #endif
