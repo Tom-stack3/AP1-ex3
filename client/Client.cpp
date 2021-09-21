@@ -60,7 +60,7 @@ int main()
         else if (userInput.compare("5") == 0)
         {
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
-            std::cout << buffer << std::endl;
+            std::cout << buffer;
             // checking if the user classified before
             if (std::string(buffer).compare("please classify the data uploaded, press ENTER to return to main menu\n") == 0)
             {
@@ -79,6 +79,13 @@ int main()
 
                 // Writing to path the classified lables.
                 writer.write(buffer);
+
+                // Sending enter to server
+                tcp.sendSocket(Socket::ENTER);
+
+                // Reading the ENTER messege from server
+                tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+                std::cout << buffer;
 
                 // The user needs to press enter to return to main menu
                 std::getline(std::cin, userInput);

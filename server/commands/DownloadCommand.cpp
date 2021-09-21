@@ -19,6 +19,7 @@ void DownloadCommand::execute()
     std::string path = getDIO()->read();
 
     getDIO()->write(Reader::getLabelsString(d->getClassifiedData()));
-
+    getDIO()->read();
+    getDIO()->write("press ENTER to return to main menu\n");
     getDIO()->read();
 }
