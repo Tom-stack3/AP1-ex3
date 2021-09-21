@@ -4,10 +4,11 @@ add_executable(
   Tests
   test.cpp
 
-  # Utils
-  ../utils/InputValidator.cpp
-  ../utils/StringFunctions.cpp
-  ../utils/Reader.cpp
+   # Utils
+   ../utils/InputValidator.cpp
+   ../utils/StringFunctions.cpp
+   ../utils/Reader.cpp
+   ../utils/Writer.cpp
 
   # IO
   ../IO/StandardIO.cpp
@@ -17,14 +18,15 @@ add_executable(
   ../server/DataManager.cpp
   ../server/CLI.cpp
 
-  # Commands
-  ../server/commands/Command.cpp
-  ../server/commands/UploadCommand.cpp
-  ../server/commands/ClassifyCommand.cpp
-  ../server/commands/SettingsCommand.cpp
-  ../server/commands/DisplayCommand.cpp
-  ../server/commands/ConfusionMatrixCommand.cpp
-  ../server/commands/DownloadCommand.cpp
+# Commands
+../server/commands/Command.cpp
+../server/commands/UploadCommand.cpp
+../server/commands/ClassifyCommand.cpp
+../server/commands/SettingsCommand.cpp
+../server/commands/DisplayCommand.cpp
+../server/commands/ConfusionMatrixCommand.cpp
+../server/commands/DownloadCommand.cpp
+../server/commands/ExitCommand.cpp
 
   # Classifier
   ../classifier/Classifier.cpp
