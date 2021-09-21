@@ -128,7 +128,32 @@ void testReader()
     }
 }
 
+void testDistances()
+{
+    std::vector<double> f1{1.2, 4.5, 9.1, 10};
+    std::vector<double> f2{14.1, 8, 0.5, 1.2};
+    std::vector<double> f3{4, 2, 3, 9.8};
+    Classified c1(f1, nullptr);
+    Classified c2(f2, nullptr);
+    Classified c3(f3, nullptr);
+
+    std::cout << "EucDistance " << EucDistance::getDist(c1, c2) << std::endl; // should be 18.1676
+    std::cout << "CheDistance " << CheDistance::getDist(c1, c2) << std::endl; // should be 12.9
+    std::cout << "ManDistance " << ManDistance::getDist(c1, c2) << std::endl; // should be 33.8
+    std::cout << std::endl;
+
+    std::cout << "EucDistance " << EucDistance::getDist(c2, c1) << std::endl; // should be 18.1676
+    std::cout << "CheDistance " << CheDistance::getDist(c2, c1) << std::endl; // should be 12.9
+    std::cout << "ManDistance " << ManDistance::getDist(c2, c1) << std::endl; // should be 33.8
+    std::cout << std::endl;
+
+    std::cout << "EucDistance " << EucDistance::getDist(c3, c2) << std::endl; // should be 14.7723
+    std::cout << "CheDistance " << CheDistance::getDist(c3, c2) << std::endl; // should be 10.1
+    std::cout << "ManDistance " << ManDistance::getDist(c3, c2) << std::endl; // should be 27.2
+    std::cout << std::endl;
+}
+
 int main(int argc, char **argv)
 {
-    testCLI();
+    testDistances();
 }
