@@ -34,7 +34,7 @@ int main()
 
     while (true)
     {
-        std::cout << "Wating for client..." << std::endl;
+        std::cout << "Wating for clients..." << std::endl;
         int socketWithClient = server.acceptSocket();
         // Meaning the timeout was reached, without any clients trying to connect
         if (socketWithClient == TcpServer::TIMEOUT_ERROR)
@@ -43,7 +43,7 @@ int main()
             break;
         }
 
-        std::cout << "Client is connected!" << std::endl;
+        std::cout << "A client connected!" << std::endl;
 
         // We create a new Thread for handling the client
         std::thread handlingClient(handleClient, socketWithClient, &clientSockets);
@@ -55,7 +55,7 @@ int main()
     {
     }
 
-    std::cout << "Shutting down.." << std::endl;
+    std::cout << "Shutting down..." << std::endl;
     server.closeSocket();
     std::cout << "Exiting" << std::endl;
     return 0;
