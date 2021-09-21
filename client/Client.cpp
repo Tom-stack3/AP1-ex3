@@ -56,6 +56,29 @@ int main()
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
         }
+
+        else if (userInput.compare("5") == 0)
+        {
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer << std::endl;
+            if (std::string(buffer).compare("please classify the data uploaded, press ENTER to return to main menu\n") == 0)
+            {
+                std::getline(std::cin, userInput);
+                tcp.sendSocket(Socket::ENTER);
+            }
+            else
+            {
+                std::getline(std::cin, userInput);
+                Writer writer = Writer(userInput);
+                tcp.sendSocket(userInput);
+
+                tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+                writer.write(buffer);
+
+                std::getline(std::cin, userInput);
+                tcp.sendSocket(Socket::ENTER);
+            }
+        }
     }
 
     tcp.closeSocket();

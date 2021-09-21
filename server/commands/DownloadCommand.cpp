@@ -18,11 +18,7 @@ void DownloadCommand::execute()
     getDIO()->write("Please insert path.\n");
     std::string path = getDIO()->read();
 
-    Writer writer = Writer(std::string(path));
-    writer.write(Reader::getLabelsString(d->getClassifiedData()));
+    getDIO()->write(Reader::getLabelsString(d->getClassifiedData()));
 
-    getDIO()->write("Finished outputting file, press ENTER to return to menu\n");
-
-    // letting the user to press ENTER in order to return to main menu
     getDIO()->read();
 }
