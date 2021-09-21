@@ -11,7 +11,7 @@ The UML diagram of the project in a PDF format can be found [here](./UML/black_c
 port = 55556
 
 // Buffer size
-size = 4096
+size = 8192
 
 // Server timeout length in Seconds
 timeout = 120
