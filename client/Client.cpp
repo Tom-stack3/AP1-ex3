@@ -38,19 +38,51 @@ int main()
 
         if (userInput.compare("1") == 0)
         {
+            std::string content;
+
             // Train data
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
+            try
+            {
+                content = Reader::fileToString(userInput);
+            }
+            catch (const std::runtime_error& e)
+            {
+                // If an error during the reading of the file has occurred
+                content = TcpServer::CLIENT_ERROR;
+                tcp.sendSocket(content);
+                // Display the Error message
+                std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
+                exit(1);
+            }
             // Send the contents of the train file to the server
-            tcp.sendSocket(Reader::fileToString(userInput));
+            tcp.sendSocket(content);
 
             // Test data
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
             std::getline(std::cin, userInput);
+            try
+            {
+                content = Reader::fileToString(userInput);
+            }
+            catch (const std::runtime_error& e)
+            {
+                // If an error during the reading of the file has occurred
+                content = TcpServer::CLIENT_ERROR;
+                tcp.sendSocket(content);
+                // Display the Error message
+                std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
+                exit(1);
+            }
             // Send the contents of the test file to the server
-            tcp.sendSocket(Reader::fileToString(userInput));
+            tcp.sendSocket(content);
 
             // Write the second "Upload complete."
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
