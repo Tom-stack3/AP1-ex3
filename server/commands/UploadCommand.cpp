@@ -55,7 +55,7 @@ void UploadCommand::execute()
         testReader.read(testVector, test);
     }
 
-    getDIO()->write("Upload complete");
+    getDIO()->write("Upload complete.");
 
     m->setTestData(testVector);
     m->setTrainData(trainVector);
