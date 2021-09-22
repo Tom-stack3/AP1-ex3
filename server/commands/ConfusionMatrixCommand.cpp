@@ -88,6 +88,6 @@ void ConfusionMatrixCommand::m_printMatrix(std::vector<std::vector<double>> matr
         matrixString += line + "\n";
     }
 
-    std::string out = "The current KNN parameters are: K = " + (std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName() + "\n press ENTER to return to main menu\n");
+    std::string out = "The current KNN parameters are: K = " + (std::to_string(d->getLastUsedK()) + ", distance metric = " + d->getDistMetricName(*(d->getLastUsedDistMetric())) + "\n press ENTER to return to main menu\n");
     getDIO()->write(matrixString + out);
 }

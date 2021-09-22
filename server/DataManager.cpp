@@ -6,6 +6,16 @@ DataManager::DataManager()
     setDistMetricByName(DEFAULT_DISTANCE_METRIC);
 }
 
+int DataManager::getLastUsedK() const
+{
+    return m_lastKUsed;
+}
+
+void DataManager::setLastUsedK(int k)
+{
+    m_lastKUsed = k;
+}
+
 bool DataManager::getExitStatus() const
 {
     return m_didExit;
@@ -62,6 +72,16 @@ void DataManager::setClassifiedData(std::vector<std::shared_ptr<Classified>> cla
     m_classifiedData = classifiedData;
 }
 
+Classified::distMetric *DataManager::getLastUsedDistMetric()
+{
+    return &m_lastDistUsed;
+}
+
+void DataManager::setLastUsedDistMetric(Classified::distMetric ds)
+{
+    m_lastDistUsed = ds;
+}
+
 Classified::distMetric *DataManager::getDistMetric()
 {
     return &m_dist;
@@ -72,17 +92,17 @@ void DataManager::setDistMetric(Classified::distMetric met)
     m_dist = met;
 }
 
-std::string DataManager::getDistMetricName() const
+std::string DataManager::getDistMetricName(Classified::distMetric met) const
 {
-    if (m_dist == &EucDistance::getDist)
+    if (met == &EucDistance::getDist)
     {
         return "EUC";
     }
-    else if (m_dist == &ManDistance::getDist)
+    else if (met == &ManDistance::getDist)
     {
         return "MAN";
     }
-    else if (m_dist == &CheDistance::getDist)
+    else if (met == &CheDistance::getDist)
     {
         return "CHE";
     }
