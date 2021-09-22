@@ -59,6 +59,9 @@ void UploadCommand::execute()
 
     m->setTestData(testVector);
     m->setTrainData(trainVector);
+    // Set the Classified data to be an empty vector
+    std::vector<std::shared_ptr<Classified>> classifiedVector;
+    m->setClassifiedData(classifiedVector);
 
     getDIO()->read();
 }
