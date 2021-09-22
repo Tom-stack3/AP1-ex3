@@ -5,6 +5,8 @@
 #include "../../utils/Reader.h"
 #include "../../IO/SocketIO.h"
 #include "../../IO/StandardIO.h"
+#include "../../protocol/TcpServer.h"
+#include "../CLI.h"
 
 #define DESCRIPTION "upload an unclassified csv data file"
 
