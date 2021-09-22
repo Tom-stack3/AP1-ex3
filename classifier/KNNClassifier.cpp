@@ -17,18 +17,15 @@ std::string KNNClassifier::predict(const Classified &cls)
 
     algo.sortByDiffrence(m_data, cls);
     std::vector<std::shared_ptr<Classified>> knnObjects = algo.getKSmallest(m_data, m_k);
-    // return the string that apperes max times in the array
 
-    // stores the amount each lable apperes in the array.
-
-    // creates a map with the key as the lables, and the value as the number of apperences in the array.
+    // Creates a map with the key as the lables, and the value as the number of apperences in the array
     std::map<std::string, int> map;
     for (auto &classified : knnObjects)
     {
         map[classified->getLabel()]++;
     }
 
-    // get the string that apperes max times in the map
+    // Get the string that apperes the most in the map
     std::string maxString;
     int max = 0;
 

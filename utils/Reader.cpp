@@ -77,7 +77,7 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
 
     // Read the first line
     getline(fileRead, line);
-    // init the num of properties the classified objects have based on the first line of the file
+    // Init the num of properties the classified objects have based on the first line of the file
     initNumOfProperties(line);
     // Add a classified to the vector.
     v.push_back(parseLine(line));
@@ -97,7 +97,7 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v, std::string input
 
     // Read the first line
     getline(f, line);
-    // init the num of properties the classified objects have based on the first line of the file
+    // Init the num of properties the classified objects have based on the first line of the file
     initNumOfProperties(line);
     // Add a classified to the vector.
     v.push_back(parseLine(line));

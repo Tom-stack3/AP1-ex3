@@ -30,10 +30,10 @@ protected:
     void setSocketNum(const int socket);
 
 public:
-    // buffer size
+    // Buffer size
     static const int BUFFER_SIZE = 8192;
 
-    // string to represent ENTER
+    // String to represent ENTER
     static constexpr const char *ENTER = "ENTER";
 
     /**

@@ -16,7 +16,7 @@ bool InputValidator::isInt(const std::string &s)
     long converted = strtol(s.c_str(), &ptr, 10);
     if (*ptr)
     {
-        // conversion failed because the input wasn't a number
+        // Conversion failed because the input wasn't a number
         return false;
     }
     return true;

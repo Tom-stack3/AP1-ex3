@@ -4,8 +4,7 @@ template <class T>
 void Algorithm<T>::sortByDiffrence(std::vector<std::shared_ptr<T>> &v, const T &x)
 {
     std::multimap<double, std::shared_ptr<T>> m;
-    // Store values in a multimap with the difference
-    // with X as key
+    // Store values in a multimap with the difference, with X as key
     for (int i = 0; i < v.size(); i++)
         m.insert(std::make_pair(abs(v[i]->getDistance(x)), v[i]));
 

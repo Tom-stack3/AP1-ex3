@@ -22,7 +22,7 @@ int main()
         std::cout << buffer;
         std::getline(std::cin, userInput);
 
-        // if the user entered ENTER (\n)
+        // If the user entered ENTER (\n)
         if (userInput.length() == 0)
         {
             tcp.sendSocket(Socket::ENTER);
@@ -48,7 +48,7 @@ int main()
             {
                 content = Reader::fileToString(userInput);
             }
-            catch (const std::runtime_error& e)
+            catch (const std::runtime_error &e)
             {
                 // If an error during the reading of the file has occurred
                 content = TcpServer::CLIENT_ERROR;
@@ -70,7 +70,7 @@ int main()
             {
                 content = Reader::fileToString(userInput);
             }
-            catch (const std::runtime_error& e)
+            catch (const std::runtime_error &e)
             {
                 // If an error during the reading of the file has occurred
                 content = TcpServer::CLIENT_ERROR;
@@ -95,7 +95,7 @@ int main()
         {
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer;
-            // checking if the user classified before
+            // Checking if the user classified before
             if (std::string(buffer).compare("please classify the data uploaded, press ENTER to return to main menu\n") == 0)
             {
                 std::getline(std::cin, userInput);
