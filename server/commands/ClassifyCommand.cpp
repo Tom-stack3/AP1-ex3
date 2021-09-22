@@ -38,5 +38,6 @@ void ClassifyCommand::execute()
 
     classifier.predict(toClassify);
 
-    getDIO()->write("classifying data complete\n");
+    getDIO()->write("classifying data complete, press ENTER to return to main menu\n");
+    getDIO()->read();
 }

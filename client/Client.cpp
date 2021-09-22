@@ -55,6 +55,8 @@ int main()
             // Write the second "Upload complete."
             tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
             std::cout << buffer << std::endl;
+
+            tcp.sendSocket(Socket::ENTER);
         }
 
         else if (userInput.compare("5") == 0)
