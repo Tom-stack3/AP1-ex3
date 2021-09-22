@@ -50,10 +50,13 @@ int main()
             }
             catch (const std::runtime_error& e)
             {
+                // If an error during the reading of the file has occurred
                 content = TcpServer::CLIENT_ERROR;
                 tcp.sendSocket(content);
                 // Display the Error message
                 std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
                 exit(1);
             }
             // Send the contents of the train file to the server
@@ -69,10 +72,13 @@ int main()
             }
             catch (const std::runtime_error& e)
             {
+                // If an error during the reading of the file has occurred
                 content = TcpServer::CLIENT_ERROR;
                 tcp.sendSocket(content);
                 // Display the Error message
                 std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
                 exit(1);
             }
             // Send the contents of the test file to the server
