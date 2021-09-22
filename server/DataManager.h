@@ -16,18 +16,29 @@ private:
     const std::string DEFAULT_DISTANCE_METRIC = "EUC";
 
     int m_k = DEFAULT_K;
+    int m_lastKUsed = DEFAULT_K;
     // Data
     std::vector<std::shared_ptr<Classified>> m_trainData;
     std::vector<std::shared_ptr<Classified>> m_testData;
     std::vector<std::shared_ptr<Classified>> m_classifiedData;
-    // Distance metric
+    // Distance metrics
     Classified::distMetric m_dist;
+    Classified::distMetric m_lastDistUsed;
     // If true, the user wanted to exit
     bool m_didExit = false;
 
 public:
     // constructor.
     DataManager();
+
+    /**
+     * Get LastUsed K used.
+     */
+    int getLastUsedK() const;
+    /**
+     * Set LastUsed K used.
+     */
+    void setLastUsedK(int k);
 
     /**
      * True if user wants to exit, false otherwise.
@@ -80,6 +91,16 @@ public:
     /**
      * Get pointer to the pointer to the distance metric function.
      */
+    Classified::distMetric *getLastUsedDistMetric();
+
+    /**
+     * Set distance metric.
+     */
+    void setLastUsedDistMetric(Classified::distMetric ds);
+
+    /**
+     * Get pointer to the pointer to the distance metric function.
+     */
     Classified::distMetric *getDistMetric();
 
     /**
@@ -88,9 +109,9 @@ public:
     void setDistMetric(Classified::distMetric ds);
 
     /**
-     * Get the name of the distance metric function used.
+     * Get the name of the distance metric function received in the params.
      */
-    std::string getDistMetricName() const;
+    std::string getDistMetricName(Classified::distMetric) const;
 
     /**
      * Set the distance metric function used by name.
