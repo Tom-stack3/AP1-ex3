@@ -3,7 +3,7 @@
 void SettingsCommand::execute()
 {
     DataManager *d = getDataManager();
-    std::string out = "The current KNN parameters are: K = " + std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName() + "\n";
+    std::string out = "The current KNN parameters are: K = " + std::to_string(d->getK()) + ", distance metric = " + d->getDistMetricName(*(d->getDistMetric())) + "\n";
     getDIO()->write(out);
 
     std::string in = getDIO()->read();
