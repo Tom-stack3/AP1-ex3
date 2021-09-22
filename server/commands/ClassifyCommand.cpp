@@ -38,6 +38,10 @@ void ClassifyCommand::execute()
 
     classifier.predict(toClassify);
 
+    // Update the last used K and Distance Metric
+    d->setLastUsedK(d->getK());
+    d->setLastUsedDistMetric(*(d->getDistMetric()));
+
     getDIO()->write("classifying data complete, press ENTER to return to main menu\n");
     getDIO()->read();
 }
