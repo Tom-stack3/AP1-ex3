@@ -3,8 +3,8 @@ project(serverAndClient)
 
 set(CMAKE_CXX_STANDARD 11)
 
-#add_subdirectory(server)
-#add_subdirectory(client)
+add_subdirectory(server)
+add_subdirectory(client)
 
 # Tests:
-add_subdirectory(tests)
+#add_subdirectory(tests)

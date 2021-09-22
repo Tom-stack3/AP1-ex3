@@ -9,18 +9,13 @@ void DisplayCommand::execute()
     // If the classified vector is empty - meaning we didn't classify the objects yet.
     if (classified.empty())
     {
-        getDIO()->write("please classify the data uploaded");
+        getDIO()->write("please classify the data uploaded, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 
-    int i = 1;
-    // Display the results
-    for (auto const &f : classified)
-    {
-        getDIO()->write(std::to_string(i) + "\t" + f->getLabel());
-        i++;
-    }
-    getDIO()->write("Done.");
+    std::string list = Reader::getLabelsString(classified);
+    getDIO()->write(list + "Done.\npress ENTER to return to main menu\n");
     // Wait for the user to press "Enter", then continue to the Commands menu
     getDIO()->read();
 }

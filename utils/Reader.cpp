@@ -8,7 +8,8 @@ Reader::Reader(std::string inputPath, Classified::distMetric *distMetric)
 
 Reader::Reader(Classified::distMetric *distMetric)
 {
-    m_inputPath = nullptr;
+    m_numOfProperties = 0;
+    m_inputPath = "";
     m_distMetric = distMetric;
 }
 
@@ -71,7 +72,7 @@ void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
 
     if (fileRead.fail())
     {
-        throw std::runtime_error("Error! failed to read the file: " + m_inputPath);
+        throw std::runtime_error("Error! failed to read the file: '" + m_inputPath + "'");
     }
 
     // Read the first line
@@ -126,4 +127,42 @@ std::string Reader::toString()
     // Remove the last '\n
     sTotal = sTotal.substr(0, sTotal.size() - 1);
     return sTotal;
+}
+
+std::string Reader::fileToString(const std::string path)
+{
+    std::string line;
+    std::string sTotal;
+
+    // Open the input file.
+    std::ifstream fileRead(path);
+
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: '" + path + "'");
+    }
+
+    while (getline(fileRead, line))
+    {
+        // Add a line to the string.
+        sTotal += line + '\n';
+    }
+    fileRead.close();
+
+    // Remove the last '\n
+    sTotal = sTotal.substr(0, sTotal.size() - 1);
+    return sTotal;
+}
+
+std::string Reader::getLabelsString(std::vector<std::shared_ptr<Classified>> classified)
+{
+    int i = 1;
+    // Display the results
+    std::string list = "";
+    for (auto const &f : classified)
+    {
+        list += (std::to_string(i) + "\t" + f->getLabel() + "\n");
+        i++;
+    }
+    return list;
 }

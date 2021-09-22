@@ -2,88 +2,131 @@
 
 int main()
 {
-    // Create a new Socket.
-    Socket *chosenSocket = nullptr;
     Tcp tcp = Tcp{};
-    Udp udp = Udp{};
-
     tcp.init(AF_INET);
-    udp.init(AF_INET);
-    // Connect to both servers.
-    tcp.connectSocket("127.0.0.1", 54269);
-    udp.connectSocket("127.0.0.1", 56942);
-
-    char buffer[Socket::BUFFER_SIZE] = {0};
-
-    // Recieve the welcome message from the TCP server.
-    tcp.recvSocket(buffer, sizeof(buffer));
-
-    std::cout << "From server:" << buffer << std::endl;
-
-    // Get the input from the client. In the following format: x y z
-    // x: the communication protocol wanted (UDP/TCP)
-    // y: the path to the unclassified data (.csv file)
-    // z: the path to output and save the labels classified by the server
-    // for example: UDP ./data/Unclassified.csv ./outputFromServer.csv
+    tcp.connectSocket("127.0.0.1", TcpServer::SERVER_PORT);
     std::string userInput;
-    getline(std::cin, userInput);
 
-    // Split the string the user entered by spaces.
-    std::istringstream iss(userInput);
-    std::vector<std::string> results(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
-
-    // If didn't Recieve 3 parameters
-    if (results.size() != 3)
+    while (true)
     {
-        std::cout << "Error! Please enter 3 parameters in the right format:" << std::endl
-                  << "[Udp/Tcp] [path to unclassified data] [path to output]" << std::endl;
-        // We infrom the server that the client-side had an error interacting with the client.
-        udp.sendSocket("client_error");
-        tcp.sendSocket("client_error");
-        exit(1);
+        char buffer[Socket::BUFFER_SIZE] = {0};
+        // Receive input from the server
+        tcp.recvSocket(buffer, sizeof(buffer));
+
+        // If the communication with the server has ended
+        if (strcmp(buffer, CLI::EXIT_CODE) == 0)
+        {
+            break;
+        }
+
+        std::cout << buffer;
+        std::getline(std::cin, userInput);
+
+        // if the user entered ENTER (\n)
+        if (userInput.length() == 0)
+        {
+            tcp.sendSocket(Socket::ENTER);
+        }
+        else
+        {
+            // Send the server the Command the user entered
+            tcp.sendSocket(userInput);
+        }
+
+        // If the user chose the first command we need to send the content of the file instead of the path.
+        // (that is why there is a speciel if statement for it)
+
+        if (userInput.compare("1") == 0)
+        {
+            std::string content;
+
+            // Train data
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer << std::endl;
+            std::getline(std::cin, userInput);
+            try
+            {
+                content = Reader::fileToString(userInput);
+            }
+            catch (const std::runtime_error& e)
+            {
+                // If an error during the reading of the file has occurred
+                content = TcpServer::CLIENT_ERROR;
+                tcp.sendSocket(content);
+                // Display the Error message
+                std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
+                exit(1);
+            }
+            // Send the contents of the train file to the server
+            tcp.sendSocket(content);
+
+            // Test data
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer << std::endl;
+            std::getline(std::cin, userInput);
+            try
+            {
+                content = Reader::fileToString(userInput);
+            }
+            catch (const std::runtime_error& e)
+            {
+                // If an error during the reading of the file has occurred
+                content = TcpServer::CLIENT_ERROR;
+                tcp.sendSocket(content);
+                // Display the Error message
+                std::cerr << e.what() << std::endl;
+                // Close the socket
+                tcp.closeSocket();
+                exit(1);
+            }
+            // Send the contents of the test file to the server
+            tcp.sendSocket(content);
+
+            // Write the second "Upload complete."
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer << std::endl;
+
+            tcp.sendSocket(Socket::ENTER);
+        }
+
+        else if (userInput.compare("5") == 0)
+        {
+            tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+            std::cout << buffer;
+            // checking if the user classified before
+            if (std::string(buffer).compare("please classify the data uploaded, press ENTER to return to main menu\n") == 0)
+            {
+                std::getline(std::cin, userInput);
+                tcp.sendSocket(Socket::ENTER);
+            }
+            else
+            {
+                // Sending the path to server
+                std::getline(std::cin, userInput);
+                Writer writer = Writer(userInput);
+                tcp.sendSocket(userInput);
+
+                // Getting the classified lables from server
+                tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+
+                // Writing to path the classified lables.
+                writer.write(buffer);
+
+                // Sending enter to server
+                tcp.sendSocket(Socket::ENTER);
+
+                // Reading the ENTER messege from server
+                tcp.recvSocket(buffer, Socket::BUFFER_SIZE);
+                std::cout << buffer;
+
+                // The user needs to press enter to return to main menu
+                std::getline(std::cin, userInput);
+                tcp.sendSocket(Socket::ENTER);
+            }
+        }
     }
 
-    std::string protocolChosen = results[0];
-    std::string unclassifiedInputPath = results[1];
-    std::string outputPath = results[2];
-
-    // convert the protocol chosen to lower case
-    std::for_each(protocolChosen.begin(), protocolChosen.end(), [](char &c)
-                  { c = ::tolower(c); });
-
-    // Making the Socket pointer point to the right protocol.
-    if (protocolChosen == "tcp")
-    {
-        chosenSocket = &tcp;
-        udp.sendSocket("didnt_choose_you");
-    }
-    else if (protocolChosen == "udp")
-    {
-        chosenSocket = &udp;
-        tcp.sendSocket("didnt_choose_you");
-    }
-    else
-    {
-        std::cout << "Error! Please choose a valid communication protocol (Udp/Tcp)" << std::endl;
-        // We infrom the server that the client-side had an error interacting with the client.
-        udp.sendSocket("client_error");
-        tcp.sendSocket("client_error");
-        exit(1);
-    }
-    // Read and send the server the unclassified flowers.
-    Reader r = Reader(unclassifiedInputPath);
-    std::string str = r.toString();
-    chosenSocket->sendSocket(str);
-
-    char outputBuffer[Socket::BUFFER_SIZE] = {0};
-    // Recieve the classified labels from the server.
-    chosenSocket->recvSocket(outputBuffer, sizeof(outputBuffer));
-
-    // Write the labels recieved to the wanted output path.
-    Writer w = Writer(outputPath);
-    w.write(outputBuffer);
-
-    // Close both sockets.
-    udp.closeSocket();
     tcp.closeSocket();
 }

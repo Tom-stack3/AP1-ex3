@@ -13,6 +13,7 @@
 
 // Server
 #include "../server/DataManager.h"
+#include "../server/CLI.h"
 
 // Commands
 #include "../server/commands/Command.h"

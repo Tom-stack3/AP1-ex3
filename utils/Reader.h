@@ -48,6 +48,16 @@ public:
      * Return a string of the file read.
      */
     std::string toString();
+
+    /**
+     * Get file content and return as a string.
+     */
+    static std::string fileToString(const std::string);
+
+    /**
+     * Convert classified vector to string.
+     */
+    static std::string getLabelsString(std::vector<std::shared_ptr<Classified>> classified);
 };
 
 #endif

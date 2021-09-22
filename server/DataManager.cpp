@@ -6,7 +6,17 @@ DataManager::DataManager()
     setDistMetricByName(DEFAULT_DISTANCE_METRIC);
 }
 
-int DataManager::getK()
+bool DataManager::getExitStatus() const
+{
+    return m_didExit;
+}
+
+void DataManager::setExitStatus(bool b)
+{
+    m_didExit = b;
+}
+
+int DataManager::getK() const
 {
     return m_k;
 }

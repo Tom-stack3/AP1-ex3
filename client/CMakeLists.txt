@@ -1,3 +1,49 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-add_executable(Client Client.cpp ../protocol/Udp.cpp ../protocol/Tcp.cpp ../protocol/Socket.cpp ../classifier/Classified.cpp ../utils/Reader.cpp ../utils/Writer.cpp ../classifier/distance/EucDistance.cpp ../classifier/distance/ManDistance.cpp ../classifier/distance/CheDistance.cpp)
+add_executable(
+Client
+Client.cpp
+# Utils
+../utils/InputValidator.cpp
+../utils/StringFunctions.cpp
+../utils/Reader.cpp
+../utils/Writer.cpp
+
+
+# IO
+../IO/StandardIO.cpp
+../IO/SocketIO.cpp
+
+# Server
+../server/DataManager.cpp
+../server/CLI.cpp
+
+# Commands
+../server/commands/Command.cpp
+../server/commands/UploadCommand.cpp
+../server/commands/ClassifyCommand.cpp
+../server/commands/SettingsCommand.cpp
+../server/commands/DisplayCommand.cpp
+../server/commands/ConfusionMatrixCommand.cpp
+../server/commands/DownloadCommand.cpp
+../server/commands/ExitCommand.cpp
+
+# Classifier
+../classifier/Classifier.cpp
+../classifier/Classified.cpp
+../classifier/KNNClassifier.cpp
+../classifier/Algorithm.cpp
+
+# Distance metrics
+../classifier/distance/EucDistance.cpp
+../classifier/distance/ManDistance.cpp
+../classifier/distance/CheDistance.cpp
+
+# Communication Protocols
+../protocol/Socket.cpp
+../protocol/Tcp.cpp
+../protocol/TcpServer.cpp)
+
+# For threads
+find_package (Threads)
+target_link_libraries (Client ${CMAKE_THREAD_LIBS_INIT})

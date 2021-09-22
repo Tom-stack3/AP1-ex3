@@ -3,6 +3,8 @@
 
 #include "Command.h"
 #include "../../utils/InputValidator.h"
+#include "../../utils/StringFunctions.h"
+#include "../../protocol/Socket.h"
 #include <sstream>
 
 #define DESCRIPTION "algorithm settings"

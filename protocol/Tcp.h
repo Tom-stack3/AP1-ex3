@@ -1,6 +1,7 @@
 #ifndef TCP_H
 #define TCP_H
 #include "Socket.h"
+#include <cstring>
 
 class Tcp : public Socket
 {
@@ -11,9 +12,19 @@ private:
     int m_queueSize = 10;
 
 public:
+    /**
+     * Initialize from an already existing socket number.
+     */
+    void init(const int ipV, int connectionSocket);
+
+    /**
+     * Initialize a new Socket.
+     */
     void init(const int ipV);
 
     void connectSocket(const char *destIp, const int destPort);
+
+    void listenSocket();
 
     int acceptSocket();
 

@@ -9,7 +9,8 @@ void ClassifyCommand::execute()
     // If one of the train vector is empty
     if (trained.empty())
     {
-        getDIO()->write("please upload train data");
+        getDIO()->write("please upload train data, press ENTER to return to main menu\n");
+        getDIO()->read();
         return;
     }
 
@@ -37,5 +38,6 @@ void ClassifyCommand::execute()
 
     classifier.predict(toClassify);
 
-    getDIO()->write("classifying data complete");
+    getDIO()->write("classifying data complete, press ENTER to return to main menu\n");
+    getDIO()->read();
 }
