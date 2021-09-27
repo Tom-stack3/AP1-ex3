@@ -5,6 +5,7 @@
 class TcpServer
 {
 private:
+    // Use of Composition
     Tcp m_tcp;
 
 public:
