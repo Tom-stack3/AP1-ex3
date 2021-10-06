@@ -22,8 +22,22 @@
 #include <algorithm>
 #include <thread>
 
-int main();
+class Server
+{
+private:
+    int m_port;
+    TcpServer m_server;
+    std::vector<int> m_clientSockets;
 
-void handleClient(int connectionSocket, std::vector<int> *sockets);
+    void handleClient(int connectionSocket);
+
+public:
+    // Constructor.
+    Server();
+
+    void start();
+};
+
+int main();
 
 #endif
