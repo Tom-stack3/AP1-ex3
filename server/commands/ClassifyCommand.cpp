@@ -6,7 +6,7 @@ void ClassifyCommand::execute()
     std::vector<std::shared_ptr<Classified>> trained = d->getTrainData();
     std::vector<std::shared_ptr<Classified>> toClassify = d->getClassifiedData();
 
-    // If one of the train vector is empty
+    // If the train vector is empty
     if (trained.empty())
     {
         getDIO()->write("please upload train data, press ENTER to return to main menu\n");
@@ -23,7 +23,7 @@ void ClassifyCommand::execute()
     {
         // We create a new vector, from the test data, with empty labels.
         std::vector<std::shared_ptr<Classified>> test = d->getTestData();
-        for (auto const & cls : test)
+        for (auto const &cls : test)
         {
             // Create a copy of the Classified object.
             std::shared_ptr<Classified> newCls = std::make_shared<Classified>(*cls);
@@ -36,7 +36,9 @@ void ClassifyCommand::execute()
         d->setClassifiedData(toClassify);
     }
 
-    classifier.predict(toClassify);
+    // Create a thread for the prediction
+    std::thread predict(&Classifier::predictVector, &classifier, toClassify);
+    predict.detach();
 
     // Update the last used K and Distance Metric
     d->setLastUsedK(d->getK());

@@ -4,6 +4,7 @@
 #include "Command.h"
 #include "../../classifier/Classifier.h"
 #include "../../classifier/KNNClassifier.h"
+#include <thread>
 
 #define DESCRIPTION "classify data"
 

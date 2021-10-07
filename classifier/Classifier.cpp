@@ -1,6 +1,6 @@
 #include "Classifier.h"
 
-void Classifier::predict(std::vector<std::shared_ptr<Classified>> unclassified)
+void Classifier::predictVector(std::vector<std::shared_ptr<Classified>> unclassified)
 {
     for (auto const &f : unclassified)
     {

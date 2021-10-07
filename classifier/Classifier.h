@@ -14,6 +14,6 @@ public:
     /**
      * Classify the vector.
      */
-    virtual void predict(std::vector<std::shared_ptr<Classified>>);
+    virtual void predictVector(std::vector<std::shared_ptr<Classified>>);
 };
 #endif
