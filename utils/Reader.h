@@ -1,6 +1,9 @@
 #ifndef READER_H
 #define READER_H
-#include "../Flower.h"
+#include "../classifier/Classified.h"
+#include "StringFunctions.h"
+#include "InputValidator.h"
+
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -8,15 +11,24 @@
 class Reader
 {
 private:
+    int m_numOfProperties;
+
     std::string m_inputPath;
+    Classified::distMetric *m_distMetric;
+
     /**
-     * Parse a line into a Flower.
+     * Initialize the number of properties the classified objects have based on the first line of the file.
+     */
+    void initNumOfProperties(std::string firstLine);
+
+    /**
+     * Parse a line into a Classified object.
      */
     std::shared_ptr<Classified> parseLine(std::string &line) const;
 
 public:
-    Reader(std::string inputPath);
-
+    Reader(std::string inputPath, Classified::distMetric *distMetric);
+    Reader(Classified::distMetric *distMetric);
     /**
      * Set a new input path.
      */
@@ -25,12 +37,27 @@ public:
     /**
      * Read and initiazlize the classes.
      */
-    void read(std::vector<std::shared_ptr<Classified>> &v) const;
+    void read(std::vector<std::shared_ptr<Classified>> &v);
+
+    /**
+     * Read and initiazlize the classes from a string.
+     */
+    void read(std::vector<std::shared_ptr<Classified>> &v, std::string input);
 
     /**
      * Return a string of the file read.
      */
     std::string toString();
+
+    /**
+     * Get file content and return as a string.
+     */
+    static std::string fileToString(const std::string);
+
+    /**
+     * Convert classified vector to string.
+     */
+    static std::string getLabelsString(std::vector<std::shared_ptr<Classified>> classified);
 };
 
 #endif

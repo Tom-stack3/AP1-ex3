@@ -1,8 +1,16 @@
 #include "Reader.h"
 
-Reader::Reader(std::string inputPath)
+Reader::Reader(std::string inputPath, Classified::distMetric *distMetric)
 {
     m_inputPath = std::move(inputPath);
+    m_distMetric = distMetric;
+}
+
+Reader::Reader(Classified::distMetric *distMetric)
+{
+    m_numOfProperties = 0;
+    m_inputPath = "";
+    m_distMetric = distMetric;
 }
 
 void Reader::setInputPath(std::string inputPath)
@@ -12,46 +20,93 @@ void Reader::setInputPath(std::string inputPath)
 
 std::shared_ptr<Classified> Reader::parseLine(std::string &line) const
 {
+    // Remove the '\r' char
+    line = StringFunctions::removeChar(line, '\r');
+
     const std::string comma = ",";
-    std::vector<std::string> strSplitted;
+    std::vector<std::string> strSplitted = StringFunctions::split(line, comma);
 
-    //split the string by a comma and save the parts in the vector strSplitted.
-    int start = 0;
-    int end = line.find(comma);
-    while (end != -1)
-    {
-        strSplitted.push_back(line.substr(start, end - start));
-        start = end + comma.size();
-        end = line.find(comma, start);
-    }
-    strSplitted.push_back(line.substr(start, end - start));
-
-    // if the row doesn't have a label, we add an empty one.
-    if (strSplitted.size() == 4)
+    // If the row doesn't have a label, we add an empty one.
+    if (strSplitted.size() == m_numOfProperties)
     {
         strSplitted.push_back(std::string(""));
     }
     std::vector<double> properties;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < m_numOfProperties; i++)
     {
-        // string to double
+        // String to double
         properties.push_back(std::stod(strSplitted.at(i)));
     }
-    return std::make_shared<Flower>(properties, strSplitted.at(4));
+    return std::make_shared<Classified>(properties, m_distMetric, strSplitted.at(m_numOfProperties));
 }
 
-void Reader::read(std::vector<std::shared_ptr<Classified>> &v) const
+void Reader::initNumOfProperties(std::string firstLine)
+{
+    // Remove the '\r' char
+    firstLine = StringFunctions::removeChar(firstLine, '\r');
+
+    const std::string comma = ",";
+    std::vector<std::string> strSplitted = StringFunctions::split(firstLine, comma);
+
+    int len = strSplitted.size();
+    int numOfProperties = 0;
+    for (auto const &p : strSplitted)
+    {
+        if (InputValidator::isDouble(p))
+        {
+            numOfProperties++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    m_numOfProperties = numOfProperties;
+}
+
+void Reader::read(std::vector<std::shared_ptr<Classified>> &v)
 {
     std::string line;
-    // open the input file.
+    // Open the input file.
     std::ifstream fileRead(m_inputPath);
+
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: '" + m_inputPath + "'");
+    }
+
+    // Read the first line
+    getline(fileRead, line);
+    // Init the num of properties the classified objects have based on the first line of the file
+    initNumOfProperties(line);
+    // Add a classified to the vector.
+    v.push_back(parseLine(line));
 
     while (getline(fileRead, line))
     {
-        // add a flower to the vector.
+        // Add a classified to the vector.
         v.push_back(parseLine(line));
     }
     fileRead.close();
+}
+
+void Reader::read(std::vector<std::shared_ptr<Classified>> &v, std::string input)
+{
+    std::string line;
+    std::istringstream f(input);
+
+    // Read the first line
+    getline(f, line);
+    // Init the num of properties the classified objects have based on the first line of the file
+    initNumOfProperties(line);
+    // Add a classified to the vector.
+    v.push_back(parseLine(line));
+
+    while (getline(f, line))
+    {
+        // Add a classified to the vector.
+        v.push_back(parseLine(line));
+    }
 }
 
 std::string Reader::toString()
@@ -59,17 +114,55 @@ std::string Reader::toString()
     std::string line;
     std::string sTotal;
 
-    // open the input file.
+    // Open the input file.
     std::ifstream fileRead(m_inputPath);
 
     while (getline(fileRead, line))
     {
-        // add a line to the string.
+        // Add a line to the string.
         sTotal += line + '\n';
     }
     fileRead.close();
 
-    // remove the last '\n
+    // Remove the last '\n
     sTotal = sTotal.substr(0, sTotal.size() - 1);
     return sTotal;
+}
+
+std::string Reader::fileToString(const std::string path)
+{
+    std::string line;
+    std::string sTotal;
+
+    // Open the input file.
+    std::ifstream fileRead(path);
+
+    if (fileRead.fail())
+    {
+        throw std::runtime_error("Error! failed to read the file: '" + path + "'");
+    }
+
+    while (getline(fileRead, line))
+    {
+        // Add a line to the string.
+        sTotal += line + '\n';
+    }
+    fileRead.close();
+
+    // Remove the last '\n
+    sTotal = sTotal.substr(0, sTotal.size() - 1);
+    return sTotal;
+}
+
+std::string Reader::getLabelsString(std::vector<std::shared_ptr<Classified>> classified)
+{
+    int i = 1;
+    // Display the results
+    std::string list = "";
+    for (auto const &f : classified)
+    {
+        list += (std::to_string(i) + "\t" + f->getLabel() + "\n");
+        i++;
+    }
+    return list;
 }

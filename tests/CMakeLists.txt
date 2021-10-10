@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 add_executable(
-  Server
-  Server.cpp
+  Tests
+  test.cpp
+
    # Utils
-  ../utils/InputValidator.cpp
-  ../utils/StringFunctions.cpp
-  ../utils/Reader.cpp
-  ../utils/Writer.cpp
-  
+   ../utils/InputValidator.cpp
+   ../utils/StringFunctions.cpp
+   ../utils/Reader.cpp
+   ../utils/Writer.cpp
+
   # IO
   ../IO/StandardIO.cpp
   ../IO/SocketIO.cpp
@@ -17,15 +18,15 @@ add_executable(
   ../server/DataManager.cpp
   ../server/CLI.cpp
 
-  # Commands
-  ../server/commands/Command.cpp
-  ../server/commands/UploadCommand.cpp
-  ../server/commands/ClassifyCommand.cpp
-  ../server/commands/SettingsCommand.cpp
-  ../server/commands/DisplayCommand.cpp
-  ../server/commands/ConfusionMatrixCommand.cpp
-  ../server/commands/DownloadCommand.cpp
-  ../server/commands/ExitCommand.cpp
+# Commands
+../server/commands/Command.cpp
+../server/commands/UploadCommand.cpp
+../server/commands/ClassifyCommand.cpp
+../server/commands/SettingsCommand.cpp
+../server/commands/DisplayCommand.cpp
+../server/commands/ConfusionMatrixCommand.cpp
+../server/commands/DownloadCommand.cpp
+../server/commands/ExitCommand.cpp
 
   # Classifier
   ../classifier/Classifier.cpp
@@ -42,7 +43,3 @@ add_executable(
   ../protocol/Socket.cpp
   ../protocol/Tcp.cpp
   ../protocol/TcpServer.cpp)
-
-# For threads
-find_package (Threads)
-target_link_libraries (Server ${CMAKE_THREAD_LIBS_INIT})

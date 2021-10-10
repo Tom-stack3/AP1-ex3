@@ -1,44 +1,43 @@
-# AP1 - Ex2
-Third assignment in Course "Advanced Programming 1".
+# AP1 - Ex3
+Third assignment in the Course *Advanced Programming 1*, Written by Tommy Zaft and Idan Turkenits.
 
-## UML Diagram
-![uml](https://user-images.githubusercontent.com/76645845/131028290-d2c2371d-8de1-425a-97b1-a36d54fbea06.png)
+## Project Structure
+### UML Diagram
+The UML diagram of the project in a PDF format can be found [here](./UML/black_color_sketch.pdf). There is also a SVG format, which can be found [here](./UML/uml.svg) (better to view it raw).
 
 ### Special Parameters
 ```c
-// TCP server port number
-port = 54269
-
-// UDP server port number
-port = 56942
+// Server port number
+port = 55556
 
 // Buffer size
-size = 1000
+size = 8192
+
+// Server timeout length in Seconds
+timeout = 120
 ```
 
 ## Building and Running
 To build both Client and Server:
-```c
-git clone https://github.com/Tom-stack3/AP1-ex2.git
-cd AP1-ex2
+```shell
+git clone https://github.com/Tom-stack3/AP1-ex3.git
+cd AP1-ex3
 mkdir build
 cd build
 cmake ..
 make
 ```
 
-### Running the Servers
-go to `./build/server` folder.
-inside choose one of the following commands:
+### Running the Server
+Go to `./build/server` folder.
+Inside run the following:
 ```c
-// To run the TCP server
-./Server Tcp
-
-// To run the UDP server
-./Server Udp
+// Running the server
+./Server
 ```
 ### Running the Client
-go to `./build/client` folder.
+Go to `./build/client` folder.
+Inside run the following:
 ```c
 // Running a client
 ./Client

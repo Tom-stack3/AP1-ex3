@@ -1,8 +1,8 @@
 #ifndef WRITER_H
 #define WRITER_H
+#include "../classifier/Classified.h"
 #include <vector>
 #include <fstream>
-#include "../Flower.h"
 
 class Writer
 {
@@ -23,9 +23,9 @@ public:
     void write(const std::vector<std::shared_ptr<Classified>> &classifiedObjects) const;
 
     /**
-     * Write a char* to the output file.
+     * Write a string to the output file.
      */
-    void write(const char *st) const;
+    void write(const std::string) const;
 };
 
 #endif

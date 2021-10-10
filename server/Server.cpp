@@ -1,116 +1,70 @@
 #include "Server.h"
 
-int main(int argc, char **argv)
+void Server::handleClient(int connectionSocket)
 {
+    Tcp client;
+    Tcp *client_ptr = &client;
+    client.init(AF_INET, connectionSocket);
+    // Add the socket descriptor to the sockets vector
+    m_clientSockets.push_back(connectionSocket);
 
-    // Create a new abstract Socket.
-    Socket *server = nullptr;
-    Tcp t;
-    Udp u;
+    Classified::distMetric euc = &EucDistance::getDist;
+    DataManager d = DataManager();
+    d.setDistMetric(euc);
+    SocketIO soc = SocketIO(client_ptr);
 
-    // Port number the server is going to run on.
-    int port;
+    DefaultIO *dio = &soc;
 
-    // If recieved no communication protocol. (Udp/Tcp)
-    if (argc < 2)
-    {
-        std::cout << "Error! Please enter a communication protocol (Udp/Tcp)" << std::endl;
-        exit(1);
-    }
+    CLI c = CLI(dio, &d);
+    c.start();
 
-    std::string protocolChosen = std::string(argv[1]);
-    // convert the protocol chosen to lower case
-    std::for_each(protocolChosen.begin(), protocolChosen.end(), [](char &c)
-                  { c = ::tolower(c); });
+    client_ptr->closeSocket();
+    // Remove the socket descriptor from the sockets vector
+    m_clientSockets.erase(std::remove(m_clientSockets.begin(), m_clientSockets.end(), connectionSocket), m_clientSockets.end());
+}
 
-    // Making the Socket pointer point to the right protocol.
-    if (protocolChosen == "tcp")
-    {
-        std::cout << "Server is working with Tcp Protocol." << std::endl;
-        t = Tcp{};
-        server = &t;
-        port = 54269;
-    }
-    else if (protocolChosen == "udp")
-    {
-        std::cout << "Server is working with Udp Protocol." << std::endl;
-        u = Udp{};
-        server = &u;
-        port = 56942;
-    }
-    else
-    {
-        std::cout << "Error! Please choose a valid communication protocol (Udp/Tcp)" << std::endl;
-        exit(1);
-    }
+Server::Server()
+{
+    int m_port = TcpServer::SERVER_PORT;
 
-    server->init(AF_INET);
-    server->bindSocket("127.0.0.1", port);
+    m_server = TcpServer();
+    m_server.init(AF_INET);
+    m_server.bindSocket("127.0.0.1", m_port);
+    std::vector<int> m_clientSockets;
+}
 
+void Server::start()
+{
     while (true)
     {
-        std::cout << "Wating for client..." << std::endl;
-        server->acceptSocket();
-        std::cout << "Client is connected!" << std::endl;
-
-        // If we are running a TCP server, the server should send a Welcome message.
-        if (protocolChosen == "tcp")
+        std::cout << "Wating for clients..." << std::endl;
+        int socketWithClient = m_server.acceptSocket();
+        // Meaning the timeout was reached, without any clients trying to connect
+        if (socketWithClient == TcpServer::TIMEOUT_ERROR)
         {
-            server->sendSocket("Im Ready to get messeges - Enter input path");
+            std::cout << "Timeout has been reached!" << std::endl;
+            break;
         }
 
-        char input[1000] = {0};
-        server->recvSocket(input, sizeof(input));
+        std::cout << "A client connected!" << std::endl;
 
-        // If the client chose the other server.
-        // We end the communication with the current client and start waiting for another client.
-        if (strcmp(input, "didnt_choose_you") == 0)
-        {
-            continue;
-        }
-        // If the client-side had an error interacting with the client.
-        // We end the communication with the current client and start waiting for another client.
-        if (strcmp(input, "client_error") == 0)
-        {
-            continue;
-        }
-
-        // Create a csv from the input the user entered.
-        Writer w = Writer(std::string("../../server/data/input.csv"));
-        w.write(input);
-
-        // Create a new Reader instance
-        Reader r = Reader(std::string("../../server/data/classified.csv"));
-        // Read and load the Classified Flowers
-        std::vector<std::shared_ptr<Classified>> classifiedObjects;
-        r.read(classifiedObjects);
-
-        // Change the reader path to the path of the Unclassified Flowers
-        r.setInputPath(std::string("../../server/data/input.csv"));
-        // Read and load the Unclassified Flowers
-        std::vector<std::shared_ptr<Classified>> unclassifiedFlowers;
-        r.read(unclassifiedFlowers);
-
-        const int k = 5;
-        // Create a new KNNClassifier
-        KNNClassifier knn(classifiedObjects, k);
-        Classifier &classifier = knn;
-
-        for (auto const &f : unclassifiedFlowers)
-        {
-            // Set the classified object label to the prediction the Model made
-            f->setLabel(classifier.predict(*f));
-        }
-
-        // Write the labels classified.
-        w.setOutputPath("../../server/data/clients_output.csv");
-        w.write(unclassifiedFlowers);
-        r.setInputPath("../../server/data/clients_output.csv");
-        std::string output = r.toString();
-        // Send the client the labels classified.
-        server->sendSocket(output);
-        std::cout << std::endl
-                  << "Sent the classified objects back to the client!" << std::endl
-                  << std::endl;
+        // We create a new Thread for handling the client
+        std::thread handlingClient(&Server::handleClient, this, socketWithClient);
+        handlingClient.detach();
     }
+
+    // While we are not finished serving all the clients
+    while (!m_clientSockets.empty())
+    {
+    }
+
+    std::cout << "Shutting down..." << std::endl;
+    m_server.closeSocket();
+    std::cout << "Exiting" << std::endl;
+}
+
+int main()
+{
+    Server s;
+    s.start();
 }
