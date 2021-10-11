@@ -10,6 +10,12 @@
 
 class ClassifyCommand : public Command
 {
+private:
+    /**
+     * Classify and update the Vector.
+     */
+    void classify();
+
 public:
     // constructor.
     ClassifyCommand(DefaultIO *dio, DataManager *dataManager) : Command(DESCRIPTION, dio, dataManager) {}
