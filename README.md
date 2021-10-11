@@ -42,5 +42,8 @@ Inside run the following:
 // Running a client
 ./Client
 ```
+<br>
 
-Have Fun Classifying!
+**Have Fun Classifying!**
+
+<img src="https://user-images.githubusercontent.com/76645845/136801258-4bf542dc-567e-411b-9192-d87014f20d20.gif" height="250">
