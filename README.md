@@ -42,6 +42,10 @@ Inside run the following:
 // Running a client
 ./Client
 ```
+
+### Datasets Examples
+In the [`./client/data`](./client/data) folder, there are some datasets for example, which can be used by the client for testing purposes.
+
 <br>
 
 **Have Fun Classifying!**
