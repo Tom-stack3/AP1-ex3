@@ -31,7 +31,7 @@ protected:
 
 public:
     // Buffer size
-    static const int BUFFER_SIZE = 8192;
+    static const int BUFFER_SIZE = 16384;
 
     // String to represent ENTER
     static constexpr const char *ENTER = "ENTER";
